@@ -11,6 +11,7 @@ model User {
   id       Int         @id @default(autoincrement())
   username String      @unique
   name     String?
+  password String?
   events   UserEvent[]
 }
 
@@ -19,6 +20,7 @@ model Event {
   name      String
   date      DateTime
   attendees UserEvent[]
+  points    Int         @default(1)
 }
 
 model UserEvent {

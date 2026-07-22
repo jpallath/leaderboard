@@ -1161,18 +1161,21 @@ export namespace Prisma {
     id: number | null
     username: string | null
     name: string | null
+    password: string | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: number | null
     username: string | null
     name: string | null
+    password: string | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     username: number
     name: number
+    password: number
     _all: number
   }
 
@@ -1189,18 +1192,21 @@ export namespace Prisma {
     id?: true
     username?: true
     name?: true
+    password?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     username?: true
     name?: true
+    password?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     username?: true
     name?: true
+    password?: true
     _all?: true
   }
 
@@ -1294,6 +1300,7 @@ export namespace Prisma {
     id: number
     username: string
     name: string | null
+    password: string | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1319,6 +1326,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
+    password?: boolean
     events?: boolean | User$eventsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -1327,21 +1335,24 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
+    password?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     username?: boolean
     name?: boolean
+    password?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
     username?: boolean
     name?: boolean
+    password?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "password", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     events?: boolean | User$eventsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1358,6 +1369,7 @@ export namespace Prisma {
       id: number
       username: string
       name: string | null
+      password: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1785,6 +1797,7 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'Int'>
     readonly username: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
+    readonly password: FieldRef<"User", 'String'>
   }
     
 
@@ -2234,56 +2247,66 @@ export namespace Prisma {
 
   export type EventAvgAggregateOutputType = {
     id: number | null
+    points: number | null
   }
 
   export type EventSumAggregateOutputType = {
     id: number | null
+    points: number | null
   }
 
   export type EventMinAggregateOutputType = {
     id: number | null
     name: string | null
     date: Date | null
+    points: number | null
   }
 
   export type EventMaxAggregateOutputType = {
     id: number | null
     name: string | null
     date: Date | null
+    points: number | null
   }
 
   export type EventCountAggregateOutputType = {
     id: number
     name: number
     date: number
+    points: number
     _all: number
   }
 
 
   export type EventAvgAggregateInputType = {
     id?: true
+    points?: true
   }
 
   export type EventSumAggregateInputType = {
     id?: true
+    points?: true
   }
 
   export type EventMinAggregateInputType = {
     id?: true
     name?: true
     date?: true
+    points?: true
   }
 
   export type EventMaxAggregateInputType = {
     id?: true
     name?: true
     date?: true
+    points?: true
   }
 
   export type EventCountAggregateInputType = {
     id?: true
     name?: true
     date?: true
+    points?: true
     _all?: true
   }
 
@@ -2377,6 +2400,7 @@ export namespace Prisma {
     id: number
     name: string
     date: Date
+    points: number
     _count: EventCountAggregateOutputType | null
     _avg: EventAvgAggregateOutputType | null
     _sum: EventSumAggregateOutputType | null
@@ -2402,6 +2426,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     date?: boolean
+    points?: boolean
     attendees?: boolean | Event$attendeesArgs<ExtArgs>
     _count?: boolean | EventCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
@@ -2410,21 +2435,24 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     date?: boolean
+    points?: boolean
   }, ExtArgs["result"]["event"]>
 
   export type EventSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     date?: boolean
+    points?: boolean
   }, ExtArgs["result"]["event"]>
 
   export type EventSelectScalar = {
     id?: boolean
     name?: boolean
     date?: boolean
+    points?: boolean
   }
 
-  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "date", ExtArgs["result"]["event"]>
+  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "date" | "points", ExtArgs["result"]["event"]>
   export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     attendees?: boolean | Event$attendeesArgs<ExtArgs>
     _count?: boolean | EventCountOutputTypeDefaultArgs<ExtArgs>
@@ -2441,6 +2469,7 @@ export namespace Prisma {
       id: number
       name: string
       date: Date
+      points: number
     }, ExtArgs["result"]["event"]>
     composites: {}
   }
@@ -2868,6 +2897,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Event", 'Int'>
     readonly name: FieldRef<"Event", 'String'>
     readonly date: FieldRef<"Event", 'DateTime'>
+    readonly points: FieldRef<"Event", 'Int'>
   }
     
 
@@ -4407,7 +4437,8 @@ export namespace Prisma {
   export const UserScalarFieldEnum: {
     id: 'id',
     username: 'username',
-    name: 'name'
+    name: 'name',
+    password: 'password'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -4416,7 +4447,8 @@ export namespace Prisma {
   export const EventScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    date: 'date'
+    date: 'date',
+    points: 'points'
   };
 
   export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
@@ -4526,6 +4558,7 @@ export namespace Prisma {
     id?: IntFilter<"User"> | number
     username?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
+    password?: StringNullableFilter<"User"> | string | null
     events?: UserEventListRelationFilter
   }
 
@@ -4533,6 +4566,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrderInput | SortOrder
+    password?: SortOrderInput | SortOrder
     events?: UserEventOrderByRelationAggregateInput
   }
 
@@ -4543,6 +4577,7 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
+    password?: StringNullableFilter<"User"> | string | null
     events?: UserEventListRelationFilter
   }, "id" | "username">
 
@@ -4550,6 +4585,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrderInput | SortOrder
+    password?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -4564,6 +4600,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"User"> | number
     username?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
+    password?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type EventWhereInput = {
@@ -4573,6 +4610,7 @@ export namespace Prisma {
     id?: IntFilter<"Event"> | number
     name?: StringFilter<"Event"> | string
     date?: DateTimeFilter<"Event"> | Date | string
+    points?: IntFilter<"Event"> | number
     attendees?: UserEventListRelationFilter
   }
 
@@ -4580,6 +4618,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     date?: SortOrder
+    points?: SortOrder
     attendees?: UserEventOrderByRelationAggregateInput
   }
 
@@ -4590,6 +4629,7 @@ export namespace Prisma {
     NOT?: EventWhereInput | EventWhereInput[]
     name?: StringFilter<"Event"> | string
     date?: DateTimeFilter<"Event"> | Date | string
+    points?: IntFilter<"Event"> | number
     attendees?: UserEventListRelationFilter
   }, "id">
 
@@ -4597,6 +4637,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     date?: SortOrder
+    points?: SortOrder
     _count?: EventCountOrderByAggregateInput
     _avg?: EventAvgOrderByAggregateInput
     _max?: EventMaxOrderByAggregateInput
@@ -4611,6 +4652,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"Event"> | number
     name?: StringWithAggregatesFilter<"Event"> | string
     date?: DateTimeWithAggregatesFilter<"Event"> | Date | string
+    points?: IntWithAggregatesFilter<"Event"> | number
   }
 
   export type UserEventWhereInput = {
@@ -4667,6 +4709,7 @@ export namespace Prisma {
   export type UserCreateInput = {
     username: string
     name?: string | null
+    password?: string | null
     events?: UserEventCreateNestedManyWithoutUserInput
   }
 
@@ -4674,12 +4717,14 @@ export namespace Prisma {
     id?: number
     username: string
     name?: string | null
+    password?: string | null
     events?: UserEventUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     events?: UserEventUpdateManyWithoutUserNestedInput
   }
 
@@ -4687,6 +4732,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     events?: UserEventUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -4694,22 +4740,26 @@ export namespace Prisma {
     id?: number
     username: string
     name?: string | null
+    password?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EventCreateInput = {
     name: string
     date: Date | string
+    points?: number
     attendees?: UserEventCreateNestedManyWithoutEventInput
   }
 
@@ -4717,12 +4767,14 @@ export namespace Prisma {
     id?: number
     name: string
     date: Date | string
+    points?: number
     attendees?: UserEventUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type EventUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    points?: IntFieldUpdateOperationsInput | number
     attendees?: UserEventUpdateManyWithoutEventNestedInput
   }
 
@@ -4730,6 +4782,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    points?: IntFieldUpdateOperationsInput | number
     attendees?: UserEventUncheckedUpdateManyWithoutEventNestedInput
   }
 
@@ -4737,17 +4790,20 @@ export namespace Prisma {
     id?: number
     name: string
     date: Date | string
+    points?: number
   }
 
   export type EventUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    points?: IntFieldUpdateOperationsInput | number
   }
 
   export type EventUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    points?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserEventCreateInput = {
@@ -4848,6 +4904,7 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
+    password?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -4858,12 +4915,14 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
+    password?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
+    password?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -4937,26 +4996,31 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     date?: SortOrder
+    points?: SortOrder
   }
 
   export type EventAvgOrderByAggregateInput = {
     id?: SortOrder
+    points?: SortOrder
   }
 
   export type EventMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     date?: SortOrder
+    points?: SortOrder
   }
 
   export type EventMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     date?: SortOrder
+    points?: SortOrder
   }
 
   export type EventSumOrderByAggregateInput = {
     id?: SortOrder
+    points?: SortOrder
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -5368,12 +5432,14 @@ export namespace Prisma {
   export type UserCreateWithoutEventsInput = {
     username: string
     name?: string | null
+    password?: string | null
   }
 
   export type UserUncheckedCreateWithoutEventsInput = {
     id?: number
     username: string
     name?: string | null
+    password?: string | null
   }
 
   export type UserCreateOrConnectWithoutEventsInput = {
@@ -5384,12 +5450,14 @@ export namespace Prisma {
   export type EventCreateWithoutAttendeesInput = {
     name: string
     date: Date | string
+    points?: number
   }
 
   export type EventUncheckedCreateWithoutAttendeesInput = {
     id?: number
     name: string
     date: Date | string
+    points?: number
   }
 
   export type EventCreateOrConnectWithoutAttendeesInput = {
@@ -5411,12 +5479,14 @@ export namespace Prisma {
   export type UserUpdateWithoutEventsInput = {
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateWithoutEventsInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type EventUpsertWithoutAttendeesInput = {
@@ -5433,12 +5503,14 @@ export namespace Prisma {
   export type EventUpdateWithoutAttendeesInput = {
     name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    points?: IntFieldUpdateOperationsInput | number
   }
 
   export type EventUncheckedUpdateWithoutAttendeesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    points?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserEventCreateManyUserInput = {

@@ -1,26 +1,35 @@
 @import "tailwindcss";
 
+@theme {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-border: var(--surface-border);
+  --color-accent: var(--accent);
+  --color-content: var(--content);
+  --color-content-muted: var(--content-muted);
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --surface: #f8fafc; /* Clean slate-50 */
+  --surface-border: #e2e8f0; /* Subtle slate-200 border */
+  --accent: #ec1f27; /* DSA Red */
+  --content: #0f172a; /* Slate 900 */
+  --content-muted: #64748b; /* Slate 500 */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark,
+:root.dark {
+  --background: #09090b; /* Deep zinc-950 */
+  --surface: #18181b; /* Matte zinc-900 */
+  --surface-border: #27272a; /* Subtle zinc-800 border */
+  --accent: #ef4444; /* Vibrant red that pops on dark */
+  --content: #fafafa; /* Zinc-50 */
+  --content-muted: #a1a1aa; /* Zinc-400 */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-background text-content antialiased transition-colors duration-200;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
