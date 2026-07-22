@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id       Int         @id @default(autoincrement())
+  username String      @unique
+  name     String?
+  events   UserEvent[]
+}
+
+model Event {
+  id        Int         @id @default(autoincrement())
+  name      String
+  date      DateTime
+  attendees UserEvent[]
+}
+
+model UserEvent {
+  id      Int   @id @default(autoincrement())
+  userId  Int
+  eventId Int
+  user    User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event   Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, eventId]) // Ensures a user can't register for the same event twice
+}
