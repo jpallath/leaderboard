@@ -124,7 +124,8 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   username: 'username',
   name: 'name',
-  password: 'password'
+  password: 'password',
+  userType: 'userType'
 };
 
 exports.Prisma.MeetScalarFieldEnum = {
@@ -154,7 +155,10 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.UserType = exports.$Enums.UserType = {
+  user: 'user',
+  core: 'core'
+};
 
 exports.Prisma.ModelName = {
   User: 'User',

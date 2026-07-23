@@ -30,6 +30,23 @@ export type Meet = $Result.DefaultSelection<Prisma.$MeetPayload>
 export type UserMeet = $Result.DefaultSelection<Prisma.$UserMeetPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const UserType: {
+  user: 'user',
+  core: 'core'
+};
+
+export type UserType = (typeof UserType)[keyof typeof UserType]
+
+}
+
+export type UserType = $Enums.UserType
+
+export const UserType: typeof $Enums.UserType
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -1162,6 +1179,7 @@ export namespace Prisma {
     username: string | null
     name: string | null
     password: string | null
+    userType: $Enums.UserType | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1169,6 +1187,7 @@ export namespace Prisma {
     username: string | null
     name: string | null
     password: string | null
+    userType: $Enums.UserType | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1176,6 +1195,7 @@ export namespace Prisma {
     username: number
     name: number
     password: number
+    userType: number
     _all: number
   }
 
@@ -1193,6 +1213,7 @@ export namespace Prisma {
     username?: true
     name?: true
     password?: true
+    userType?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1200,6 +1221,7 @@ export namespace Prisma {
     username?: true
     name?: true
     password?: true
+    userType?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1207,6 +1229,7 @@ export namespace Prisma {
     username?: true
     name?: true
     password?: true
+    userType?: true
     _all?: true
   }
 
@@ -1301,6 +1324,7 @@ export namespace Prisma {
     username: string
     name: string | null
     password: string | null
+    userType: $Enums.UserType
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1327,6 +1351,7 @@ export namespace Prisma {
     username?: boolean
     name?: boolean
     password?: boolean
+    userType?: boolean
     meets?: boolean | User$meetsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -1336,6 +1361,7 @@ export namespace Prisma {
     username?: boolean
     name?: boolean
     password?: boolean
+    userType?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1343,6 +1369,7 @@ export namespace Prisma {
     username?: boolean
     name?: boolean
     password?: boolean
+    userType?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1350,9 +1377,10 @@ export namespace Prisma {
     username?: boolean
     name?: boolean
     password?: boolean
+    userType?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "password", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "password" | "userType", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meets?: boolean | User$meetsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1370,6 +1398,7 @@ export namespace Prisma {
       username: string
       name: string | null
       password: string | null
+      userType: $Enums.UserType
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1798,6 +1827,7 @@ export namespace Prisma {
     readonly username: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
+    readonly userType: FieldRef<"User", 'UserType'>
   }
     
 
@@ -4438,7 +4468,8 @@ export namespace Prisma {
     id: 'id',
     username: 'username',
     name: 'name',
-    password: 'password'
+    password: 'password',
+    userType: 'userType'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -4521,6 +4552,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'UserType'
+   */
+  export type EnumUserTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserType'>
+    
+
+
+  /**
+   * Reference to a field of type 'UserType[]'
+   */
+  export type ListEnumUserTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserType[]'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -4559,6 +4604,7 @@ export namespace Prisma {
     username?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
+    userType?: EnumUserTypeFilter<"User"> | $Enums.UserType
     meets?: UserMeetListRelationFilter
   }
 
@@ -4567,6 +4613,7 @@ export namespace Prisma {
     username?: SortOrder
     name?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
+    userType?: SortOrder
     meets?: UserMeetOrderByRelationAggregateInput
   }
 
@@ -4578,6 +4625,7 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
+    userType?: EnumUserTypeFilter<"User"> | $Enums.UserType
     meets?: UserMeetListRelationFilter
   }, "id" | "username">
 
@@ -4586,6 +4634,7 @@ export namespace Prisma {
     username?: SortOrder
     name?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
+    userType?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -4601,6 +4650,7 @@ export namespace Prisma {
     username?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
+    userType?: EnumUserTypeWithAggregatesFilter<"User"> | $Enums.UserType
   }
 
   export type MeetWhereInput = {
@@ -4710,6 +4760,7 @@ export namespace Prisma {
     username: string
     name?: string | null
     password?: string | null
+    userType?: $Enums.UserType
     meets?: UserMeetCreateNestedManyWithoutUserInput
   }
 
@@ -4718,6 +4769,7 @@ export namespace Prisma {
     username: string
     name?: string | null
     password?: string | null
+    userType?: $Enums.UserType
     meets?: UserMeetUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -4725,6 +4777,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     meets?: UserMeetUpdateManyWithoutUserNestedInput
   }
 
@@ -4733,6 +4786,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     meets?: UserMeetUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -4741,12 +4795,14 @@ export namespace Prisma {
     username: string
     name?: string | null
     password?: string | null
+    userType?: $Enums.UserType
   }
 
   export type UserUpdateManyMutationInput = {
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -4754,6 +4810,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
   }
 
   export type MeetCreateInput = {
@@ -4885,6 +4942,13 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type EnumUserTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserTypeFilter<$PrismaModel> | $Enums.UserType
+  }
+
   export type UserMeetListRelationFilter = {
     every?: UserMeetWhereInput
     some?: UserMeetWhereInput
@@ -4905,6 +4969,7 @@ export namespace Prisma {
     username?: SortOrder
     name?: SortOrder
     password?: SortOrder
+    userType?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -4916,6 +4981,7 @@ export namespace Prisma {
     username?: SortOrder
     name?: SortOrder
     password?: SortOrder
+    userType?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -4923,6 +4989,7 @@ export namespace Prisma {
     username?: SortOrder
     name?: SortOrder
     password?: SortOrder
+    userType?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -4979,6 +5046,16 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type EnumUserTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserTypeWithAggregatesFilter<$PrismaModel> | $Enums.UserType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserTypeFilter<$PrismaModel>
+    _max?: NestedEnumUserTypeFilter<$PrismaModel>
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -5102,6 +5179,10 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type EnumUserTypeFieldUpdateOperationsInput = {
+    set?: $Enums.UserType
   }
 
   export type UserMeetUpdateManyWithoutUserNestedInput = {
@@ -5253,6 +5334,13 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedEnumUserTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserTypeFilter<$PrismaModel> | $Enums.UserType
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -5323,6 +5411,16 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedEnumUserTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserType | EnumUserTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserTypeWithAggregatesFilter<$PrismaModel> | $Enums.UserType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserTypeFilter<$PrismaModel>
+    _max?: NestedEnumUserTypeFilter<$PrismaModel>
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -5433,6 +5531,7 @@ export namespace Prisma {
     username: string
     name?: string | null
     password?: string | null
+    userType?: $Enums.UserType
   }
 
   export type UserUncheckedCreateWithoutMeetsInput = {
@@ -5440,6 +5539,7 @@ export namespace Prisma {
     username: string
     name?: string | null
     password?: string | null
+    userType?: $Enums.UserType
   }
 
   export type UserCreateOrConnectWithoutMeetsInput = {
@@ -5480,6 +5580,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
   }
 
   export type UserUncheckedUpdateWithoutMeetsInput = {
@@ -5487,6 +5588,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
+    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
   }
 
   export type MeetUpsertWithoutAttendeesInput = {

@@ -1,17 +1,6 @@
 import { logoutUser } from "@/app/actions/auth";
-type CurrentUserProps = {
-  username: string;
-  name: string | null;
-  meets: Meets[];
-};
-
-type Meets = {
-  id: number;
-  name: string;
-  date: Date;
-  points: number;
-  attendees: any[];
-};
+import Leaderboard from "../leaderboard";
+import { CurrentUserProps } from "@/app/types";
 
 export const LoggedInUser = ({ username, name, meets }: CurrentUserProps) => {
   return (
@@ -28,19 +17,7 @@ export const LoggedInUser = ({ username, name, meets }: CurrentUserProps) => {
             </button>
           </form>
         </div>
-
-        <div className="rounded-xl bg-background border border-surface-border p-4 mb-6">
-          <p className="text-sm font-medium text-content-muted">
-            Your Registered Events
-          </p>
-          <p className="text-xl font-bold mt-1">
-            {meets.length} Meets Attended
-          </p>
-        </div>
-
-        <div className="text-center text-sm text-content-muted">
-          Run club leaderboard dashboard coming soon...
-        </div>
+        <Leaderboard />
       </div>
     </main>
   );

@@ -7,11 +7,17 @@ datasource db {
   provider = "postgresql"
 }
 
+enum UserType {
+  user
+  core
+}
+
 model User {
   id       Int        @id @default(autoincrement())
   username String     @unique
   name     String?
   password String?
+  userType UserType   @default(user)
   meets    UserMeet[]
 }
 
