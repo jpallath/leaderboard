@@ -8,27 +8,27 @@ datasource db {
 }
 
 model User {
-  id       Int         @id @default(autoincrement())
-  username String      @unique
+  id       Int        @id @default(autoincrement())
+  username String     @unique
   name     String?
   password String?
-  events   UserEvent[]
+  meets    UserMeet[]
 }
 
-model Event {
-  id        Int         @id @default(autoincrement())
+model Meet {
+  id        Int        @id @default(autoincrement())
   name      String
   date      DateTime
-  attendees UserEvent[]
-  points    Int         @default(1)
+  attendees UserMeet[]
+  points    Int        @default(1)
 }
 
-model UserEvent {
-  id      Int   @id @default(autoincrement())
-  userId  Int
-  eventId Int
-  user    User  @relation(fields: [userId], references: [id], onDelete: Cascade)
-  event   Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+model UserMeet {
+  id     Int  @id @default(autoincrement())
+  userId Int
+  meetId Int
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  meet   Meet @relation(fields: [meetId], references: [id], onDelete: Cascade)
 
-  @@unique([userId, eventId]) // Ensures a user can't register for the same event twice
+  @@unique([userId, meetId]) // Ensures a user can't register for the same event twice
 }

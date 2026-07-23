@@ -127,17 +127,17 @@ exports.Prisma.UserScalarFieldEnum = {
   password: 'password'
 };
 
-exports.Prisma.EventScalarFieldEnum = {
+exports.Prisma.MeetScalarFieldEnum = {
   id: 'id',
   name: 'name',
   date: 'date',
   points: 'points'
 };
 
-exports.Prisma.UserEventScalarFieldEnum = {
+exports.Prisma.UserMeetScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  eventId: 'eventId'
+  meetId: 'meetId'
 };
 
 exports.Prisma.SortOrder = {
@@ -158,8 +158,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Event: 'Event',
-  UserEvent: 'UserEvent'
+  Meet: 'Meet',
+  UserMeet: 'UserMeet'
 };
 
 /**

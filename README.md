@@ -4,5 +4,6 @@ username (discord to make it easier to match) / password / name
 
 an admin portal to generate new events or update events
 and if needed they can add more points
+generates the QR code to share
 
 leaderboard component

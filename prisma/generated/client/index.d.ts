@@ -19,15 +19,15 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
 /**
- * Model Event
+ * Model Meet
  * 
  */
-export type Event = $Result.DefaultSelection<Prisma.$EventPayload>
+export type Meet = $Result.DefaultSelection<Prisma.$MeetPayload>
 /**
- * Model UserEvent
+ * Model UserMeet
  * 
  */
-export type UserEvent = $Result.DefaultSelection<Prisma.$UserEventPayload>
+export type UserMeet = $Result.DefaultSelection<Prisma.$UserMeetPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -161,24 +161,24 @@ export class PrismaClient<
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.event`: Exposes CRUD operations for the **Event** model.
+   * `prisma.meet`: Exposes CRUD operations for the **Meet** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Events
-    * const events = await prisma.event.findMany()
+    * // Fetch zero or more Meets
+    * const meets = await prisma.meet.findMany()
     * ```
     */
-  get event(): Prisma.EventDelegate<ExtArgs, ClientOptions>;
+  get meet(): Prisma.MeetDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.userEvent`: Exposes CRUD operations for the **UserEvent** model.
+   * `prisma.userMeet`: Exposes CRUD operations for the **UserMeet** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more UserEvents
-    * const userEvents = await prisma.userEvent.findMany()
+    * // Fetch zero or more UserMeets
+    * const userMeets = await prisma.userMeet.findMany()
     * ```
     */
-  get userEvent(): Prisma.UserEventDelegate<ExtArgs, ClientOptions>;
+  get userMeet(): Prisma.UserMeetDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -627,8 +627,8 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
-    Event: 'Event',
-    UserEvent: 'UserEvent'
+    Meet: 'Meet',
+    UserMeet: 'UserMeet'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -644,7 +644,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "event" | "userEvent"
+      modelProps: "user" | "meet" | "userMeet"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -722,151 +722,151 @@ export namespace Prisma {
           }
         }
       }
-      Event: {
-        payload: Prisma.$EventPayload<ExtArgs>
-        fields: Prisma.EventFieldRefs
+      Meet: {
+        payload: Prisma.$MeetPayload<ExtArgs>
+        fields: Prisma.MeetFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.EventFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EventPayload> | null
+            args: Prisma.MeetFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.EventFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EventPayload>
+            args: Prisma.MeetFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetPayload>
           }
           findFirst: {
-            args: Prisma.EventFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EventPayload> | null
+            args: Prisma.MeetFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.EventFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EventPayload>
+            args: Prisma.MeetFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetPayload>
           }
           findMany: {
-            args: Prisma.EventFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EventPayload>[]
+            args: Prisma.MeetFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetPayload>[]
           }
           create: {
-            args: Prisma.EventCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EventPayload>
+            args: Prisma.MeetCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetPayload>
           }
           createMany: {
-            args: Prisma.EventCreateManyArgs<ExtArgs>
+            args: Prisma.MeetCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.EventCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EventPayload>[]
+            args: Prisma.MeetCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetPayload>[]
           }
           delete: {
-            args: Prisma.EventDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EventPayload>
+            args: Prisma.MeetDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetPayload>
           }
           update: {
-            args: Prisma.EventUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EventPayload>
+            args: Prisma.MeetUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetPayload>
           }
           deleteMany: {
-            args: Prisma.EventDeleteManyArgs<ExtArgs>
+            args: Prisma.MeetDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.EventUpdateManyArgs<ExtArgs>
+            args: Prisma.MeetUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.EventUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EventPayload>[]
+            args: Prisma.MeetUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetPayload>[]
           }
           upsert: {
-            args: Prisma.EventUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EventPayload>
+            args: Prisma.MeetUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MeetPayload>
           }
           aggregate: {
-            args: Prisma.EventAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateEvent>
+            args: Prisma.MeetAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMeet>
           }
           groupBy: {
-            args: Prisma.EventGroupByArgs<ExtArgs>
-            result: $Utils.Optional<EventGroupByOutputType>[]
+            args: Prisma.MeetGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MeetGroupByOutputType>[]
           }
           count: {
-            args: Prisma.EventCountArgs<ExtArgs>
-            result: $Utils.Optional<EventCountAggregateOutputType> | number
+            args: Prisma.MeetCountArgs<ExtArgs>
+            result: $Utils.Optional<MeetCountAggregateOutputType> | number
           }
         }
       }
-      UserEvent: {
-        payload: Prisma.$UserEventPayload<ExtArgs>
-        fields: Prisma.UserEventFieldRefs
+      UserMeet: {
+        payload: Prisma.$UserMeetPayload<ExtArgs>
+        fields: Prisma.UserMeetFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.UserEventFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserEventPayload> | null
+            args: Prisma.UserMeetFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserMeetPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.UserEventFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserEventPayload>
+            args: Prisma.UserMeetFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserMeetPayload>
           }
           findFirst: {
-            args: Prisma.UserEventFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserEventPayload> | null
+            args: Prisma.UserMeetFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserMeetPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.UserEventFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserEventPayload>
+            args: Prisma.UserMeetFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserMeetPayload>
           }
           findMany: {
-            args: Prisma.UserEventFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserEventPayload>[]
+            args: Prisma.UserMeetFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserMeetPayload>[]
           }
           create: {
-            args: Prisma.UserEventCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserEventPayload>
+            args: Prisma.UserMeetCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserMeetPayload>
           }
           createMany: {
-            args: Prisma.UserEventCreateManyArgs<ExtArgs>
+            args: Prisma.UserMeetCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.UserEventCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserEventPayload>[]
+            args: Prisma.UserMeetCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserMeetPayload>[]
           }
           delete: {
-            args: Prisma.UserEventDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserEventPayload>
+            args: Prisma.UserMeetDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserMeetPayload>
           }
           update: {
-            args: Prisma.UserEventUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserEventPayload>
+            args: Prisma.UserMeetUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserMeetPayload>
           }
           deleteMany: {
-            args: Prisma.UserEventDeleteManyArgs<ExtArgs>
+            args: Prisma.UserMeetDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.UserEventUpdateManyArgs<ExtArgs>
+            args: Prisma.UserMeetUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.UserEventUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserEventPayload>[]
+            args: Prisma.UserMeetUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserMeetPayload>[]
           }
           upsert: {
-            args: Prisma.UserEventUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$UserEventPayload>
+            args: Prisma.UserMeetUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserMeetPayload>
           }
           aggregate: {
-            args: Prisma.UserEventAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateUserEvent>
+            args: Prisma.UserMeetAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserMeet>
           }
           groupBy: {
-            args: Prisma.UserEventGroupByArgs<ExtArgs>
-            result: $Utils.Optional<UserEventGroupByOutputType>[]
+            args: Prisma.UserMeetGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserMeetGroupByOutputType>[]
           }
           count: {
-            args: Prisma.UserEventCountArgs<ExtArgs>
-            result: $Utils.Optional<UserEventCountAggregateOutputType> | number
+            args: Prisma.UserMeetCountArgs<ExtArgs>
+            result: $Utils.Optional<UserMeetCountAggregateOutputType> | number
           }
         }
       }
@@ -994,8 +994,8 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
-    event?: EventOmit
-    userEvent?: UserEventOmit
+    meet?: MeetOmit
+    userMeet?: UserMeetOmit
   }
 
   /* Types for Logging */
@@ -1076,11 +1076,11 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    events: number
+    meets: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    events?: boolean | UserCountOutputTypeCountEventsArgs
+    meets?: boolean | UserCountOutputTypeCountMeetsArgs
   }
 
   // Custom InputTypes
@@ -1097,39 +1097,39 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountEventsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserEventWhereInput
+  export type UserCountOutputTypeCountMeetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserMeetWhereInput
   }
 
 
   /**
-   * Count Type EventCountOutputType
+   * Count Type MeetCountOutputType
    */
 
-  export type EventCountOutputType = {
+  export type MeetCountOutputType = {
     attendees: number
   }
 
-  export type EventCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    attendees?: boolean | EventCountOutputTypeCountAttendeesArgs
+  export type MeetCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    attendees?: boolean | MeetCountOutputTypeCountAttendeesArgs
   }
 
   // Custom InputTypes
   /**
-   * EventCountOutputType without action
+   * MeetCountOutputType without action
    */
-  export type EventCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the EventCountOutputType
+     * Select specific fields to fetch from the MeetCountOutputType
      */
-    select?: EventCountOutputTypeSelect<ExtArgs> | null
+    select?: MeetCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * EventCountOutputType without action
+   * MeetCountOutputType without action
    */
-  export type EventCountOutputTypeCountAttendeesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserEventWhereInput
+  export type MeetCountOutputTypeCountAttendeesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserMeetWhereInput
   }
 
 
@@ -1327,7 +1327,7 @@ export namespace Prisma {
     username?: boolean
     name?: boolean
     password?: boolean
-    events?: boolean | User$eventsArgs<ExtArgs>
+    meets?: boolean | User$meetsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1354,7 +1354,7 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "password", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    events?: boolean | User$eventsArgs<ExtArgs>
+    meets?: boolean | User$meetsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1363,7 +1363,7 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      events: Prisma.$UserEventPayload<ExtArgs>[]
+      meets: Prisma.$UserMeetPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1764,7 +1764,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    events<T extends User$eventsArgs<ExtArgs> = {}>(args?: Subset<T, User$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    meets<T extends User$meetsArgs<ExtArgs> = {}>(args?: Subset<T, User$meetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserMeetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2191,27 +2191,27 @@ export namespace Prisma {
   }
 
   /**
-   * User.events
+   * User.meets
    */
-  export type User$eventsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$meetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserEvent
+     * Select specific fields to fetch from the UserMeet
      */
-    select?: UserEventSelect<ExtArgs> | null
+    select?: UserMeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserEvent
+     * Omit specific fields from the UserMeet
      */
-    omit?: UserEventOmit<ExtArgs> | null
+    omit?: UserMeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserEventInclude<ExtArgs> | null
-    where?: UserEventWhereInput
-    orderBy?: UserEventOrderByWithRelationInput | UserEventOrderByWithRelationInput[]
-    cursor?: UserEventWhereUniqueInput
+    include?: UserMeetInclude<ExtArgs> | null
+    where?: UserMeetWhereInput
+    orderBy?: UserMeetOrderByWithRelationInput | UserMeetOrderByWithRelationInput[]
+    cursor?: UserMeetWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: UserEventScalarFieldEnum | UserEventScalarFieldEnum[]
+    distinct?: UserMeetScalarFieldEnum | UserMeetScalarFieldEnum[]
   }
 
   /**
@@ -2234,42 +2234,42 @@ export namespace Prisma {
 
 
   /**
-   * Model Event
+   * Model Meet
    */
 
-  export type AggregateEvent = {
-    _count: EventCountAggregateOutputType | null
-    _avg: EventAvgAggregateOutputType | null
-    _sum: EventSumAggregateOutputType | null
-    _min: EventMinAggregateOutputType | null
-    _max: EventMaxAggregateOutputType | null
+  export type AggregateMeet = {
+    _count: MeetCountAggregateOutputType | null
+    _avg: MeetAvgAggregateOutputType | null
+    _sum: MeetSumAggregateOutputType | null
+    _min: MeetMinAggregateOutputType | null
+    _max: MeetMaxAggregateOutputType | null
   }
 
-  export type EventAvgAggregateOutputType = {
+  export type MeetAvgAggregateOutputType = {
     id: number | null
     points: number | null
   }
 
-  export type EventSumAggregateOutputType = {
+  export type MeetSumAggregateOutputType = {
     id: number | null
     points: number | null
   }
 
-  export type EventMinAggregateOutputType = {
-    id: number | null
-    name: string | null
-    date: Date | null
-    points: number | null
-  }
-
-  export type EventMaxAggregateOutputType = {
+  export type MeetMinAggregateOutputType = {
     id: number | null
     name: string | null
     date: Date | null
     points: number | null
   }
 
-  export type EventCountAggregateOutputType = {
+  export type MeetMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    date: Date | null
+    points: number | null
+  }
+
+  export type MeetCountAggregateOutputType = {
     id: number
     name: number
     date: number
@@ -2278,31 +2278,31 @@ export namespace Prisma {
   }
 
 
-  export type EventAvgAggregateInputType = {
+  export type MeetAvgAggregateInputType = {
     id?: true
     points?: true
   }
 
-  export type EventSumAggregateInputType = {
+  export type MeetSumAggregateInputType = {
     id?: true
     points?: true
   }
 
-  export type EventMinAggregateInputType = {
-    id?: true
-    name?: true
-    date?: true
-    points?: true
-  }
-
-  export type EventMaxAggregateInputType = {
+  export type MeetMinAggregateInputType = {
     id?: true
     name?: true
     date?: true
     points?: true
   }
 
-  export type EventCountAggregateInputType = {
+  export type MeetMaxAggregateInputType = {
+    id?: true
+    name?: true
+    date?: true
+    points?: true
+  }
+
+  export type MeetCountAggregateInputType = {
     id?: true
     name?: true
     date?: true
@@ -2310,296 +2310,296 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type EventAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Event to aggregate.
+     * Filter which Meet to aggregate.
      */
-    where?: EventWhereInput
+    where?: MeetWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Events to fetch.
+     * Determine the order of Meets to fetch.
      */
-    orderBy?: EventOrderByWithRelationInput | EventOrderByWithRelationInput[]
+    orderBy?: MeetOrderByWithRelationInput | MeetOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: EventWhereUniqueInput
+    cursor?: MeetWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Events from the position of the cursor.
+     * Take `±n` Meets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Events.
+     * Skip the first `n` Meets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Events
+     * Count returned Meets
     **/
-    _count?: true | EventCountAggregateInputType
+    _count?: true | MeetCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: EventAvgAggregateInputType
+    _avg?: MeetAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: EventSumAggregateInputType
+    _sum?: MeetSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: EventMinAggregateInputType
+    _min?: MeetMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: EventMaxAggregateInputType
+    _max?: MeetMaxAggregateInputType
   }
 
-  export type GetEventAggregateType<T extends EventAggregateArgs> = {
-        [P in keyof T & keyof AggregateEvent]: P extends '_count' | 'count'
+  export type GetMeetAggregateType<T extends MeetAggregateArgs> = {
+        [P in keyof T & keyof AggregateMeet]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateEvent[P]>
-      : GetScalarType<T[P], AggregateEvent[P]>
+        : GetScalarType<T[P], AggregateMeet[P]>
+      : GetScalarType<T[P], AggregateMeet[P]>
   }
 
 
 
 
-  export type EventGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: EventWhereInput
-    orderBy?: EventOrderByWithAggregationInput | EventOrderByWithAggregationInput[]
-    by: EventScalarFieldEnum[] | EventScalarFieldEnum
-    having?: EventScalarWhereWithAggregatesInput
+  export type MeetGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetWhereInput
+    orderBy?: MeetOrderByWithAggregationInput | MeetOrderByWithAggregationInput[]
+    by: MeetScalarFieldEnum[] | MeetScalarFieldEnum
+    having?: MeetScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: EventCountAggregateInputType | true
-    _avg?: EventAvgAggregateInputType
-    _sum?: EventSumAggregateInputType
-    _min?: EventMinAggregateInputType
-    _max?: EventMaxAggregateInputType
+    _count?: MeetCountAggregateInputType | true
+    _avg?: MeetAvgAggregateInputType
+    _sum?: MeetSumAggregateInputType
+    _min?: MeetMinAggregateInputType
+    _max?: MeetMaxAggregateInputType
   }
 
-  export type EventGroupByOutputType = {
+  export type MeetGroupByOutputType = {
     id: number
     name: string
     date: Date
     points: number
-    _count: EventCountAggregateOutputType | null
-    _avg: EventAvgAggregateOutputType | null
-    _sum: EventSumAggregateOutputType | null
-    _min: EventMinAggregateOutputType | null
-    _max: EventMaxAggregateOutputType | null
+    _count: MeetCountAggregateOutputType | null
+    _avg: MeetAvgAggregateOutputType | null
+    _sum: MeetSumAggregateOutputType | null
+    _min: MeetMinAggregateOutputType | null
+    _max: MeetMaxAggregateOutputType | null
   }
 
-  type GetEventGroupByPayload<T extends EventGroupByArgs> = Prisma.PrismaPromise<
+  type GetMeetGroupByPayload<T extends MeetGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<EventGroupByOutputType, T['by']> &
+      PickEnumerable<MeetGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof EventGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof MeetGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], EventGroupByOutputType[P]>
-            : GetScalarType<T[P], EventGroupByOutputType[P]>
+              : GetScalarType<T[P], MeetGroupByOutputType[P]>
+            : GetScalarType<T[P], MeetGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type EventSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type MeetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     date?: boolean
     points?: boolean
-    attendees?: boolean | Event$attendeesArgs<ExtArgs>
-    _count?: boolean | EventCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["event"]>
+    attendees?: boolean | Meet$attendeesArgs<ExtArgs>
+    _count?: boolean | MeetCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["meet"]>
 
-  export type EventSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type MeetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     date?: boolean
     points?: boolean
-  }, ExtArgs["result"]["event"]>
+  }, ExtArgs["result"]["meet"]>
 
-  export type EventSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type MeetSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
     date?: boolean
     points?: boolean
-  }, ExtArgs["result"]["event"]>
+  }, ExtArgs["result"]["meet"]>
 
-  export type EventSelectScalar = {
+  export type MeetSelectScalar = {
     id?: boolean
     name?: boolean
     date?: boolean
     points?: boolean
   }
 
-  export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "date" | "points", ExtArgs["result"]["event"]>
-  export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    attendees?: boolean | Event$attendeesArgs<ExtArgs>
-    _count?: boolean | EventCountOutputTypeDefaultArgs<ExtArgs>
+  export type MeetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "date" | "points", ExtArgs["result"]["meet"]>
+  export type MeetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    attendees?: boolean | Meet$attendeesArgs<ExtArgs>
+    _count?: boolean | MeetCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type EventIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type EventIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type MeetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type MeetIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $EventPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Event"
+  export type $MeetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Meet"
     objects: {
-      attendees: Prisma.$UserEventPayload<ExtArgs>[]
+      attendees: Prisma.$UserMeetPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
       date: Date
       points: number
-    }, ExtArgs["result"]["event"]>
+    }, ExtArgs["result"]["meet"]>
     composites: {}
   }
 
-  type EventGetPayload<S extends boolean | null | undefined | EventDefaultArgs> = $Result.GetResult<Prisma.$EventPayload, S>
+  type MeetGetPayload<S extends boolean | null | undefined | MeetDefaultArgs> = $Result.GetResult<Prisma.$MeetPayload, S>
 
-  type EventCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<EventFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: EventCountAggregateInputType | true
+  type MeetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MeetFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MeetCountAggregateInputType | true
     }
 
-  export interface EventDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Event'], meta: { name: 'Event' } }
+  export interface MeetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Meet'], meta: { name: 'Meet' } }
     /**
-     * Find zero or one Event that matches the filter.
-     * @param {EventFindUniqueArgs} args - Arguments to find a Event
+     * Find zero or one Meet that matches the filter.
+     * @param {MeetFindUniqueArgs} args - Arguments to find a Meet
      * @example
-     * // Get one Event
-     * const event = await prisma.event.findUnique({
+     * // Get one Meet
+     * const meet = await prisma.meet.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends EventFindUniqueArgs>(args: SelectSubset<T, EventFindUniqueArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends MeetFindUniqueArgs>(args: SelectSubset<T, MeetFindUniqueArgs<ExtArgs>>): Prisma__MeetClient<$Result.GetResult<Prisma.$MeetPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Event that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Meet that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {EventFindUniqueOrThrowArgs} args - Arguments to find a Event
+     * @param {MeetFindUniqueOrThrowArgs} args - Arguments to find a Meet
      * @example
-     * // Get one Event
-     * const event = await prisma.event.findUniqueOrThrow({
+     * // Get one Meet
+     * const meet = await prisma.meet.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends EventFindUniqueOrThrowArgs>(args: SelectSubset<T, EventFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends MeetFindUniqueOrThrowArgs>(args: SelectSubset<T, MeetFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MeetClient<$Result.GetResult<Prisma.$MeetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Event that matches the filter.
+     * Find the first Meet that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {EventFindFirstArgs} args - Arguments to find a Event
+     * @param {MeetFindFirstArgs} args - Arguments to find a Meet
      * @example
-     * // Get one Event
-     * const event = await prisma.event.findFirst({
+     * // Get one Meet
+     * const meet = await prisma.meet.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends EventFindFirstArgs>(args?: SelectSubset<T, EventFindFirstArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends MeetFindFirstArgs>(args?: SelectSubset<T, MeetFindFirstArgs<ExtArgs>>): Prisma__MeetClient<$Result.GetResult<Prisma.$MeetPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Event that matches the filter or
+     * Find the first Meet that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {EventFindFirstOrThrowArgs} args - Arguments to find a Event
+     * @param {MeetFindFirstOrThrowArgs} args - Arguments to find a Meet
      * @example
-     * // Get one Event
-     * const event = await prisma.event.findFirstOrThrow({
+     * // Get one Meet
+     * const meet = await prisma.meet.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends EventFindFirstOrThrowArgs>(args?: SelectSubset<T, EventFindFirstOrThrowArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends MeetFindFirstOrThrowArgs>(args?: SelectSubset<T, MeetFindFirstOrThrowArgs<ExtArgs>>): Prisma__MeetClient<$Result.GetResult<Prisma.$MeetPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Events that matches the filter.
+     * Find zero or more Meets that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {EventFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {MeetFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Events
-     * const events = await prisma.event.findMany()
+     * // Get all Meets
+     * const meets = await prisma.meet.findMany()
      * 
-     * // Get first 10 Events
-     * const events = await prisma.event.findMany({ take: 10 })
+     * // Get first 10 Meets
+     * const meets = await prisma.meet.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const eventWithIdOnly = await prisma.event.findMany({ select: { id: true } })
+     * const meetWithIdOnly = await prisma.meet.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends EventFindManyArgs>(args?: SelectSubset<T, EventFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends MeetFindManyArgs>(args?: SelectSubset<T, MeetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Event.
-     * @param {EventCreateArgs} args - Arguments to create a Event.
+     * Create a Meet.
+     * @param {MeetCreateArgs} args - Arguments to create a Meet.
      * @example
-     * // Create one Event
-     * const Event = await prisma.event.create({
+     * // Create one Meet
+     * const Meet = await prisma.meet.create({
      *   data: {
-     *     // ... data to create a Event
+     *     // ... data to create a Meet
      *   }
      * })
      * 
      */
-    create<T extends EventCreateArgs>(args: SelectSubset<T, EventCreateArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends MeetCreateArgs>(args: SelectSubset<T, MeetCreateArgs<ExtArgs>>): Prisma__MeetClient<$Result.GetResult<Prisma.$MeetPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Events.
-     * @param {EventCreateManyArgs} args - Arguments to create many Events.
+     * Create many Meets.
+     * @param {MeetCreateManyArgs} args - Arguments to create many Meets.
      * @example
-     * // Create many Events
-     * const event = await prisma.event.createMany({
+     * // Create many Meets
+     * const meet = await prisma.meet.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends EventCreateManyArgs>(args?: SelectSubset<T, EventCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends MeetCreateManyArgs>(args?: SelectSubset<T, MeetCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Events and returns the data saved in the database.
-     * @param {EventCreateManyAndReturnArgs} args - Arguments to create many Events.
+     * Create many Meets and returns the data saved in the database.
+     * @param {MeetCreateManyAndReturnArgs} args - Arguments to create many Meets.
      * @example
-     * // Create many Events
-     * const event = await prisma.event.createManyAndReturn({
+     * // Create many Meets
+     * const meet = await prisma.meet.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Events and only return the `id`
-     * const eventWithIdOnly = await prisma.event.createManyAndReturn({
+     * // Create many Meets and only return the `id`
+     * const meetWithIdOnly = await prisma.meet.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -2609,28 +2609,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends EventCreateManyAndReturnArgs>(args?: SelectSubset<T, EventCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends MeetCreateManyAndReturnArgs>(args?: SelectSubset<T, MeetCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Event.
-     * @param {EventDeleteArgs} args - Arguments to delete one Event.
+     * Delete a Meet.
+     * @param {MeetDeleteArgs} args - Arguments to delete one Meet.
      * @example
-     * // Delete one Event
-     * const Event = await prisma.event.delete({
+     * // Delete one Meet
+     * const Meet = await prisma.meet.delete({
      *   where: {
-     *     // ... filter to delete one Event
+     *     // ... filter to delete one Meet
      *   }
      * })
      * 
      */
-    delete<T extends EventDeleteArgs>(args: SelectSubset<T, EventDeleteArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends MeetDeleteArgs>(args: SelectSubset<T, MeetDeleteArgs<ExtArgs>>): Prisma__MeetClient<$Result.GetResult<Prisma.$MeetPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Event.
-     * @param {EventUpdateArgs} args - Arguments to update one Event.
+     * Update one Meet.
+     * @param {MeetUpdateArgs} args - Arguments to update one Meet.
      * @example
-     * // Update one Event
-     * const event = await prisma.event.update({
+     * // Update one Meet
+     * const meet = await prisma.meet.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2640,30 +2640,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends EventUpdateArgs>(args: SelectSubset<T, EventUpdateArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends MeetUpdateArgs>(args: SelectSubset<T, MeetUpdateArgs<ExtArgs>>): Prisma__MeetClient<$Result.GetResult<Prisma.$MeetPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Events.
-     * @param {EventDeleteManyArgs} args - Arguments to filter Events to delete.
+     * Delete zero or more Meets.
+     * @param {MeetDeleteManyArgs} args - Arguments to filter Meets to delete.
      * @example
-     * // Delete a few Events
-     * const { count } = await prisma.event.deleteMany({
+     * // Delete a few Meets
+     * const { count } = await prisma.meet.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends EventDeleteManyArgs>(args?: SelectSubset<T, EventDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends MeetDeleteManyArgs>(args?: SelectSubset<T, MeetDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Events.
+     * Update zero or more Meets.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {EventUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {MeetUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Events
-     * const event = await prisma.event.updateMany({
+     * // Update many Meets
+     * const meet = await prisma.meet.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2673,14 +2673,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends EventUpdateManyArgs>(args: SelectSubset<T, EventUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends MeetUpdateManyArgs>(args: SelectSubset<T, MeetUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Events and returns the data updated in the database.
-     * @param {EventUpdateManyAndReturnArgs} args - Arguments to update many Events.
+     * Update zero or more Meets and returns the data updated in the database.
+     * @param {MeetUpdateManyAndReturnArgs} args - Arguments to update many Meets.
      * @example
-     * // Update many Events
-     * const event = await prisma.event.updateManyAndReturn({
+     * // Update many Meets
+     * const meet = await prisma.meet.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -2689,8 +2689,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Events and only return the `id`
-     * const eventWithIdOnly = await prisma.event.updateManyAndReturn({
+     * // Update zero or more Meets and only return the `id`
+     * const meetWithIdOnly = await prisma.meet.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -2703,56 +2703,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends EventUpdateManyAndReturnArgs>(args: SelectSubset<T, EventUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends MeetUpdateManyAndReturnArgs>(args: SelectSubset<T, MeetUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Event.
-     * @param {EventUpsertArgs} args - Arguments to update or create a Event.
+     * Create or update one Meet.
+     * @param {MeetUpsertArgs} args - Arguments to update or create a Meet.
      * @example
-     * // Update or create a Event
-     * const event = await prisma.event.upsert({
+     * // Update or create a Meet
+     * const meet = await prisma.meet.upsert({
      *   create: {
-     *     // ... data to create a Event
+     *     // ... data to create a Meet
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Event we want to update
+     *     // ... the filter for the Meet we want to update
      *   }
      * })
      */
-    upsert<T extends EventUpsertArgs>(args: SelectSubset<T, EventUpsertArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends MeetUpsertArgs>(args: SelectSubset<T, MeetUpsertArgs<ExtArgs>>): Prisma__MeetClient<$Result.GetResult<Prisma.$MeetPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Events.
+     * Count the number of Meets.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {EventCountArgs} args - Arguments to filter Events to count.
+     * @param {MeetCountArgs} args - Arguments to filter Meets to count.
      * @example
-     * // Count the number of Events
-     * const count = await prisma.event.count({
+     * // Count the number of Meets
+     * const count = await prisma.meet.count({
      *   where: {
-     *     // ... the filter for the Events we want to count
+     *     // ... the filter for the Meets we want to count
      *   }
      * })
     **/
-    count<T extends EventCountArgs>(
-      args?: Subset<T, EventCountArgs>,
+    count<T extends MeetCountArgs>(
+      args?: Subset<T, MeetCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], EventCountAggregateOutputType>
+          : GetScalarType<T['select'], MeetCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Event.
+     * Allows you to perform aggregations operations on a Meet.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {EventAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {MeetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -2772,13 +2772,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends EventAggregateArgs>(args: Subset<T, EventAggregateArgs>): Prisma.PrismaPromise<GetEventAggregateType<T>>
+    aggregate<T extends MeetAggregateArgs>(args: Subset<T, MeetAggregateArgs>): Prisma.PrismaPromise<GetMeetAggregateType<T>>
 
     /**
-     * Group by Event.
+     * Group by Meet.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {EventGroupByArgs} args - Group by arguments.
+     * @param {MeetGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -2793,14 +2793,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends EventGroupByArgs,
+      T extends MeetGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: EventGroupByArgs['orderBy'] }
-        : { orderBy?: EventGroupByArgs['orderBy'] },
+        ? { orderBy: MeetGroupByArgs['orderBy'] }
+        : { orderBy?: MeetGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -2849,22 +2849,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, EventGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEventGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, MeetGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMeetGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Event model
+   * Fields of the Meet model
    */
-  readonly fields: EventFieldRefs;
+  readonly fields: MeetFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Event.
+   * The delegate class that acts as a "Promise-like" for Meet.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__EventClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__MeetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    attendees<T extends Event$attendeesArgs<ExtArgs> = {}>(args?: Subset<T, Event$attendeesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    attendees<T extends Meet$attendeesArgs<ExtArgs> = {}>(args?: Subset<T, Meet$attendeesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserMeetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2891,818 +2891,818 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Event model
+   * Fields of the Meet model
    */
-  interface EventFieldRefs {
-    readonly id: FieldRef<"Event", 'Int'>
-    readonly name: FieldRef<"Event", 'String'>
-    readonly date: FieldRef<"Event", 'DateTime'>
-    readonly points: FieldRef<"Event", 'Int'>
+  interface MeetFieldRefs {
+    readonly id: FieldRef<"Meet", 'Int'>
+    readonly name: FieldRef<"Meet", 'String'>
+    readonly date: FieldRef<"Meet", 'DateTime'>
+    readonly points: FieldRef<"Meet", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * Event findUnique
+   * Meet findUnique
    */
-  export type EventFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event
+     * Select specific fields to fetch from the Meet
      */
-    select?: EventSelect<ExtArgs> | null
+    select?: MeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event
+     * Omit specific fields from the Meet
      */
-    omit?: EventOmit<ExtArgs> | null
+    omit?: MeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EventInclude<ExtArgs> | null
+    include?: MeetInclude<ExtArgs> | null
     /**
-     * Filter, which Event to fetch.
+     * Filter, which Meet to fetch.
      */
-    where: EventWhereUniqueInput
+    where: MeetWhereUniqueInput
   }
 
   /**
-   * Event findUniqueOrThrow
+   * Meet findUniqueOrThrow
    */
-  export type EventFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event
+     * Select specific fields to fetch from the Meet
      */
-    select?: EventSelect<ExtArgs> | null
+    select?: MeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event
+     * Omit specific fields from the Meet
      */
-    omit?: EventOmit<ExtArgs> | null
+    omit?: MeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EventInclude<ExtArgs> | null
+    include?: MeetInclude<ExtArgs> | null
     /**
-     * Filter, which Event to fetch.
+     * Filter, which Meet to fetch.
      */
-    where: EventWhereUniqueInput
+    where: MeetWhereUniqueInput
   }
 
   /**
-   * Event findFirst
+   * Meet findFirst
    */
-  export type EventFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event
+     * Select specific fields to fetch from the Meet
      */
-    select?: EventSelect<ExtArgs> | null
+    select?: MeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event
+     * Omit specific fields from the Meet
      */
-    omit?: EventOmit<ExtArgs> | null
+    omit?: MeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EventInclude<ExtArgs> | null
+    include?: MeetInclude<ExtArgs> | null
     /**
-     * Filter, which Event to fetch.
+     * Filter, which Meet to fetch.
      */
-    where?: EventWhereInput
+    where?: MeetWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Events to fetch.
+     * Determine the order of Meets to fetch.
      */
-    orderBy?: EventOrderByWithRelationInput | EventOrderByWithRelationInput[]
+    orderBy?: MeetOrderByWithRelationInput | MeetOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Events.
+     * Sets the position for searching for Meets.
      */
-    cursor?: EventWhereUniqueInput
+    cursor?: MeetWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Events from the position of the cursor.
+     * Take `±n` Meets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Events.
+     * Skip the first `n` Meets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Events.
+     * Filter by unique combinations of Meets.
      */
-    distinct?: EventScalarFieldEnum | EventScalarFieldEnum[]
+    distinct?: MeetScalarFieldEnum | MeetScalarFieldEnum[]
   }
 
   /**
-   * Event findFirstOrThrow
+   * Meet findFirstOrThrow
    */
-  export type EventFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event
+     * Select specific fields to fetch from the Meet
      */
-    select?: EventSelect<ExtArgs> | null
+    select?: MeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event
+     * Omit specific fields from the Meet
      */
-    omit?: EventOmit<ExtArgs> | null
+    omit?: MeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EventInclude<ExtArgs> | null
+    include?: MeetInclude<ExtArgs> | null
     /**
-     * Filter, which Event to fetch.
+     * Filter, which Meet to fetch.
      */
-    where?: EventWhereInput
+    where?: MeetWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Events to fetch.
+     * Determine the order of Meets to fetch.
      */
-    orderBy?: EventOrderByWithRelationInput | EventOrderByWithRelationInput[]
+    orderBy?: MeetOrderByWithRelationInput | MeetOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Events.
+     * Sets the position for searching for Meets.
      */
-    cursor?: EventWhereUniqueInput
+    cursor?: MeetWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Events from the position of the cursor.
+     * Take `±n` Meets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Events.
+     * Skip the first `n` Meets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Events.
+     * Filter by unique combinations of Meets.
      */
-    distinct?: EventScalarFieldEnum | EventScalarFieldEnum[]
+    distinct?: MeetScalarFieldEnum | MeetScalarFieldEnum[]
   }
 
   /**
-   * Event findMany
+   * Meet findMany
    */
-  export type EventFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event
+     * Select specific fields to fetch from the Meet
      */
-    select?: EventSelect<ExtArgs> | null
+    select?: MeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event
+     * Omit specific fields from the Meet
      */
-    omit?: EventOmit<ExtArgs> | null
+    omit?: MeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EventInclude<ExtArgs> | null
+    include?: MeetInclude<ExtArgs> | null
     /**
-     * Filter, which Events to fetch.
+     * Filter, which Meets to fetch.
      */
-    where?: EventWhereInput
+    where?: MeetWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Events to fetch.
+     * Determine the order of Meets to fetch.
      */
-    orderBy?: EventOrderByWithRelationInput | EventOrderByWithRelationInput[]
+    orderBy?: MeetOrderByWithRelationInput | MeetOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Events.
+     * Sets the position for listing Meets.
      */
-    cursor?: EventWhereUniqueInput
+    cursor?: MeetWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Events from the position of the cursor.
+     * Take `±n` Meets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Events.
+     * Skip the first `n` Meets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Events.
+     * Filter by unique combinations of Meets.
      */
-    distinct?: EventScalarFieldEnum | EventScalarFieldEnum[]
+    distinct?: MeetScalarFieldEnum | MeetScalarFieldEnum[]
   }
 
   /**
-   * Event create
+   * Meet create
    */
-  export type EventCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event
+     * Select specific fields to fetch from the Meet
      */
-    select?: EventSelect<ExtArgs> | null
+    select?: MeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event
+     * Omit specific fields from the Meet
      */
-    omit?: EventOmit<ExtArgs> | null
+    omit?: MeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EventInclude<ExtArgs> | null
+    include?: MeetInclude<ExtArgs> | null
     /**
-     * The data needed to create a Event.
+     * The data needed to create a Meet.
      */
-    data: XOR<EventCreateInput, EventUncheckedCreateInput>
+    data: XOR<MeetCreateInput, MeetUncheckedCreateInput>
   }
 
   /**
-   * Event createMany
+   * Meet createMany
    */
-  export type EventCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Events.
+     * The data used to create many Meets.
      */
-    data: EventCreateManyInput | EventCreateManyInput[]
+    data: MeetCreateManyInput | MeetCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Event createManyAndReturn
+   * Meet createManyAndReturn
    */
-  export type EventCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event
+     * Select specific fields to fetch from the Meet
      */
-    select?: EventSelectCreateManyAndReturn<ExtArgs> | null
+    select?: MeetSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Event
+     * Omit specific fields from the Meet
      */
-    omit?: EventOmit<ExtArgs> | null
+    omit?: MeetOmit<ExtArgs> | null
     /**
-     * The data used to create many Events.
+     * The data used to create many Meets.
      */
-    data: EventCreateManyInput | EventCreateManyInput[]
+    data: MeetCreateManyInput | MeetCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Event update
+   * Meet update
    */
-  export type EventUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event
+     * Select specific fields to fetch from the Meet
      */
-    select?: EventSelect<ExtArgs> | null
+    select?: MeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event
+     * Omit specific fields from the Meet
      */
-    omit?: EventOmit<ExtArgs> | null
+    omit?: MeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EventInclude<ExtArgs> | null
+    include?: MeetInclude<ExtArgs> | null
     /**
-     * The data needed to update a Event.
+     * The data needed to update a Meet.
      */
-    data: XOR<EventUpdateInput, EventUncheckedUpdateInput>
+    data: XOR<MeetUpdateInput, MeetUncheckedUpdateInput>
     /**
-     * Choose, which Event to update.
+     * Choose, which Meet to update.
      */
-    where: EventWhereUniqueInput
+    where: MeetWhereUniqueInput
   }
 
   /**
-   * Event updateMany
+   * Meet updateMany
    */
-  export type EventUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Events.
+     * The data used to update Meets.
      */
-    data: XOR<EventUpdateManyMutationInput, EventUncheckedUpdateManyInput>
+    data: XOR<MeetUpdateManyMutationInput, MeetUncheckedUpdateManyInput>
     /**
-     * Filter which Events to update
+     * Filter which Meets to update
      */
-    where?: EventWhereInput
+    where?: MeetWhereInput
     /**
-     * Limit how many Events to update.
+     * Limit how many Meets to update.
      */
     limit?: number
   }
 
   /**
-   * Event updateManyAndReturn
+   * Meet updateManyAndReturn
    */
-  export type EventUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event
+     * Select specific fields to fetch from the Meet
      */
-    select?: EventSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: MeetSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Event
+     * Omit specific fields from the Meet
      */
-    omit?: EventOmit<ExtArgs> | null
+    omit?: MeetOmit<ExtArgs> | null
     /**
-     * The data used to update Events.
+     * The data used to update Meets.
      */
-    data: XOR<EventUpdateManyMutationInput, EventUncheckedUpdateManyInput>
+    data: XOR<MeetUpdateManyMutationInput, MeetUncheckedUpdateManyInput>
     /**
-     * Filter which Events to update
+     * Filter which Meets to update
      */
-    where?: EventWhereInput
+    where?: MeetWhereInput
     /**
-     * Limit how many Events to update.
+     * Limit how many Meets to update.
      */
     limit?: number
   }
 
   /**
-   * Event upsert
+   * Meet upsert
    */
-  export type EventUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event
+     * Select specific fields to fetch from the Meet
      */
-    select?: EventSelect<ExtArgs> | null
+    select?: MeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event
+     * Omit specific fields from the Meet
      */
-    omit?: EventOmit<ExtArgs> | null
+    omit?: MeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EventInclude<ExtArgs> | null
+    include?: MeetInclude<ExtArgs> | null
     /**
-     * The filter to search for the Event to update in case it exists.
+     * The filter to search for the Meet to update in case it exists.
      */
-    where: EventWhereUniqueInput
+    where: MeetWhereUniqueInput
     /**
-     * In case the Event found by the `where` argument doesn't exist, create a new Event with this data.
+     * In case the Meet found by the `where` argument doesn't exist, create a new Meet with this data.
      */
-    create: XOR<EventCreateInput, EventUncheckedCreateInput>
+    create: XOR<MeetCreateInput, MeetUncheckedCreateInput>
     /**
-     * In case the Event was found with the provided `where` argument, update it with this data.
+     * In case the Meet was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<EventUpdateInput, EventUncheckedUpdateInput>
+    update: XOR<MeetUpdateInput, MeetUncheckedUpdateInput>
   }
 
   /**
-   * Event delete
+   * Meet delete
    */
-  export type EventDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event
+     * Select specific fields to fetch from the Meet
      */
-    select?: EventSelect<ExtArgs> | null
+    select?: MeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event
+     * Omit specific fields from the Meet
      */
-    omit?: EventOmit<ExtArgs> | null
+    omit?: MeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EventInclude<ExtArgs> | null
+    include?: MeetInclude<ExtArgs> | null
     /**
-     * Filter which Event to delete.
+     * Filter which Meet to delete.
      */
-    where: EventWhereUniqueInput
+    where: MeetWhereUniqueInput
   }
 
   /**
-   * Event deleteMany
+   * Meet deleteMany
    */
-  export type EventDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Events to delete
+     * Filter which Meets to delete
      */
-    where?: EventWhereInput
+    where?: MeetWhereInput
     /**
-     * Limit how many Events to delete.
+     * Limit how many Meets to delete.
      */
     limit?: number
   }
 
   /**
-   * Event.attendees
+   * Meet.attendees
    */
-  export type Event$attendeesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Meet$attendeesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserEvent
+     * Select specific fields to fetch from the UserMeet
      */
-    select?: UserEventSelect<ExtArgs> | null
+    select?: UserMeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserEvent
+     * Omit specific fields from the UserMeet
      */
-    omit?: UserEventOmit<ExtArgs> | null
+    omit?: UserMeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserEventInclude<ExtArgs> | null
-    where?: UserEventWhereInput
-    orderBy?: UserEventOrderByWithRelationInput | UserEventOrderByWithRelationInput[]
-    cursor?: UserEventWhereUniqueInput
+    include?: UserMeetInclude<ExtArgs> | null
+    where?: UserMeetWhereInput
+    orderBy?: UserMeetOrderByWithRelationInput | UserMeetOrderByWithRelationInput[]
+    cursor?: UserMeetWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: UserEventScalarFieldEnum | UserEventScalarFieldEnum[]
+    distinct?: UserMeetScalarFieldEnum | UserMeetScalarFieldEnum[]
   }
 
   /**
-   * Event without action
+   * Meet without action
    */
-  export type EventDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MeetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Event
+     * Select specific fields to fetch from the Meet
      */
-    select?: EventSelect<ExtArgs> | null
+    select?: MeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Event
+     * Omit specific fields from the Meet
      */
-    omit?: EventOmit<ExtArgs> | null
+    omit?: MeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EventInclude<ExtArgs> | null
+    include?: MeetInclude<ExtArgs> | null
   }
 
 
   /**
-   * Model UserEvent
+   * Model UserMeet
    */
 
-  export type AggregateUserEvent = {
-    _count: UserEventCountAggregateOutputType | null
-    _avg: UserEventAvgAggregateOutputType | null
-    _sum: UserEventSumAggregateOutputType | null
-    _min: UserEventMinAggregateOutputType | null
-    _max: UserEventMaxAggregateOutputType | null
+  export type AggregateUserMeet = {
+    _count: UserMeetCountAggregateOutputType | null
+    _avg: UserMeetAvgAggregateOutputType | null
+    _sum: UserMeetSumAggregateOutputType | null
+    _min: UserMeetMinAggregateOutputType | null
+    _max: UserMeetMaxAggregateOutputType | null
   }
 
-  export type UserEventAvgAggregateOutputType = {
+  export type UserMeetAvgAggregateOutputType = {
     id: number | null
     userId: number | null
-    eventId: number | null
+    meetId: number | null
   }
 
-  export type UserEventSumAggregateOutputType = {
+  export type UserMeetSumAggregateOutputType = {
     id: number | null
     userId: number | null
-    eventId: number | null
+    meetId: number | null
   }
 
-  export type UserEventMinAggregateOutputType = {
+  export type UserMeetMinAggregateOutputType = {
     id: number | null
     userId: number | null
-    eventId: number | null
+    meetId: number | null
   }
 
-  export type UserEventMaxAggregateOutputType = {
+  export type UserMeetMaxAggregateOutputType = {
     id: number | null
     userId: number | null
-    eventId: number | null
+    meetId: number | null
   }
 
-  export type UserEventCountAggregateOutputType = {
+  export type UserMeetCountAggregateOutputType = {
     id: number
     userId: number
-    eventId: number
+    meetId: number
     _all: number
   }
 
 
-  export type UserEventAvgAggregateInputType = {
+  export type UserMeetAvgAggregateInputType = {
     id?: true
     userId?: true
-    eventId?: true
+    meetId?: true
   }
 
-  export type UserEventSumAggregateInputType = {
+  export type UserMeetSumAggregateInputType = {
     id?: true
     userId?: true
-    eventId?: true
+    meetId?: true
   }
 
-  export type UserEventMinAggregateInputType = {
+  export type UserMeetMinAggregateInputType = {
     id?: true
     userId?: true
-    eventId?: true
+    meetId?: true
   }
 
-  export type UserEventMaxAggregateInputType = {
+  export type UserMeetMaxAggregateInputType = {
     id?: true
     userId?: true
-    eventId?: true
+    meetId?: true
   }
 
-  export type UserEventCountAggregateInputType = {
+  export type UserMeetCountAggregateInputType = {
     id?: true
     userId?: true
-    eventId?: true
+    meetId?: true
     _all?: true
   }
 
-  export type UserEventAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserEvent to aggregate.
+     * Filter which UserMeet to aggregate.
      */
-    where?: UserEventWhereInput
+    where?: UserMeetWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserEvents to fetch.
+     * Determine the order of UserMeets to fetch.
      */
-    orderBy?: UserEventOrderByWithRelationInput | UserEventOrderByWithRelationInput[]
+    orderBy?: UserMeetOrderByWithRelationInput | UserMeetOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: UserEventWhereUniqueInput
+    cursor?: UserMeetWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserEvents from the position of the cursor.
+     * Take `±n` UserMeets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserEvents.
+     * Skip the first `n` UserMeets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned UserEvents
+     * Count returned UserMeets
     **/
-    _count?: true | UserEventCountAggregateInputType
+    _count?: true | UserMeetCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: UserEventAvgAggregateInputType
+    _avg?: UserMeetAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: UserEventSumAggregateInputType
+    _sum?: UserMeetSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: UserEventMinAggregateInputType
+    _min?: UserMeetMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: UserEventMaxAggregateInputType
+    _max?: UserMeetMaxAggregateInputType
   }
 
-  export type GetUserEventAggregateType<T extends UserEventAggregateArgs> = {
-        [P in keyof T & keyof AggregateUserEvent]: P extends '_count' | 'count'
+  export type GetUserMeetAggregateType<T extends UserMeetAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserMeet]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateUserEvent[P]>
-      : GetScalarType<T[P], AggregateUserEvent[P]>
+        : GetScalarType<T[P], AggregateUserMeet[P]>
+      : GetScalarType<T[P], AggregateUserMeet[P]>
   }
 
 
 
 
-  export type UserEventGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: UserEventWhereInput
-    orderBy?: UserEventOrderByWithAggregationInput | UserEventOrderByWithAggregationInput[]
-    by: UserEventScalarFieldEnum[] | UserEventScalarFieldEnum
-    having?: UserEventScalarWhereWithAggregatesInput
+  export type UserMeetGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserMeetWhereInput
+    orderBy?: UserMeetOrderByWithAggregationInput | UserMeetOrderByWithAggregationInput[]
+    by: UserMeetScalarFieldEnum[] | UserMeetScalarFieldEnum
+    having?: UserMeetScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: UserEventCountAggregateInputType | true
-    _avg?: UserEventAvgAggregateInputType
-    _sum?: UserEventSumAggregateInputType
-    _min?: UserEventMinAggregateInputType
-    _max?: UserEventMaxAggregateInputType
+    _count?: UserMeetCountAggregateInputType | true
+    _avg?: UserMeetAvgAggregateInputType
+    _sum?: UserMeetSumAggregateInputType
+    _min?: UserMeetMinAggregateInputType
+    _max?: UserMeetMaxAggregateInputType
   }
 
-  export type UserEventGroupByOutputType = {
+  export type UserMeetGroupByOutputType = {
     id: number
     userId: number
-    eventId: number
-    _count: UserEventCountAggregateOutputType | null
-    _avg: UserEventAvgAggregateOutputType | null
-    _sum: UserEventSumAggregateOutputType | null
-    _min: UserEventMinAggregateOutputType | null
-    _max: UserEventMaxAggregateOutputType | null
+    meetId: number
+    _count: UserMeetCountAggregateOutputType | null
+    _avg: UserMeetAvgAggregateOutputType | null
+    _sum: UserMeetSumAggregateOutputType | null
+    _min: UserMeetMinAggregateOutputType | null
+    _max: UserMeetMaxAggregateOutputType | null
   }
 
-  type GetUserEventGroupByPayload<T extends UserEventGroupByArgs> = Prisma.PrismaPromise<
+  type GetUserMeetGroupByPayload<T extends UserMeetGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<UserEventGroupByOutputType, T['by']> &
+      PickEnumerable<UserMeetGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof UserEventGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof UserMeetGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], UserEventGroupByOutputType[P]>
-            : GetScalarType<T[P], UserEventGroupByOutputType[P]>
+              : GetScalarType<T[P], UserMeetGroupByOutputType[P]>
+            : GetScalarType<T[P], UserMeetGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type UserEventSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type UserMeetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    eventId?: boolean
+    meetId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    event?: boolean | EventDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userEvent"]>
+    meet?: boolean | MeetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userMeet"]>
 
-  export type UserEventSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type UserMeetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    eventId?: boolean
+    meetId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    event?: boolean | EventDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userEvent"]>
+    meet?: boolean | MeetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userMeet"]>
 
-  export type UserEventSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type UserMeetSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
-    eventId?: boolean
+    meetId?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
-    event?: boolean | EventDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["userEvent"]>
+    meet?: boolean | MeetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userMeet"]>
 
-  export type UserEventSelectScalar = {
+  export type UserMeetSelectScalar = {
     id?: boolean
     userId?: boolean
-    eventId?: boolean
+    meetId?: boolean
   }
 
-  export type UserEventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "eventId", ExtArgs["result"]["userEvent"]>
-  export type UserEventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "meetId", ExtArgs["result"]["userMeet"]>
+  export type UserMeetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    event?: boolean | EventDefaultArgs<ExtArgs>
+    meet?: boolean | MeetDefaultArgs<ExtArgs>
   }
-  export type UserEventIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    event?: boolean | EventDefaultArgs<ExtArgs>
+    meet?: boolean | MeetDefaultArgs<ExtArgs>
   }
-  export type UserEventIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
-    event?: boolean | EventDefaultArgs<ExtArgs>
+    meet?: boolean | MeetDefaultArgs<ExtArgs>
   }
 
-  export type $UserEventPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "UserEvent"
+  export type $UserMeetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserMeet"
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
-      event: Prisma.$EventPayload<ExtArgs>
+      meet: Prisma.$MeetPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       userId: number
-      eventId: number
-    }, ExtArgs["result"]["userEvent"]>
+      meetId: number
+    }, ExtArgs["result"]["userMeet"]>
     composites: {}
   }
 
-  type UserEventGetPayload<S extends boolean | null | undefined | UserEventDefaultArgs> = $Result.GetResult<Prisma.$UserEventPayload, S>
+  type UserMeetGetPayload<S extends boolean | null | undefined | UserMeetDefaultArgs> = $Result.GetResult<Prisma.$UserMeetPayload, S>
 
-  type UserEventCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<UserEventFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: UserEventCountAggregateInputType | true
+  type UserMeetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserMeetFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserMeetCountAggregateInputType | true
     }
 
-  export interface UserEventDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserEvent'], meta: { name: 'UserEvent' } }
+  export interface UserMeetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserMeet'], meta: { name: 'UserMeet' } }
     /**
-     * Find zero or one UserEvent that matches the filter.
-     * @param {UserEventFindUniqueArgs} args - Arguments to find a UserEvent
+     * Find zero or one UserMeet that matches the filter.
+     * @param {UserMeetFindUniqueArgs} args - Arguments to find a UserMeet
      * @example
-     * // Get one UserEvent
-     * const userEvent = await prisma.userEvent.findUnique({
+     * // Get one UserMeet
+     * const userMeet = await prisma.userMeet.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends UserEventFindUniqueArgs>(args: SelectSubset<T, UserEventFindUniqueArgs<ExtArgs>>): Prisma__UserEventClient<$Result.GetResult<Prisma.$UserEventPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends UserMeetFindUniqueArgs>(args: SelectSubset<T, UserMeetFindUniqueArgs<ExtArgs>>): Prisma__UserMeetClient<$Result.GetResult<Prisma.$UserMeetPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one UserEvent that matches the filter or throw an error with `error.code='P2025'`
+     * Find one UserMeet that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {UserEventFindUniqueOrThrowArgs} args - Arguments to find a UserEvent
+     * @param {UserMeetFindUniqueOrThrowArgs} args - Arguments to find a UserMeet
      * @example
-     * // Get one UserEvent
-     * const userEvent = await prisma.userEvent.findUniqueOrThrow({
+     * // Get one UserMeet
+     * const userMeet = await prisma.userMeet.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends UserEventFindUniqueOrThrowArgs>(args: SelectSubset<T, UserEventFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserEventClient<$Result.GetResult<Prisma.$UserEventPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends UserMeetFindUniqueOrThrowArgs>(args: SelectSubset<T, UserMeetFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserMeetClient<$Result.GetResult<Prisma.$UserMeetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first UserEvent that matches the filter.
+     * Find the first UserMeet that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserEventFindFirstArgs} args - Arguments to find a UserEvent
+     * @param {UserMeetFindFirstArgs} args - Arguments to find a UserMeet
      * @example
-     * // Get one UserEvent
-     * const userEvent = await prisma.userEvent.findFirst({
+     * // Get one UserMeet
+     * const userMeet = await prisma.userMeet.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends UserEventFindFirstArgs>(args?: SelectSubset<T, UserEventFindFirstArgs<ExtArgs>>): Prisma__UserEventClient<$Result.GetResult<Prisma.$UserEventPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends UserMeetFindFirstArgs>(args?: SelectSubset<T, UserMeetFindFirstArgs<ExtArgs>>): Prisma__UserMeetClient<$Result.GetResult<Prisma.$UserMeetPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first UserEvent that matches the filter or
+     * Find the first UserMeet that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserEventFindFirstOrThrowArgs} args - Arguments to find a UserEvent
+     * @param {UserMeetFindFirstOrThrowArgs} args - Arguments to find a UserMeet
      * @example
-     * // Get one UserEvent
-     * const userEvent = await prisma.userEvent.findFirstOrThrow({
+     * // Get one UserMeet
+     * const userMeet = await prisma.userMeet.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends UserEventFindFirstOrThrowArgs>(args?: SelectSubset<T, UserEventFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserEventClient<$Result.GetResult<Prisma.$UserEventPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends UserMeetFindFirstOrThrowArgs>(args?: SelectSubset<T, UserMeetFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserMeetClient<$Result.GetResult<Prisma.$UserMeetPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more UserEvents that matches the filter.
+     * Find zero or more UserMeets that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserEventFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {UserMeetFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all UserEvents
-     * const userEvents = await prisma.userEvent.findMany()
+     * // Get all UserMeets
+     * const userMeets = await prisma.userMeet.findMany()
      * 
-     * // Get first 10 UserEvents
-     * const userEvents = await prisma.userEvent.findMany({ take: 10 })
+     * // Get first 10 UserMeets
+     * const userMeets = await prisma.userMeet.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const userEventWithIdOnly = await prisma.userEvent.findMany({ select: { id: true } })
+     * const userMeetWithIdOnly = await prisma.userMeet.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends UserEventFindManyArgs>(args?: SelectSubset<T, UserEventFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserEventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends UserMeetFindManyArgs>(args?: SelectSubset<T, UserMeetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserMeetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a UserEvent.
-     * @param {UserEventCreateArgs} args - Arguments to create a UserEvent.
+     * Create a UserMeet.
+     * @param {UserMeetCreateArgs} args - Arguments to create a UserMeet.
      * @example
-     * // Create one UserEvent
-     * const UserEvent = await prisma.userEvent.create({
+     * // Create one UserMeet
+     * const UserMeet = await prisma.userMeet.create({
      *   data: {
-     *     // ... data to create a UserEvent
+     *     // ... data to create a UserMeet
      *   }
      * })
      * 
      */
-    create<T extends UserEventCreateArgs>(args: SelectSubset<T, UserEventCreateArgs<ExtArgs>>): Prisma__UserEventClient<$Result.GetResult<Prisma.$UserEventPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends UserMeetCreateArgs>(args: SelectSubset<T, UserMeetCreateArgs<ExtArgs>>): Prisma__UserMeetClient<$Result.GetResult<Prisma.$UserMeetPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many UserEvents.
-     * @param {UserEventCreateManyArgs} args - Arguments to create many UserEvents.
+     * Create many UserMeets.
+     * @param {UserMeetCreateManyArgs} args - Arguments to create many UserMeets.
      * @example
-     * // Create many UserEvents
-     * const userEvent = await prisma.userEvent.createMany({
+     * // Create many UserMeets
+     * const userMeet = await prisma.userMeet.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends UserEventCreateManyArgs>(args?: SelectSubset<T, UserEventCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends UserMeetCreateManyArgs>(args?: SelectSubset<T, UserMeetCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many UserEvents and returns the data saved in the database.
-     * @param {UserEventCreateManyAndReturnArgs} args - Arguments to create many UserEvents.
+     * Create many UserMeets and returns the data saved in the database.
+     * @param {UserMeetCreateManyAndReturnArgs} args - Arguments to create many UserMeets.
      * @example
-     * // Create many UserEvents
-     * const userEvent = await prisma.userEvent.createManyAndReturn({
+     * // Create many UserMeets
+     * const userMeet = await prisma.userMeet.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many UserEvents and only return the `id`
-     * const userEventWithIdOnly = await prisma.userEvent.createManyAndReturn({
+     * // Create many UserMeets and only return the `id`
+     * const userMeetWithIdOnly = await prisma.userMeet.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -3712,28 +3712,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends UserEventCreateManyAndReturnArgs>(args?: SelectSubset<T, UserEventCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserEventPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends UserMeetCreateManyAndReturnArgs>(args?: SelectSubset<T, UserMeetCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserMeetPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a UserEvent.
-     * @param {UserEventDeleteArgs} args - Arguments to delete one UserEvent.
+     * Delete a UserMeet.
+     * @param {UserMeetDeleteArgs} args - Arguments to delete one UserMeet.
      * @example
-     * // Delete one UserEvent
-     * const UserEvent = await prisma.userEvent.delete({
+     * // Delete one UserMeet
+     * const UserMeet = await prisma.userMeet.delete({
      *   where: {
-     *     // ... filter to delete one UserEvent
+     *     // ... filter to delete one UserMeet
      *   }
      * })
      * 
      */
-    delete<T extends UserEventDeleteArgs>(args: SelectSubset<T, UserEventDeleteArgs<ExtArgs>>): Prisma__UserEventClient<$Result.GetResult<Prisma.$UserEventPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends UserMeetDeleteArgs>(args: SelectSubset<T, UserMeetDeleteArgs<ExtArgs>>): Prisma__UserMeetClient<$Result.GetResult<Prisma.$UserMeetPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one UserEvent.
-     * @param {UserEventUpdateArgs} args - Arguments to update one UserEvent.
+     * Update one UserMeet.
+     * @param {UserMeetUpdateArgs} args - Arguments to update one UserMeet.
      * @example
-     * // Update one UserEvent
-     * const userEvent = await prisma.userEvent.update({
+     * // Update one UserMeet
+     * const userMeet = await prisma.userMeet.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3743,30 +3743,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends UserEventUpdateArgs>(args: SelectSubset<T, UserEventUpdateArgs<ExtArgs>>): Prisma__UserEventClient<$Result.GetResult<Prisma.$UserEventPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends UserMeetUpdateArgs>(args: SelectSubset<T, UserMeetUpdateArgs<ExtArgs>>): Prisma__UserMeetClient<$Result.GetResult<Prisma.$UserMeetPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more UserEvents.
-     * @param {UserEventDeleteManyArgs} args - Arguments to filter UserEvents to delete.
+     * Delete zero or more UserMeets.
+     * @param {UserMeetDeleteManyArgs} args - Arguments to filter UserMeets to delete.
      * @example
-     * // Delete a few UserEvents
-     * const { count } = await prisma.userEvent.deleteMany({
+     * // Delete a few UserMeets
+     * const { count } = await prisma.userMeet.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends UserEventDeleteManyArgs>(args?: SelectSubset<T, UserEventDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends UserMeetDeleteManyArgs>(args?: SelectSubset<T, UserMeetDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserEvents.
+     * Update zero or more UserMeets.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserEventUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {UserMeetUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many UserEvents
-     * const userEvent = await prisma.userEvent.updateMany({
+     * // Update many UserMeets
+     * const userMeet = await prisma.userMeet.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3776,14 +3776,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends UserEventUpdateManyArgs>(args: SelectSubset<T, UserEventUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends UserMeetUpdateManyArgs>(args: SelectSubset<T, UserMeetUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more UserEvents and returns the data updated in the database.
-     * @param {UserEventUpdateManyAndReturnArgs} args - Arguments to update many UserEvents.
+     * Update zero or more UserMeets and returns the data updated in the database.
+     * @param {UserMeetUpdateManyAndReturnArgs} args - Arguments to update many UserMeets.
      * @example
-     * // Update many UserEvents
-     * const userEvent = await prisma.userEvent.updateManyAndReturn({
+     * // Update many UserMeets
+     * const userMeet = await prisma.userMeet.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3792,8 +3792,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more UserEvents and only return the `id`
-     * const userEventWithIdOnly = await prisma.userEvent.updateManyAndReturn({
+     * // Update zero or more UserMeets and only return the `id`
+     * const userMeetWithIdOnly = await prisma.userMeet.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -3806,56 +3806,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends UserEventUpdateManyAndReturnArgs>(args: SelectSubset<T, UserEventUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserEventPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends UserMeetUpdateManyAndReturnArgs>(args: SelectSubset<T, UserMeetUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserMeetPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one UserEvent.
-     * @param {UserEventUpsertArgs} args - Arguments to update or create a UserEvent.
+     * Create or update one UserMeet.
+     * @param {UserMeetUpsertArgs} args - Arguments to update or create a UserMeet.
      * @example
-     * // Update or create a UserEvent
-     * const userEvent = await prisma.userEvent.upsert({
+     * // Update or create a UserMeet
+     * const userMeet = await prisma.userMeet.upsert({
      *   create: {
-     *     // ... data to create a UserEvent
+     *     // ... data to create a UserMeet
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the UserEvent we want to update
+     *     // ... the filter for the UserMeet we want to update
      *   }
      * })
      */
-    upsert<T extends UserEventUpsertArgs>(args: SelectSubset<T, UserEventUpsertArgs<ExtArgs>>): Prisma__UserEventClient<$Result.GetResult<Prisma.$UserEventPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends UserMeetUpsertArgs>(args: SelectSubset<T, UserMeetUpsertArgs<ExtArgs>>): Prisma__UserMeetClient<$Result.GetResult<Prisma.$UserMeetPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of UserEvents.
+     * Count the number of UserMeets.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserEventCountArgs} args - Arguments to filter UserEvents to count.
+     * @param {UserMeetCountArgs} args - Arguments to filter UserMeets to count.
      * @example
-     * // Count the number of UserEvents
-     * const count = await prisma.userEvent.count({
+     * // Count the number of UserMeets
+     * const count = await prisma.userMeet.count({
      *   where: {
-     *     // ... the filter for the UserEvents we want to count
+     *     // ... the filter for the UserMeets we want to count
      *   }
      * })
     **/
-    count<T extends UserEventCountArgs>(
-      args?: Subset<T, UserEventCountArgs>,
+    count<T extends UserMeetCountArgs>(
+      args?: Subset<T, UserMeetCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], UserEventCountAggregateOutputType>
+          : GetScalarType<T['select'], UserMeetCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a UserEvent.
+     * Allows you to perform aggregations operations on a UserMeet.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserEventAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {UserMeetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -3875,13 +3875,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends UserEventAggregateArgs>(args: Subset<T, UserEventAggregateArgs>): Prisma.PrismaPromise<GetUserEventAggregateType<T>>
+    aggregate<T extends UserMeetAggregateArgs>(args: Subset<T, UserMeetAggregateArgs>): Prisma.PrismaPromise<GetUserMeetAggregateType<T>>
 
     /**
-     * Group by UserEvent.
+     * Group by UserMeet.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserEventGroupByArgs} args - Group by arguments.
+     * @param {UserMeetGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -3896,14 +3896,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends UserEventGroupByArgs,
+      T extends UserMeetGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserEventGroupByArgs['orderBy'] }
-        : { orderBy?: UserEventGroupByArgs['orderBy'] },
+        ? { orderBy: UserMeetGroupByArgs['orderBy'] }
+        : { orderBy?: UserMeetGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -3952,23 +3952,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, UserEventGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserEventGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, UserMeetGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserMeetGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the UserEvent model
+   * Fields of the UserMeet model
    */
-  readonly fields: UserEventFieldRefs;
+  readonly fields: UserMeetFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for UserEvent.
+   * The delegate class that acts as a "Promise-like" for UserMeet.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__UserEventClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__UserMeetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    event<T extends EventDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EventDefaultArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    meet<T extends MeetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MeetDefaultArgs<ExtArgs>>): Prisma__MeetClient<$Result.GetResult<Prisma.$MeetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3995,428 +3995,428 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the UserEvent model
+   * Fields of the UserMeet model
    */
-  interface UserEventFieldRefs {
-    readonly id: FieldRef<"UserEvent", 'Int'>
-    readonly userId: FieldRef<"UserEvent", 'Int'>
-    readonly eventId: FieldRef<"UserEvent", 'Int'>
+  interface UserMeetFieldRefs {
+    readonly id: FieldRef<"UserMeet", 'Int'>
+    readonly userId: FieldRef<"UserMeet", 'Int'>
+    readonly meetId: FieldRef<"UserMeet", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * UserEvent findUnique
+   * UserMeet findUnique
    */
-  export type UserEventFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserEvent
+     * Select specific fields to fetch from the UserMeet
      */
-    select?: UserEventSelect<ExtArgs> | null
+    select?: UserMeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserEvent
+     * Omit specific fields from the UserMeet
      */
-    omit?: UserEventOmit<ExtArgs> | null
+    omit?: UserMeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserEventInclude<ExtArgs> | null
+    include?: UserMeetInclude<ExtArgs> | null
     /**
-     * Filter, which UserEvent to fetch.
+     * Filter, which UserMeet to fetch.
      */
-    where: UserEventWhereUniqueInput
+    where: UserMeetWhereUniqueInput
   }
 
   /**
-   * UserEvent findUniqueOrThrow
+   * UserMeet findUniqueOrThrow
    */
-  export type UserEventFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserEvent
+     * Select specific fields to fetch from the UserMeet
      */
-    select?: UserEventSelect<ExtArgs> | null
+    select?: UserMeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserEvent
+     * Omit specific fields from the UserMeet
      */
-    omit?: UserEventOmit<ExtArgs> | null
+    omit?: UserMeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserEventInclude<ExtArgs> | null
+    include?: UserMeetInclude<ExtArgs> | null
     /**
-     * Filter, which UserEvent to fetch.
+     * Filter, which UserMeet to fetch.
      */
-    where: UserEventWhereUniqueInput
+    where: UserMeetWhereUniqueInput
   }
 
   /**
-   * UserEvent findFirst
+   * UserMeet findFirst
    */
-  export type UserEventFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserEvent
+     * Select specific fields to fetch from the UserMeet
      */
-    select?: UserEventSelect<ExtArgs> | null
+    select?: UserMeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserEvent
+     * Omit specific fields from the UserMeet
      */
-    omit?: UserEventOmit<ExtArgs> | null
+    omit?: UserMeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserEventInclude<ExtArgs> | null
+    include?: UserMeetInclude<ExtArgs> | null
     /**
-     * Filter, which UserEvent to fetch.
+     * Filter, which UserMeet to fetch.
      */
-    where?: UserEventWhereInput
+    where?: UserMeetWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserEvents to fetch.
+     * Determine the order of UserMeets to fetch.
      */
-    orderBy?: UserEventOrderByWithRelationInput | UserEventOrderByWithRelationInput[]
+    orderBy?: UserMeetOrderByWithRelationInput | UserMeetOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserEvents.
+     * Sets the position for searching for UserMeets.
      */
-    cursor?: UserEventWhereUniqueInput
+    cursor?: UserMeetWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserEvents from the position of the cursor.
+     * Take `±n` UserMeets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserEvents.
+     * Skip the first `n` UserMeets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserEvents.
+     * Filter by unique combinations of UserMeets.
      */
-    distinct?: UserEventScalarFieldEnum | UserEventScalarFieldEnum[]
+    distinct?: UserMeetScalarFieldEnum | UserMeetScalarFieldEnum[]
   }
 
   /**
-   * UserEvent findFirstOrThrow
+   * UserMeet findFirstOrThrow
    */
-  export type UserEventFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserEvent
+     * Select specific fields to fetch from the UserMeet
      */
-    select?: UserEventSelect<ExtArgs> | null
+    select?: UserMeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserEvent
+     * Omit specific fields from the UserMeet
      */
-    omit?: UserEventOmit<ExtArgs> | null
+    omit?: UserMeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserEventInclude<ExtArgs> | null
+    include?: UserMeetInclude<ExtArgs> | null
     /**
-     * Filter, which UserEvent to fetch.
+     * Filter, which UserMeet to fetch.
      */
-    where?: UserEventWhereInput
+    where?: UserMeetWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserEvents to fetch.
+     * Determine the order of UserMeets to fetch.
      */
-    orderBy?: UserEventOrderByWithRelationInput | UserEventOrderByWithRelationInput[]
+    orderBy?: UserMeetOrderByWithRelationInput | UserMeetOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for UserEvents.
+     * Sets the position for searching for UserMeets.
      */
-    cursor?: UserEventWhereUniqueInput
+    cursor?: UserMeetWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserEvents from the position of the cursor.
+     * Take `±n` UserMeets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserEvents.
+     * Skip the first `n` UserMeets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserEvents.
+     * Filter by unique combinations of UserMeets.
      */
-    distinct?: UserEventScalarFieldEnum | UserEventScalarFieldEnum[]
+    distinct?: UserMeetScalarFieldEnum | UserMeetScalarFieldEnum[]
   }
 
   /**
-   * UserEvent findMany
+   * UserMeet findMany
    */
-  export type UserEventFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserEvent
+     * Select specific fields to fetch from the UserMeet
      */
-    select?: UserEventSelect<ExtArgs> | null
+    select?: UserMeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserEvent
+     * Omit specific fields from the UserMeet
      */
-    omit?: UserEventOmit<ExtArgs> | null
+    omit?: UserMeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserEventInclude<ExtArgs> | null
+    include?: UserMeetInclude<ExtArgs> | null
     /**
-     * Filter, which UserEvents to fetch.
+     * Filter, which UserMeets to fetch.
      */
-    where?: UserEventWhereInput
+    where?: UserMeetWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of UserEvents to fetch.
+     * Determine the order of UserMeets to fetch.
      */
-    orderBy?: UserEventOrderByWithRelationInput | UserEventOrderByWithRelationInput[]
+    orderBy?: UserMeetOrderByWithRelationInput | UserMeetOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing UserEvents.
+     * Sets the position for listing UserMeets.
      */
-    cursor?: UserEventWhereUniqueInput
+    cursor?: UserMeetWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` UserEvents from the position of the cursor.
+     * Take `±n` UserMeets from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` UserEvents.
+     * Skip the first `n` UserMeets.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of UserEvents.
+     * Filter by unique combinations of UserMeets.
      */
-    distinct?: UserEventScalarFieldEnum | UserEventScalarFieldEnum[]
+    distinct?: UserMeetScalarFieldEnum | UserMeetScalarFieldEnum[]
   }
 
   /**
-   * UserEvent create
+   * UserMeet create
    */
-  export type UserEventCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserEvent
+     * Select specific fields to fetch from the UserMeet
      */
-    select?: UserEventSelect<ExtArgs> | null
+    select?: UserMeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserEvent
+     * Omit specific fields from the UserMeet
      */
-    omit?: UserEventOmit<ExtArgs> | null
+    omit?: UserMeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserEventInclude<ExtArgs> | null
+    include?: UserMeetInclude<ExtArgs> | null
     /**
-     * The data needed to create a UserEvent.
+     * The data needed to create a UserMeet.
      */
-    data: XOR<UserEventCreateInput, UserEventUncheckedCreateInput>
+    data: XOR<UserMeetCreateInput, UserMeetUncheckedCreateInput>
   }
 
   /**
-   * UserEvent createMany
+   * UserMeet createMany
    */
-  export type UserEventCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many UserEvents.
+     * The data used to create many UserMeets.
      */
-    data: UserEventCreateManyInput | UserEventCreateManyInput[]
+    data: UserMeetCreateManyInput | UserMeetCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * UserEvent createManyAndReturn
+   * UserMeet createManyAndReturn
    */
-  export type UserEventCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserEvent
+     * Select specific fields to fetch from the UserMeet
      */
-    select?: UserEventSelectCreateManyAndReturn<ExtArgs> | null
+    select?: UserMeetSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the UserEvent
+     * Omit specific fields from the UserMeet
      */
-    omit?: UserEventOmit<ExtArgs> | null
+    omit?: UserMeetOmit<ExtArgs> | null
     /**
-     * The data used to create many UserEvents.
+     * The data used to create many UserMeets.
      */
-    data: UserEventCreateManyInput | UserEventCreateManyInput[]
+    data: UserMeetCreateManyInput | UserMeetCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserEventIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: UserMeetIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * UserEvent update
+   * UserMeet update
    */
-  export type UserEventUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserEvent
+     * Select specific fields to fetch from the UserMeet
      */
-    select?: UserEventSelect<ExtArgs> | null
+    select?: UserMeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserEvent
+     * Omit specific fields from the UserMeet
      */
-    omit?: UserEventOmit<ExtArgs> | null
+    omit?: UserMeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserEventInclude<ExtArgs> | null
+    include?: UserMeetInclude<ExtArgs> | null
     /**
-     * The data needed to update a UserEvent.
+     * The data needed to update a UserMeet.
      */
-    data: XOR<UserEventUpdateInput, UserEventUncheckedUpdateInput>
+    data: XOR<UserMeetUpdateInput, UserMeetUncheckedUpdateInput>
     /**
-     * Choose, which UserEvent to update.
+     * Choose, which UserMeet to update.
      */
-    where: UserEventWhereUniqueInput
+    where: UserMeetWhereUniqueInput
   }
 
   /**
-   * UserEvent updateMany
+   * UserMeet updateMany
    */
-  export type UserEventUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update UserEvents.
+     * The data used to update UserMeets.
      */
-    data: XOR<UserEventUpdateManyMutationInput, UserEventUncheckedUpdateManyInput>
+    data: XOR<UserMeetUpdateManyMutationInput, UserMeetUncheckedUpdateManyInput>
     /**
-     * Filter which UserEvents to update
+     * Filter which UserMeets to update
      */
-    where?: UserEventWhereInput
+    where?: UserMeetWhereInput
     /**
-     * Limit how many UserEvents to update.
+     * Limit how many UserMeets to update.
      */
     limit?: number
   }
 
   /**
-   * UserEvent updateManyAndReturn
+   * UserMeet updateManyAndReturn
    */
-  export type UserEventUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserEvent
+     * Select specific fields to fetch from the UserMeet
      */
-    select?: UserEventSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: UserMeetSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the UserEvent
+     * Omit specific fields from the UserMeet
      */
-    omit?: UserEventOmit<ExtArgs> | null
+    omit?: UserMeetOmit<ExtArgs> | null
     /**
-     * The data used to update UserEvents.
+     * The data used to update UserMeets.
      */
-    data: XOR<UserEventUpdateManyMutationInput, UserEventUncheckedUpdateManyInput>
+    data: XOR<UserMeetUpdateManyMutationInput, UserMeetUncheckedUpdateManyInput>
     /**
-     * Filter which UserEvents to update
+     * Filter which UserMeets to update
      */
-    where?: UserEventWhereInput
+    where?: UserMeetWhereInput
     /**
-     * Limit how many UserEvents to update.
+     * Limit how many UserMeets to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserEventIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: UserMeetIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * UserEvent upsert
+   * UserMeet upsert
    */
-  export type UserEventUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserEvent
+     * Select specific fields to fetch from the UserMeet
      */
-    select?: UserEventSelect<ExtArgs> | null
+    select?: UserMeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserEvent
+     * Omit specific fields from the UserMeet
      */
-    omit?: UserEventOmit<ExtArgs> | null
+    omit?: UserMeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserEventInclude<ExtArgs> | null
+    include?: UserMeetInclude<ExtArgs> | null
     /**
-     * The filter to search for the UserEvent to update in case it exists.
+     * The filter to search for the UserMeet to update in case it exists.
      */
-    where: UserEventWhereUniqueInput
+    where: UserMeetWhereUniqueInput
     /**
-     * In case the UserEvent found by the `where` argument doesn't exist, create a new UserEvent with this data.
+     * In case the UserMeet found by the `where` argument doesn't exist, create a new UserMeet with this data.
      */
-    create: XOR<UserEventCreateInput, UserEventUncheckedCreateInput>
+    create: XOR<UserMeetCreateInput, UserMeetUncheckedCreateInput>
     /**
-     * In case the UserEvent was found with the provided `where` argument, update it with this data.
+     * In case the UserMeet was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<UserEventUpdateInput, UserEventUncheckedUpdateInput>
+    update: XOR<UserMeetUpdateInput, UserMeetUncheckedUpdateInput>
   }
 
   /**
-   * UserEvent delete
+   * UserMeet delete
    */
-  export type UserEventDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserEvent
+     * Select specific fields to fetch from the UserMeet
      */
-    select?: UserEventSelect<ExtArgs> | null
+    select?: UserMeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserEvent
+     * Omit specific fields from the UserMeet
      */
-    omit?: UserEventOmit<ExtArgs> | null
+    omit?: UserMeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserEventInclude<ExtArgs> | null
+    include?: UserMeetInclude<ExtArgs> | null
     /**
-     * Filter which UserEvent to delete.
+     * Filter which UserMeet to delete.
      */
-    where: UserEventWhereUniqueInput
+    where: UserMeetWhereUniqueInput
   }
 
   /**
-   * UserEvent deleteMany
+   * UserMeet deleteMany
    */
-  export type UserEventDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which UserEvents to delete
+     * Filter which UserMeets to delete
      */
-    where?: UserEventWhereInput
+    where?: UserMeetWhereInput
     /**
-     * Limit how many UserEvents to delete.
+     * Limit how many UserMeets to delete.
      */
     limit?: number
   }
 
   /**
-   * UserEvent without action
+   * UserMeet without action
    */
-  export type UserEventDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type UserMeetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the UserEvent
+     * Select specific fields to fetch from the UserMeet
      */
-    select?: UserEventSelect<ExtArgs> | null
+    select?: UserMeetSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the UserEvent
+     * Omit specific fields from the UserMeet
      */
-    omit?: UserEventOmit<ExtArgs> | null
+    omit?: UserMeetOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: UserEventInclude<ExtArgs> | null
+    include?: UserMeetInclude<ExtArgs> | null
   }
 
 
@@ -4444,23 +4444,23 @@ export namespace Prisma {
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
-  export const EventScalarFieldEnum: {
+  export const MeetScalarFieldEnum: {
     id: 'id',
     name: 'name',
     date: 'date',
     points: 'points'
   };
 
-  export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
+  export type MeetScalarFieldEnum = (typeof MeetScalarFieldEnum)[keyof typeof MeetScalarFieldEnum]
 
 
-  export const UserEventScalarFieldEnum: {
+  export const UserMeetScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
-    eventId: 'eventId'
+    meetId: 'meetId'
   };
 
-  export type UserEventScalarFieldEnum = (typeof UserEventScalarFieldEnum)[keyof typeof UserEventScalarFieldEnum]
+  export type UserMeetScalarFieldEnum = (typeof UserMeetScalarFieldEnum)[keyof typeof UserMeetScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -4559,7 +4559,7 @@ export namespace Prisma {
     username?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
-    events?: UserEventListRelationFilter
+    meets?: UserMeetListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -4567,7 +4567,7 @@ export namespace Prisma {
     username?: SortOrder
     name?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
-    events?: UserEventOrderByRelationAggregateInput
+    meets?: UserMeetOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4578,7 +4578,7 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
-    events?: UserEventListRelationFilter
+    meets?: UserMeetListRelationFilter
   }, "id" | "username">
 
   export type UserOrderByWithAggregationInput = {
@@ -4603,114 +4603,114 @@ export namespace Prisma {
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
-  export type EventWhereInput = {
-    AND?: EventWhereInput | EventWhereInput[]
-    OR?: EventWhereInput[]
-    NOT?: EventWhereInput | EventWhereInput[]
-    id?: IntFilter<"Event"> | number
-    name?: StringFilter<"Event"> | string
-    date?: DateTimeFilter<"Event"> | Date | string
-    points?: IntFilter<"Event"> | number
-    attendees?: UserEventListRelationFilter
+  export type MeetWhereInput = {
+    AND?: MeetWhereInput | MeetWhereInput[]
+    OR?: MeetWhereInput[]
+    NOT?: MeetWhereInput | MeetWhereInput[]
+    id?: IntFilter<"Meet"> | number
+    name?: StringFilter<"Meet"> | string
+    date?: DateTimeFilter<"Meet"> | Date | string
+    points?: IntFilter<"Meet"> | number
+    attendees?: UserMeetListRelationFilter
   }
 
-  export type EventOrderByWithRelationInput = {
+  export type MeetOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
     date?: SortOrder
     points?: SortOrder
-    attendees?: UserEventOrderByRelationAggregateInput
+    attendees?: UserMeetOrderByRelationAggregateInput
   }
 
-  export type EventWhereUniqueInput = Prisma.AtLeast<{
+  export type MeetWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: EventWhereInput | EventWhereInput[]
-    OR?: EventWhereInput[]
-    NOT?: EventWhereInput | EventWhereInput[]
-    name?: StringFilter<"Event"> | string
-    date?: DateTimeFilter<"Event"> | Date | string
-    points?: IntFilter<"Event"> | number
-    attendees?: UserEventListRelationFilter
+    AND?: MeetWhereInput | MeetWhereInput[]
+    OR?: MeetWhereInput[]
+    NOT?: MeetWhereInput | MeetWhereInput[]
+    name?: StringFilter<"Meet"> | string
+    date?: DateTimeFilter<"Meet"> | Date | string
+    points?: IntFilter<"Meet"> | number
+    attendees?: UserMeetListRelationFilter
   }, "id">
 
-  export type EventOrderByWithAggregationInput = {
+  export type MeetOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
     date?: SortOrder
     points?: SortOrder
-    _count?: EventCountOrderByAggregateInput
-    _avg?: EventAvgOrderByAggregateInput
-    _max?: EventMaxOrderByAggregateInput
-    _min?: EventMinOrderByAggregateInput
-    _sum?: EventSumOrderByAggregateInput
+    _count?: MeetCountOrderByAggregateInput
+    _avg?: MeetAvgOrderByAggregateInput
+    _max?: MeetMaxOrderByAggregateInput
+    _min?: MeetMinOrderByAggregateInput
+    _sum?: MeetSumOrderByAggregateInput
   }
 
-  export type EventScalarWhereWithAggregatesInput = {
-    AND?: EventScalarWhereWithAggregatesInput | EventScalarWhereWithAggregatesInput[]
-    OR?: EventScalarWhereWithAggregatesInput[]
-    NOT?: EventScalarWhereWithAggregatesInput | EventScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Event"> | number
-    name?: StringWithAggregatesFilter<"Event"> | string
-    date?: DateTimeWithAggregatesFilter<"Event"> | Date | string
-    points?: IntWithAggregatesFilter<"Event"> | number
+  export type MeetScalarWhereWithAggregatesInput = {
+    AND?: MeetScalarWhereWithAggregatesInput | MeetScalarWhereWithAggregatesInput[]
+    OR?: MeetScalarWhereWithAggregatesInput[]
+    NOT?: MeetScalarWhereWithAggregatesInput | MeetScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Meet"> | number
+    name?: StringWithAggregatesFilter<"Meet"> | string
+    date?: DateTimeWithAggregatesFilter<"Meet"> | Date | string
+    points?: IntWithAggregatesFilter<"Meet"> | number
   }
 
-  export type UserEventWhereInput = {
-    AND?: UserEventWhereInput | UserEventWhereInput[]
-    OR?: UserEventWhereInput[]
-    NOT?: UserEventWhereInput | UserEventWhereInput[]
-    id?: IntFilter<"UserEvent"> | number
-    userId?: IntFilter<"UserEvent"> | number
-    eventId?: IntFilter<"UserEvent"> | number
+  export type UserMeetWhereInput = {
+    AND?: UserMeetWhereInput | UserMeetWhereInput[]
+    OR?: UserMeetWhereInput[]
+    NOT?: UserMeetWhereInput | UserMeetWhereInput[]
+    id?: IntFilter<"UserMeet"> | number
+    userId?: IntFilter<"UserMeet"> | number
+    meetId?: IntFilter<"UserMeet"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    event?: XOR<EventScalarRelationFilter, EventWhereInput>
+    meet?: XOR<MeetScalarRelationFilter, MeetWhereInput>
   }
 
-  export type UserEventOrderByWithRelationInput = {
+  export type UserMeetOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    eventId?: SortOrder
+    meetId?: SortOrder
     user?: UserOrderByWithRelationInput
-    event?: EventOrderByWithRelationInput
+    meet?: MeetOrderByWithRelationInput
   }
 
-  export type UserEventWhereUniqueInput = Prisma.AtLeast<{
+  export type UserMeetWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    userId_eventId?: UserEventUserIdEventIdCompoundUniqueInput
-    AND?: UserEventWhereInput | UserEventWhereInput[]
-    OR?: UserEventWhereInput[]
-    NOT?: UserEventWhereInput | UserEventWhereInput[]
-    userId?: IntFilter<"UserEvent"> | number
-    eventId?: IntFilter<"UserEvent"> | number
+    userId_meetId?: UserMeetUserIdMeetIdCompoundUniqueInput
+    AND?: UserMeetWhereInput | UserMeetWhereInput[]
+    OR?: UserMeetWhereInput[]
+    NOT?: UserMeetWhereInput | UserMeetWhereInput[]
+    userId?: IntFilter<"UserMeet"> | number
+    meetId?: IntFilter<"UserMeet"> | number
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    event?: XOR<EventScalarRelationFilter, EventWhereInput>
-  }, "id" | "userId_eventId">
+    meet?: XOR<MeetScalarRelationFilter, MeetWhereInput>
+  }, "id" | "userId_meetId">
 
-  export type UserEventOrderByWithAggregationInput = {
+  export type UserMeetOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    eventId?: SortOrder
-    _count?: UserEventCountOrderByAggregateInput
-    _avg?: UserEventAvgOrderByAggregateInput
-    _max?: UserEventMaxOrderByAggregateInput
-    _min?: UserEventMinOrderByAggregateInput
-    _sum?: UserEventSumOrderByAggregateInput
+    meetId?: SortOrder
+    _count?: UserMeetCountOrderByAggregateInput
+    _avg?: UserMeetAvgOrderByAggregateInput
+    _max?: UserMeetMaxOrderByAggregateInput
+    _min?: UserMeetMinOrderByAggregateInput
+    _sum?: UserMeetSumOrderByAggregateInput
   }
 
-  export type UserEventScalarWhereWithAggregatesInput = {
-    AND?: UserEventScalarWhereWithAggregatesInput | UserEventScalarWhereWithAggregatesInput[]
-    OR?: UserEventScalarWhereWithAggregatesInput[]
-    NOT?: UserEventScalarWhereWithAggregatesInput | UserEventScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"UserEvent"> | number
-    userId?: IntWithAggregatesFilter<"UserEvent"> | number
-    eventId?: IntWithAggregatesFilter<"UserEvent"> | number
+  export type UserMeetScalarWhereWithAggregatesInput = {
+    AND?: UserMeetScalarWhereWithAggregatesInput | UserMeetScalarWhereWithAggregatesInput[]
+    OR?: UserMeetScalarWhereWithAggregatesInput[]
+    NOT?: UserMeetScalarWhereWithAggregatesInput | UserMeetScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"UserMeet"> | number
+    userId?: IntWithAggregatesFilter<"UserMeet"> | number
+    meetId?: IntWithAggregatesFilter<"UserMeet"> | number
   }
 
   export type UserCreateInput = {
     username: string
     name?: string | null
     password?: string | null
-    events?: UserEventCreateNestedManyWithoutUserInput
+    meets?: UserMeetCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -4718,14 +4718,14 @@ export namespace Prisma {
     username: string
     name?: string | null
     password?: string | null
-    events?: UserEventUncheckedCreateNestedManyWithoutUserInput
+    meets?: UserMeetUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
-    events?: UserEventUpdateManyWithoutUserNestedInput
+    meets?: UserMeetUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -4733,7 +4733,7 @@ export namespace Prisma {
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
-    events?: UserEventUncheckedUpdateManyWithoutUserNestedInput
+    meets?: UserMeetUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -4756,92 +4756,92 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type EventCreateInput = {
+  export type MeetCreateInput = {
     name: string
     date: Date | string
     points?: number
-    attendees?: UserEventCreateNestedManyWithoutEventInput
+    attendees?: UserMeetCreateNestedManyWithoutMeetInput
   }
 
-  export type EventUncheckedCreateInput = {
+  export type MeetUncheckedCreateInput = {
     id?: number
     name: string
     date: Date | string
     points?: number
-    attendees?: UserEventUncheckedCreateNestedManyWithoutEventInput
+    attendees?: UserMeetUncheckedCreateNestedManyWithoutMeetInput
   }
 
-  export type EventUpdateInput = {
+  export type MeetUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     points?: IntFieldUpdateOperationsInput | number
-    attendees?: UserEventUpdateManyWithoutEventNestedInput
+    attendees?: UserMeetUpdateManyWithoutMeetNestedInput
   }
 
-  export type EventUncheckedUpdateInput = {
+  export type MeetUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     points?: IntFieldUpdateOperationsInput | number
-    attendees?: UserEventUncheckedUpdateManyWithoutEventNestedInput
+    attendees?: UserMeetUncheckedUpdateManyWithoutMeetNestedInput
   }
 
-  export type EventCreateManyInput = {
+  export type MeetCreateManyInput = {
     id?: number
     name: string
     date: Date | string
     points?: number
   }
 
-  export type EventUpdateManyMutationInput = {
+  export type MeetUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     points?: IntFieldUpdateOperationsInput | number
   }
 
-  export type EventUncheckedUpdateManyInput = {
+  export type MeetUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     points?: IntFieldUpdateOperationsInput | number
   }
 
-  export type UserEventCreateInput = {
-    user: UserCreateNestedOneWithoutEventsInput
-    event: EventCreateNestedOneWithoutAttendeesInput
+  export type UserMeetCreateInput = {
+    user: UserCreateNestedOneWithoutMeetsInput
+    meet: MeetCreateNestedOneWithoutAttendeesInput
   }
 
-  export type UserEventUncheckedCreateInput = {
+  export type UserMeetUncheckedCreateInput = {
     id?: number
     userId: number
-    eventId: number
+    meetId: number
   }
 
-  export type UserEventUpdateInput = {
-    user?: UserUpdateOneRequiredWithoutEventsNestedInput
-    event?: EventUpdateOneRequiredWithoutAttendeesNestedInput
+  export type UserMeetUpdateInput = {
+    user?: UserUpdateOneRequiredWithoutMeetsNestedInput
+    meet?: MeetUpdateOneRequiredWithoutAttendeesNestedInput
   }
 
-  export type UserEventUncheckedUpdateInput = {
+  export type UserMeetUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    eventId?: IntFieldUpdateOperationsInput | number
+    meetId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type UserEventCreateManyInput = {
+  export type UserMeetCreateManyInput = {
     id?: number
     userId: number
-    eventId: number
+    meetId: number
   }
 
-  export type UserEventUpdateManyMutationInput = {
+  export type UserMeetUpdateManyMutationInput = {
 
   }
 
-  export type UserEventUncheckedUpdateManyInput = {
+  export type UserMeetUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    eventId?: IntFieldUpdateOperationsInput | number
+    meetId?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -4885,10 +4885,10 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type UserEventListRelationFilter = {
-    every?: UserEventWhereInput
-    some?: UserEventWhereInput
-    none?: UserEventWhereInput
+  export type UserMeetListRelationFilter = {
+    every?: UserMeetWhereInput
+    some?: UserMeetWhereInput
+    none?: UserMeetWhereInput
   }
 
   export type SortOrderInput = {
@@ -4896,7 +4896,7 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type UserEventOrderByRelationAggregateInput = {
+  export type UserMeetOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -4992,33 +4992,33 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type EventCountOrderByAggregateInput = {
+  export type MeetCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     date?: SortOrder
     points?: SortOrder
   }
 
-  export type EventAvgOrderByAggregateInput = {
+  export type MeetAvgOrderByAggregateInput = {
     id?: SortOrder
     points?: SortOrder
   }
 
-  export type EventMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    date?: SortOrder
-    points?: SortOrder
-  }
-
-  export type EventMinOrderByAggregateInput = {
+  export type MeetMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     date?: SortOrder
     points?: SortOrder
   }
 
-  export type EventSumOrderByAggregateInput = {
+  export type MeetMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    date?: SortOrder
+    points?: SortOrder
+  }
+
+  export type MeetSumOrderByAggregateInput = {
     id?: SortOrder
     points?: SortOrder
   }
@@ -5042,58 +5042,58 @@ export namespace Prisma {
     isNot?: UserWhereInput
   }
 
-  export type EventScalarRelationFilter = {
-    is?: EventWhereInput
-    isNot?: EventWhereInput
+  export type MeetScalarRelationFilter = {
+    is?: MeetWhereInput
+    isNot?: MeetWhereInput
   }
 
-  export type UserEventUserIdEventIdCompoundUniqueInput = {
+  export type UserMeetUserIdMeetIdCompoundUniqueInput = {
     userId: number
-    eventId: number
+    meetId: number
   }
 
-  export type UserEventCountOrderByAggregateInput = {
+  export type UserMeetCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    eventId?: SortOrder
+    meetId?: SortOrder
   }
 
-  export type UserEventAvgOrderByAggregateInput = {
+  export type UserMeetAvgOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    eventId?: SortOrder
+    meetId?: SortOrder
   }
 
-  export type UserEventMaxOrderByAggregateInput = {
+  export type UserMeetMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    eventId?: SortOrder
+    meetId?: SortOrder
   }
 
-  export type UserEventMinOrderByAggregateInput = {
+  export type UserMeetMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    eventId?: SortOrder
+    meetId?: SortOrder
   }
 
-  export type UserEventSumOrderByAggregateInput = {
+  export type UserMeetSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
-    eventId?: SortOrder
+    meetId?: SortOrder
   }
 
-  export type UserEventCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserEventCreateWithoutUserInput, UserEventUncheckedCreateWithoutUserInput> | UserEventCreateWithoutUserInput[] | UserEventUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserEventCreateOrConnectWithoutUserInput | UserEventCreateOrConnectWithoutUserInput[]
-    createMany?: UserEventCreateManyUserInputEnvelope
-    connect?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
+  export type UserMeetCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserMeetCreateWithoutUserInput, UserMeetUncheckedCreateWithoutUserInput> | UserMeetCreateWithoutUserInput[] | UserMeetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserMeetCreateOrConnectWithoutUserInput | UserMeetCreateOrConnectWithoutUserInput[]
+    createMany?: UserMeetCreateManyUserInputEnvelope
+    connect?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
   }
 
-  export type UserEventUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<UserEventCreateWithoutUserInput, UserEventUncheckedCreateWithoutUserInput> | UserEventCreateWithoutUserInput[] | UserEventUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserEventCreateOrConnectWithoutUserInput | UserEventCreateOrConnectWithoutUserInput[]
-    createMany?: UserEventCreateManyUserInputEnvelope
-    connect?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
+  export type UserMeetUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserMeetCreateWithoutUserInput, UserMeetUncheckedCreateWithoutUserInput> | UserMeetCreateWithoutUserInput[] | UserMeetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserMeetCreateOrConnectWithoutUserInput | UserMeetCreateOrConnectWithoutUserInput[]
+    createMany?: UserMeetCreateManyUserInputEnvelope
+    connect?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5104,18 +5104,18 @@ export namespace Prisma {
     set?: string | null
   }
 
-  export type UserEventUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserEventCreateWithoutUserInput, UserEventUncheckedCreateWithoutUserInput> | UserEventCreateWithoutUserInput[] | UserEventUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserEventCreateOrConnectWithoutUserInput | UserEventCreateOrConnectWithoutUserInput[]
-    upsert?: UserEventUpsertWithWhereUniqueWithoutUserInput | UserEventUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserEventCreateManyUserInputEnvelope
-    set?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    disconnect?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    delete?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    connect?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    update?: UserEventUpdateWithWhereUniqueWithoutUserInput | UserEventUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserEventUpdateManyWithWhereWithoutUserInput | UserEventUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserEventScalarWhereInput | UserEventScalarWhereInput[]
+  export type UserMeetUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserMeetCreateWithoutUserInput, UserMeetUncheckedCreateWithoutUserInput> | UserMeetCreateWithoutUserInput[] | UserMeetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserMeetCreateOrConnectWithoutUserInput | UserMeetCreateOrConnectWithoutUserInput[]
+    upsert?: UserMeetUpsertWithWhereUniqueWithoutUserInput | UserMeetUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserMeetCreateManyUserInputEnvelope
+    set?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    disconnect?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    delete?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    connect?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    update?: UserMeetUpdateWithWhereUniqueWithoutUserInput | UserMeetUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserMeetUpdateManyWithWhereWithoutUserInput | UserMeetUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserMeetScalarWhereInput | UserMeetScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -5126,92 +5126,92 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type UserEventUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<UserEventCreateWithoutUserInput, UserEventUncheckedCreateWithoutUserInput> | UserEventCreateWithoutUserInput[] | UserEventUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: UserEventCreateOrConnectWithoutUserInput | UserEventCreateOrConnectWithoutUserInput[]
-    upsert?: UserEventUpsertWithWhereUniqueWithoutUserInput | UserEventUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: UserEventCreateManyUserInputEnvelope
-    set?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    disconnect?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    delete?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    connect?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    update?: UserEventUpdateWithWhereUniqueWithoutUserInput | UserEventUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: UserEventUpdateManyWithWhereWithoutUserInput | UserEventUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: UserEventScalarWhereInput | UserEventScalarWhereInput[]
+  export type UserMeetUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserMeetCreateWithoutUserInput, UserMeetUncheckedCreateWithoutUserInput> | UserMeetCreateWithoutUserInput[] | UserMeetUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserMeetCreateOrConnectWithoutUserInput | UserMeetCreateOrConnectWithoutUserInput[]
+    upsert?: UserMeetUpsertWithWhereUniqueWithoutUserInput | UserMeetUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserMeetCreateManyUserInputEnvelope
+    set?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    disconnect?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    delete?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    connect?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    update?: UserMeetUpdateWithWhereUniqueWithoutUserInput | UserMeetUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserMeetUpdateManyWithWhereWithoutUserInput | UserMeetUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserMeetScalarWhereInput | UserMeetScalarWhereInput[]
   }
 
-  export type UserEventCreateNestedManyWithoutEventInput = {
-    create?: XOR<UserEventCreateWithoutEventInput, UserEventUncheckedCreateWithoutEventInput> | UserEventCreateWithoutEventInput[] | UserEventUncheckedCreateWithoutEventInput[]
-    connectOrCreate?: UserEventCreateOrConnectWithoutEventInput | UserEventCreateOrConnectWithoutEventInput[]
-    createMany?: UserEventCreateManyEventInputEnvelope
-    connect?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
+  export type UserMeetCreateNestedManyWithoutMeetInput = {
+    create?: XOR<UserMeetCreateWithoutMeetInput, UserMeetUncheckedCreateWithoutMeetInput> | UserMeetCreateWithoutMeetInput[] | UserMeetUncheckedCreateWithoutMeetInput[]
+    connectOrCreate?: UserMeetCreateOrConnectWithoutMeetInput | UserMeetCreateOrConnectWithoutMeetInput[]
+    createMany?: UserMeetCreateManyMeetInputEnvelope
+    connect?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
   }
 
-  export type UserEventUncheckedCreateNestedManyWithoutEventInput = {
-    create?: XOR<UserEventCreateWithoutEventInput, UserEventUncheckedCreateWithoutEventInput> | UserEventCreateWithoutEventInput[] | UserEventUncheckedCreateWithoutEventInput[]
-    connectOrCreate?: UserEventCreateOrConnectWithoutEventInput | UserEventCreateOrConnectWithoutEventInput[]
-    createMany?: UserEventCreateManyEventInputEnvelope
-    connect?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
+  export type UserMeetUncheckedCreateNestedManyWithoutMeetInput = {
+    create?: XOR<UserMeetCreateWithoutMeetInput, UserMeetUncheckedCreateWithoutMeetInput> | UserMeetCreateWithoutMeetInput[] | UserMeetUncheckedCreateWithoutMeetInput[]
+    connectOrCreate?: UserMeetCreateOrConnectWithoutMeetInput | UserMeetCreateOrConnectWithoutMeetInput[]
+    createMany?: UserMeetCreateManyMeetInputEnvelope
+    connect?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
 
-  export type UserEventUpdateManyWithoutEventNestedInput = {
-    create?: XOR<UserEventCreateWithoutEventInput, UserEventUncheckedCreateWithoutEventInput> | UserEventCreateWithoutEventInput[] | UserEventUncheckedCreateWithoutEventInput[]
-    connectOrCreate?: UserEventCreateOrConnectWithoutEventInput | UserEventCreateOrConnectWithoutEventInput[]
-    upsert?: UserEventUpsertWithWhereUniqueWithoutEventInput | UserEventUpsertWithWhereUniqueWithoutEventInput[]
-    createMany?: UserEventCreateManyEventInputEnvelope
-    set?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    disconnect?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    delete?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    connect?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    update?: UserEventUpdateWithWhereUniqueWithoutEventInput | UserEventUpdateWithWhereUniqueWithoutEventInput[]
-    updateMany?: UserEventUpdateManyWithWhereWithoutEventInput | UserEventUpdateManyWithWhereWithoutEventInput[]
-    deleteMany?: UserEventScalarWhereInput | UserEventScalarWhereInput[]
+  export type UserMeetUpdateManyWithoutMeetNestedInput = {
+    create?: XOR<UserMeetCreateWithoutMeetInput, UserMeetUncheckedCreateWithoutMeetInput> | UserMeetCreateWithoutMeetInput[] | UserMeetUncheckedCreateWithoutMeetInput[]
+    connectOrCreate?: UserMeetCreateOrConnectWithoutMeetInput | UserMeetCreateOrConnectWithoutMeetInput[]
+    upsert?: UserMeetUpsertWithWhereUniqueWithoutMeetInput | UserMeetUpsertWithWhereUniqueWithoutMeetInput[]
+    createMany?: UserMeetCreateManyMeetInputEnvelope
+    set?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    disconnect?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    delete?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    connect?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    update?: UserMeetUpdateWithWhereUniqueWithoutMeetInput | UserMeetUpdateWithWhereUniqueWithoutMeetInput[]
+    updateMany?: UserMeetUpdateManyWithWhereWithoutMeetInput | UserMeetUpdateManyWithWhereWithoutMeetInput[]
+    deleteMany?: UserMeetScalarWhereInput | UserMeetScalarWhereInput[]
   }
 
-  export type UserEventUncheckedUpdateManyWithoutEventNestedInput = {
-    create?: XOR<UserEventCreateWithoutEventInput, UserEventUncheckedCreateWithoutEventInput> | UserEventCreateWithoutEventInput[] | UserEventUncheckedCreateWithoutEventInput[]
-    connectOrCreate?: UserEventCreateOrConnectWithoutEventInput | UserEventCreateOrConnectWithoutEventInput[]
-    upsert?: UserEventUpsertWithWhereUniqueWithoutEventInput | UserEventUpsertWithWhereUniqueWithoutEventInput[]
-    createMany?: UserEventCreateManyEventInputEnvelope
-    set?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    disconnect?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    delete?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    connect?: UserEventWhereUniqueInput | UserEventWhereUniqueInput[]
-    update?: UserEventUpdateWithWhereUniqueWithoutEventInput | UserEventUpdateWithWhereUniqueWithoutEventInput[]
-    updateMany?: UserEventUpdateManyWithWhereWithoutEventInput | UserEventUpdateManyWithWhereWithoutEventInput[]
-    deleteMany?: UserEventScalarWhereInput | UserEventScalarWhereInput[]
+  export type UserMeetUncheckedUpdateManyWithoutMeetNestedInput = {
+    create?: XOR<UserMeetCreateWithoutMeetInput, UserMeetUncheckedCreateWithoutMeetInput> | UserMeetCreateWithoutMeetInput[] | UserMeetUncheckedCreateWithoutMeetInput[]
+    connectOrCreate?: UserMeetCreateOrConnectWithoutMeetInput | UserMeetCreateOrConnectWithoutMeetInput[]
+    upsert?: UserMeetUpsertWithWhereUniqueWithoutMeetInput | UserMeetUpsertWithWhereUniqueWithoutMeetInput[]
+    createMany?: UserMeetCreateManyMeetInputEnvelope
+    set?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    disconnect?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    delete?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    connect?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+    update?: UserMeetUpdateWithWhereUniqueWithoutMeetInput | UserMeetUpdateWithWhereUniqueWithoutMeetInput[]
+    updateMany?: UserMeetUpdateManyWithWhereWithoutMeetInput | UserMeetUpdateManyWithWhereWithoutMeetInput[]
+    deleteMany?: UserMeetScalarWhereInput | UserMeetScalarWhereInput[]
   }
 
-  export type UserCreateNestedOneWithoutEventsInput = {
-    create?: XOR<UserCreateWithoutEventsInput, UserUncheckedCreateWithoutEventsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutEventsInput
+  export type UserCreateNestedOneWithoutMeetsInput = {
+    create?: XOR<UserCreateWithoutMeetsInput, UserUncheckedCreateWithoutMeetsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMeetsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type EventCreateNestedOneWithoutAttendeesInput = {
-    create?: XOR<EventCreateWithoutAttendeesInput, EventUncheckedCreateWithoutAttendeesInput>
-    connectOrCreate?: EventCreateOrConnectWithoutAttendeesInput
-    connect?: EventWhereUniqueInput
+  export type MeetCreateNestedOneWithoutAttendeesInput = {
+    create?: XOR<MeetCreateWithoutAttendeesInput, MeetUncheckedCreateWithoutAttendeesInput>
+    connectOrCreate?: MeetCreateOrConnectWithoutAttendeesInput
+    connect?: MeetWhereUniqueInput
   }
 
-  export type UserUpdateOneRequiredWithoutEventsNestedInput = {
-    create?: XOR<UserCreateWithoutEventsInput, UserUncheckedCreateWithoutEventsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutEventsInput
-    upsert?: UserUpsertWithoutEventsInput
+  export type UserUpdateOneRequiredWithoutMeetsNestedInput = {
+    create?: XOR<UserCreateWithoutMeetsInput, UserUncheckedCreateWithoutMeetsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMeetsInput
+    upsert?: UserUpsertWithoutMeetsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutEventsInput, UserUpdateWithoutEventsInput>, UserUncheckedUpdateWithoutEventsInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMeetsInput, UserUpdateWithoutMeetsInput>, UserUncheckedUpdateWithoutMeetsInput>
   }
 
-  export type EventUpdateOneRequiredWithoutAttendeesNestedInput = {
-    create?: XOR<EventCreateWithoutAttendeesInput, EventUncheckedCreateWithoutAttendeesInput>
-    connectOrCreate?: EventCreateOrConnectWithoutAttendeesInput
-    upsert?: EventUpsertWithoutAttendeesInput
-    connect?: EventWhereUniqueInput
-    update?: XOR<XOR<EventUpdateToOneWithWhereWithoutAttendeesInput, EventUpdateWithoutAttendeesInput>, EventUncheckedUpdateWithoutAttendeesInput>
+  export type MeetUpdateOneRequiredWithoutAttendeesNestedInput = {
+    create?: XOR<MeetCreateWithoutAttendeesInput, MeetUncheckedCreateWithoutAttendeesInput>
+    connectOrCreate?: MeetCreateOrConnectWithoutAttendeesInput
+    upsert?: MeetUpsertWithoutAttendeesInput
+    connect?: MeetWhereUniqueInput
+    update?: XOR<XOR<MeetUpdateToOneWithWhereWithoutAttendeesInput, MeetUpdateWithoutAttendeesInput>, MeetUncheckedUpdateWithoutAttendeesInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -5350,203 +5350,203 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type UserEventCreateWithoutUserInput = {
-    event: EventCreateNestedOneWithoutAttendeesInput
+  export type UserMeetCreateWithoutUserInput = {
+    meet: MeetCreateNestedOneWithoutAttendeesInput
   }
 
-  export type UserEventUncheckedCreateWithoutUserInput = {
+  export type UserMeetUncheckedCreateWithoutUserInput = {
     id?: number
-    eventId: number
+    meetId: number
   }
 
-  export type UserEventCreateOrConnectWithoutUserInput = {
-    where: UserEventWhereUniqueInput
-    create: XOR<UserEventCreateWithoutUserInput, UserEventUncheckedCreateWithoutUserInput>
+  export type UserMeetCreateOrConnectWithoutUserInput = {
+    where: UserMeetWhereUniqueInput
+    create: XOR<UserMeetCreateWithoutUserInput, UserMeetUncheckedCreateWithoutUserInput>
   }
 
-  export type UserEventCreateManyUserInputEnvelope = {
-    data: UserEventCreateManyUserInput | UserEventCreateManyUserInput[]
+  export type UserMeetCreateManyUserInputEnvelope = {
+    data: UserMeetCreateManyUserInput | UserMeetCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
-  export type UserEventUpsertWithWhereUniqueWithoutUserInput = {
-    where: UserEventWhereUniqueInput
-    update: XOR<UserEventUpdateWithoutUserInput, UserEventUncheckedUpdateWithoutUserInput>
-    create: XOR<UserEventCreateWithoutUserInput, UserEventUncheckedCreateWithoutUserInput>
+  export type UserMeetUpsertWithWhereUniqueWithoutUserInput = {
+    where: UserMeetWhereUniqueInput
+    update: XOR<UserMeetUpdateWithoutUserInput, UserMeetUncheckedUpdateWithoutUserInput>
+    create: XOR<UserMeetCreateWithoutUserInput, UserMeetUncheckedCreateWithoutUserInput>
   }
 
-  export type UserEventUpdateWithWhereUniqueWithoutUserInput = {
-    where: UserEventWhereUniqueInput
-    data: XOR<UserEventUpdateWithoutUserInput, UserEventUncheckedUpdateWithoutUserInput>
+  export type UserMeetUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserMeetWhereUniqueInput
+    data: XOR<UserMeetUpdateWithoutUserInput, UserMeetUncheckedUpdateWithoutUserInput>
   }
 
-  export type UserEventUpdateManyWithWhereWithoutUserInput = {
-    where: UserEventScalarWhereInput
-    data: XOR<UserEventUpdateManyMutationInput, UserEventUncheckedUpdateManyWithoutUserInput>
+  export type UserMeetUpdateManyWithWhereWithoutUserInput = {
+    where: UserMeetScalarWhereInput
+    data: XOR<UserMeetUpdateManyMutationInput, UserMeetUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type UserEventScalarWhereInput = {
-    AND?: UserEventScalarWhereInput | UserEventScalarWhereInput[]
-    OR?: UserEventScalarWhereInput[]
-    NOT?: UserEventScalarWhereInput | UserEventScalarWhereInput[]
-    id?: IntFilter<"UserEvent"> | number
-    userId?: IntFilter<"UserEvent"> | number
-    eventId?: IntFilter<"UserEvent"> | number
+  export type UserMeetScalarWhereInput = {
+    AND?: UserMeetScalarWhereInput | UserMeetScalarWhereInput[]
+    OR?: UserMeetScalarWhereInput[]
+    NOT?: UserMeetScalarWhereInput | UserMeetScalarWhereInput[]
+    id?: IntFilter<"UserMeet"> | number
+    userId?: IntFilter<"UserMeet"> | number
+    meetId?: IntFilter<"UserMeet"> | number
   }
 
-  export type UserEventCreateWithoutEventInput = {
-    user: UserCreateNestedOneWithoutEventsInput
+  export type UserMeetCreateWithoutMeetInput = {
+    user: UserCreateNestedOneWithoutMeetsInput
   }
 
-  export type UserEventUncheckedCreateWithoutEventInput = {
+  export type UserMeetUncheckedCreateWithoutMeetInput = {
     id?: number
     userId: number
   }
 
-  export type UserEventCreateOrConnectWithoutEventInput = {
-    where: UserEventWhereUniqueInput
-    create: XOR<UserEventCreateWithoutEventInput, UserEventUncheckedCreateWithoutEventInput>
+  export type UserMeetCreateOrConnectWithoutMeetInput = {
+    where: UserMeetWhereUniqueInput
+    create: XOR<UserMeetCreateWithoutMeetInput, UserMeetUncheckedCreateWithoutMeetInput>
   }
 
-  export type UserEventCreateManyEventInputEnvelope = {
-    data: UserEventCreateManyEventInput | UserEventCreateManyEventInput[]
+  export type UserMeetCreateManyMeetInputEnvelope = {
+    data: UserMeetCreateManyMeetInput | UserMeetCreateManyMeetInput[]
     skipDuplicates?: boolean
   }
 
-  export type UserEventUpsertWithWhereUniqueWithoutEventInput = {
-    where: UserEventWhereUniqueInput
-    update: XOR<UserEventUpdateWithoutEventInput, UserEventUncheckedUpdateWithoutEventInput>
-    create: XOR<UserEventCreateWithoutEventInput, UserEventUncheckedCreateWithoutEventInput>
+  export type UserMeetUpsertWithWhereUniqueWithoutMeetInput = {
+    where: UserMeetWhereUniqueInput
+    update: XOR<UserMeetUpdateWithoutMeetInput, UserMeetUncheckedUpdateWithoutMeetInput>
+    create: XOR<UserMeetCreateWithoutMeetInput, UserMeetUncheckedCreateWithoutMeetInput>
   }
 
-  export type UserEventUpdateWithWhereUniqueWithoutEventInput = {
-    where: UserEventWhereUniqueInput
-    data: XOR<UserEventUpdateWithoutEventInput, UserEventUncheckedUpdateWithoutEventInput>
+  export type UserMeetUpdateWithWhereUniqueWithoutMeetInput = {
+    where: UserMeetWhereUniqueInput
+    data: XOR<UserMeetUpdateWithoutMeetInput, UserMeetUncheckedUpdateWithoutMeetInput>
   }
 
-  export type UserEventUpdateManyWithWhereWithoutEventInput = {
-    where: UserEventScalarWhereInput
-    data: XOR<UserEventUpdateManyMutationInput, UserEventUncheckedUpdateManyWithoutEventInput>
+  export type UserMeetUpdateManyWithWhereWithoutMeetInput = {
+    where: UserMeetScalarWhereInput
+    data: XOR<UserMeetUpdateManyMutationInput, UserMeetUncheckedUpdateManyWithoutMeetInput>
   }
 
-  export type UserCreateWithoutEventsInput = {
+  export type UserCreateWithoutMeetsInput = {
     username: string
     name?: string | null
     password?: string | null
   }
 
-  export type UserUncheckedCreateWithoutEventsInput = {
+  export type UserUncheckedCreateWithoutMeetsInput = {
     id?: number
     username: string
     name?: string | null
     password?: string | null
   }
 
-  export type UserCreateOrConnectWithoutEventsInput = {
+  export type UserCreateOrConnectWithoutMeetsInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutEventsInput, UserUncheckedCreateWithoutEventsInput>
+    create: XOR<UserCreateWithoutMeetsInput, UserUncheckedCreateWithoutMeetsInput>
   }
 
-  export type EventCreateWithoutAttendeesInput = {
+  export type MeetCreateWithoutAttendeesInput = {
     name: string
     date: Date | string
     points?: number
   }
 
-  export type EventUncheckedCreateWithoutAttendeesInput = {
+  export type MeetUncheckedCreateWithoutAttendeesInput = {
     id?: number
     name: string
     date: Date | string
     points?: number
   }
 
-  export type EventCreateOrConnectWithoutAttendeesInput = {
-    where: EventWhereUniqueInput
-    create: XOR<EventCreateWithoutAttendeesInput, EventUncheckedCreateWithoutAttendeesInput>
+  export type MeetCreateOrConnectWithoutAttendeesInput = {
+    where: MeetWhereUniqueInput
+    create: XOR<MeetCreateWithoutAttendeesInput, MeetUncheckedCreateWithoutAttendeesInput>
   }
 
-  export type UserUpsertWithoutEventsInput = {
-    update: XOR<UserUpdateWithoutEventsInput, UserUncheckedUpdateWithoutEventsInput>
-    create: XOR<UserCreateWithoutEventsInput, UserUncheckedCreateWithoutEventsInput>
+  export type UserUpsertWithoutMeetsInput = {
+    update: XOR<UserUpdateWithoutMeetsInput, UserUncheckedUpdateWithoutMeetsInput>
+    create: XOR<UserCreateWithoutMeetsInput, UserUncheckedCreateWithoutMeetsInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutEventsInput = {
+  export type UserUpdateToOneWithWhereWithoutMeetsInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutEventsInput, UserUncheckedUpdateWithoutEventsInput>
+    data: XOR<UserUpdateWithoutMeetsInput, UserUncheckedUpdateWithoutMeetsInput>
   }
 
-  export type UserUpdateWithoutEventsInput = {
+  export type UserUpdateWithoutMeetsInput = {
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type UserUncheckedUpdateWithoutEventsInput = {
+  export type UserUncheckedUpdateWithoutMeetsInput = {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type EventUpsertWithoutAttendeesInput = {
-    update: XOR<EventUpdateWithoutAttendeesInput, EventUncheckedUpdateWithoutAttendeesInput>
-    create: XOR<EventCreateWithoutAttendeesInput, EventUncheckedCreateWithoutAttendeesInput>
-    where?: EventWhereInput
+  export type MeetUpsertWithoutAttendeesInput = {
+    update: XOR<MeetUpdateWithoutAttendeesInput, MeetUncheckedUpdateWithoutAttendeesInput>
+    create: XOR<MeetCreateWithoutAttendeesInput, MeetUncheckedCreateWithoutAttendeesInput>
+    where?: MeetWhereInput
   }
 
-  export type EventUpdateToOneWithWhereWithoutAttendeesInput = {
-    where?: EventWhereInput
-    data: XOR<EventUpdateWithoutAttendeesInput, EventUncheckedUpdateWithoutAttendeesInput>
+  export type MeetUpdateToOneWithWhereWithoutAttendeesInput = {
+    where?: MeetWhereInput
+    data: XOR<MeetUpdateWithoutAttendeesInput, MeetUncheckedUpdateWithoutAttendeesInput>
   }
 
-  export type EventUpdateWithoutAttendeesInput = {
+  export type MeetUpdateWithoutAttendeesInput = {
     name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     points?: IntFieldUpdateOperationsInput | number
   }
 
-  export type EventUncheckedUpdateWithoutAttendeesInput = {
+  export type MeetUncheckedUpdateWithoutAttendeesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     points?: IntFieldUpdateOperationsInput | number
   }
 
-  export type UserEventCreateManyUserInput = {
+  export type UserMeetCreateManyUserInput = {
     id?: number
-    eventId: number
+    meetId: number
   }
 
-  export type UserEventUpdateWithoutUserInput = {
-    event?: EventUpdateOneRequiredWithoutAttendeesNestedInput
+  export type UserMeetUpdateWithoutUserInput = {
+    meet?: MeetUpdateOneRequiredWithoutAttendeesNestedInput
   }
 
-  export type UserEventUncheckedUpdateWithoutUserInput = {
+  export type UserMeetUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    eventId?: IntFieldUpdateOperationsInput | number
+    meetId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type UserEventUncheckedUpdateManyWithoutUserInput = {
+  export type UserMeetUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    eventId?: IntFieldUpdateOperationsInput | number
+    meetId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type UserEventCreateManyEventInput = {
+  export type UserMeetCreateManyMeetInput = {
     id?: number
     userId: number
   }
 
-  export type UserEventUpdateWithoutEventInput = {
-    user?: UserUpdateOneRequiredWithoutEventsNestedInput
+  export type UserMeetUpdateWithoutMeetInput = {
+    user?: UserUpdateOneRequiredWithoutMeetsNestedInput
   }
 
-  export type UserEventUncheckedUpdateWithoutEventInput = {
+  export type UserMeetUncheckedUpdateWithoutMeetInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
   }
 
-  export type UserEventUncheckedUpdateManyWithoutEventInput = {
+  export type UserMeetUncheckedUpdateManyWithoutMeetInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
   }

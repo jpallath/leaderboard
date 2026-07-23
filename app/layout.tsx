@@ -26,12 +26,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <div className="bg-background text-2xl text-accent text-center p-4 w-full border-surface-border border-2 rounded-b-xl">
-          DSA Running Club Leaderboard
-        </div>
-        {children}
-      </body>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }
