@@ -1,4 +1,4 @@
-import { registerUser, loginUser } from "@/app/actions/auth";
+import { registerUser, loginUser } from "@/actions/auth";
 
 type RegisterSigninUserProps = {
   searchParams: Promise<{

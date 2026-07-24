@@ -131,8 +131,11 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.MeetScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  location: 'location',
   date: 'date',
-  points: 'points'
+  points: 'points',
+  creatorId: 'creatorId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.UserMeetScalarFieldEnum = {

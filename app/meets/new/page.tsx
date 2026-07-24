@@ -1,6 +1,6 @@
 import { getCurrentCore } from "@/lib/auth";
 import { redirect } from "next/navigation";
-import { NewEventForm } from "./NewPageForm";
+import { NewMeetForm } from "./NewMeetForm";
 
 export default async function page() {
   const currentUser = await getCurrentCore();
@@ -8,9 +8,11 @@ export default async function page() {
     redirect("/");
   }
 
+  const rootURL = process.env.ROOT_URL || "http://localhost:3000";
+
   return (
-    <main>
-      <NewEventForm />
-    </main>
+    <>
+      <NewMeetForm currentUser={currentUser} rootURL={rootURL} />
+    </>
   );
 }

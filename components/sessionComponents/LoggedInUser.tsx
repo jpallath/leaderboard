@@ -1,4 +1,5 @@
-import { logoutUser } from "@/app/actions/auth";
+"use client";
+import { logoutUser } from "@/actions/auth";
 import Leaderboard from "../leaderboard";
 import { CurrentUserProps } from "@/app/types";
 import Link from "next/link";
@@ -15,17 +16,22 @@ export const LoggedInUser = ({ username, name, meets }: CurrentUserProps) => {
         </h1>
         <div className="flex items-center gap-2 justify-center">
           <Link
-            href={"/events/new"}
+            href={"/meets"}
             className="text-xs text-accent hover:text-accent font-medium transition p-2"
           >
-            New Event
+            All Meets
           </Link>
-          <button
-            onClick={logoutUser}
-            className="text-xs text-content-muted hover:text-accent font-medium transition p-2"
+          <Link
+            href={"/meets/new"}
+            className="text-xs text-accent hover:text-accent font-medium transition p-2"
           >
-            Sign Out
-          </button>
+            New Meet
+          </Link>
+          <form action={logoutUser}>
+            <button className="text-xs text-content-muted hover:text-accent font-medium transition p-2">
+              Sign Out
+            </button>
+          </form>
         </div>
       </div>
     </main>

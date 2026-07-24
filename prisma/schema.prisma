@@ -13,20 +13,25 @@ enum UserType {
 }
 
 model User {
-  id       Int        @id @default(autoincrement())
-  username String     @unique
-  name     String?
-  password String?
-  userType UserType   @default(user)
-  meets    UserMeet[]
+  id           Int        @id @default(autoincrement())
+  username     String     @unique
+  name         String?
+  password     String?
+  userType     UserType   @default(user)
+  meets        UserMeet[]
+  createdMeets Meet[]     @relation("MeetCreator")
 }
 
 model Meet {
   id        Int        @id @default(autoincrement())
   name      String
-  date      DateTime
+  location  String
+  date      String
   attendees UserMeet[]
   points    Int        @default(1)
+  creatorId Int
+  creator   User       @relation("MeetCreator", fields: [creatorId], references: [id], onDelete: Cascade)
+  createdAt DateTime   @default(now())
 }
 
 model UserMeet {

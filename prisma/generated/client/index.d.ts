@@ -1094,10 +1094,12 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     meets: number
+    createdMeets: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meets?: boolean | UserCountOutputTypeCountMeetsArgs
+    createdMeets?: boolean | UserCountOutputTypeCountCreatedMeetsArgs
   }
 
   // Custom InputTypes
@@ -1116,6 +1118,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountMeetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserMeetWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCreatedMeetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MeetWhereInput
   }
 
 
@@ -1353,6 +1362,7 @@ export namespace Prisma {
     password?: boolean
     userType?: boolean
     meets?: boolean | User$meetsArgs<ExtArgs>
+    createdMeets?: boolean | User$createdMeetsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1383,6 +1393,7 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "password" | "userType", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meets?: boolean | User$meetsArgs<ExtArgs>
+    createdMeets?: boolean | User$createdMeetsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1392,6 +1403,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       meets: Prisma.$UserMeetPayload<ExtArgs>[]
+      createdMeets: Prisma.$MeetPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -1794,6 +1806,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     meets<T extends User$meetsArgs<ExtArgs> = {}>(args?: Subset<T, User$meetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserMeetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    createdMeets<T extends User$createdMeetsArgs<ExtArgs> = {}>(args?: Subset<T, User$createdMeetsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MeetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2245,6 +2258,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.createdMeets
+   */
+  export type User$createdMeetsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Meet
+     */
+    select?: MeetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Meet
+     */
+    omit?: MeetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetInclude<ExtArgs> | null
+    where?: MeetWhereInput
+    orderBy?: MeetOrderByWithRelationInput | MeetOrderByWithRelationInput[]
+    cursor?: MeetWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MeetScalarFieldEnum | MeetScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2278,32 +2315,43 @@ export namespace Prisma {
   export type MeetAvgAggregateOutputType = {
     id: number | null
     points: number | null
+    creatorId: number | null
   }
 
   export type MeetSumAggregateOutputType = {
     id: number | null
     points: number | null
+    creatorId: number | null
   }
 
   export type MeetMinAggregateOutputType = {
     id: number | null
     name: string | null
-    date: Date | null
+    location: string | null
+    date: string | null
     points: number | null
+    creatorId: number | null
+    createdAt: Date | null
   }
 
   export type MeetMaxAggregateOutputType = {
     id: number | null
     name: string | null
-    date: Date | null
+    location: string | null
+    date: string | null
     points: number | null
+    creatorId: number | null
+    createdAt: Date | null
   }
 
   export type MeetCountAggregateOutputType = {
     id: number
     name: number
+    location: number
     date: number
     points: number
+    creatorId: number
+    createdAt: number
     _all: number
   }
 
@@ -2311,32 +2359,43 @@ export namespace Prisma {
   export type MeetAvgAggregateInputType = {
     id?: true
     points?: true
+    creatorId?: true
   }
 
   export type MeetSumAggregateInputType = {
     id?: true
     points?: true
+    creatorId?: true
   }
 
   export type MeetMinAggregateInputType = {
     id?: true
     name?: true
+    location?: true
     date?: true
     points?: true
+    creatorId?: true
+    createdAt?: true
   }
 
   export type MeetMaxAggregateInputType = {
     id?: true
     name?: true
+    location?: true
     date?: true
     points?: true
+    creatorId?: true
+    createdAt?: true
   }
 
   export type MeetCountAggregateInputType = {
     id?: true
     name?: true
+    location?: true
     date?: true
     points?: true
+    creatorId?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -2429,8 +2488,11 @@ export namespace Prisma {
   export type MeetGroupByOutputType = {
     id: number
     name: string
-    date: Date
+    location: string
+    date: string
     points: number
+    creatorId: number
+    createdAt: Date
     _count: MeetCountAggregateOutputType | null
     _avg: MeetAvgAggregateOutputType | null
     _sum: MeetSumAggregateOutputType | null
@@ -2455,51 +2517,75 @@ export namespace Prisma {
   export type MeetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    location?: boolean
     date?: boolean
     points?: boolean
+    creatorId?: boolean
+    createdAt?: boolean
     attendees?: boolean | Meet$attendeesArgs<ExtArgs>
+    creator?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | MeetCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["meet"]>
 
   export type MeetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    location?: boolean
     date?: boolean
     points?: boolean
+    creatorId?: boolean
+    createdAt?: boolean
+    creator?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["meet"]>
 
   export type MeetSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    location?: boolean
     date?: boolean
     points?: boolean
+    creatorId?: boolean
+    createdAt?: boolean
+    creator?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["meet"]>
 
   export type MeetSelectScalar = {
     id?: boolean
     name?: boolean
+    location?: boolean
     date?: boolean
     points?: boolean
+    creatorId?: boolean
+    createdAt?: boolean
   }
 
-  export type MeetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "date" | "points", ExtArgs["result"]["meet"]>
+  export type MeetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "location" | "date" | "points" | "creatorId" | "createdAt", ExtArgs["result"]["meet"]>
   export type MeetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     attendees?: boolean | Meet$attendeesArgs<ExtArgs>
+    creator?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | MeetCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type MeetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type MeetIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type MeetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type MeetIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }
 
   export type $MeetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Meet"
     objects: {
       attendees: Prisma.$UserMeetPayload<ExtArgs>[]
+      creator: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
-      date: Date
+      location: string
+      date: string
       points: number
+      creatorId: number
+      createdAt: Date
     }, ExtArgs["result"]["meet"]>
     composites: {}
   }
@@ -2895,6 +2981,7 @@ export namespace Prisma {
   export interface Prisma__MeetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     attendees<T extends Meet$attendeesArgs<ExtArgs> = {}>(args?: Subset<T, Meet$attendeesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserMeetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    creator<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2926,8 +3013,11 @@ export namespace Prisma {
   interface MeetFieldRefs {
     readonly id: FieldRef<"Meet", 'Int'>
     readonly name: FieldRef<"Meet", 'String'>
-    readonly date: FieldRef<"Meet", 'DateTime'>
+    readonly location: FieldRef<"Meet", 'String'>
+    readonly date: FieldRef<"Meet", 'String'>
     readonly points: FieldRef<"Meet", 'Int'>
+    readonly creatorId: FieldRef<"Meet", 'Int'>
+    readonly createdAt: FieldRef<"Meet", 'DateTime'>
   }
     
 
@@ -3182,6 +3272,10 @@ export namespace Prisma {
      */
     data: MeetCreateManyInput | MeetCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -3252,6 +3346,10 @@ export namespace Prisma {
      * Limit how many Meets to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MeetIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -4478,8 +4576,11 @@ export namespace Prisma {
   export const MeetScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    location: 'location',
     date: 'date',
-    points: 'points'
+    points: 'points',
+    creatorId: 'creatorId',
+    createdAt: 'createdAt'
   };
 
   export type MeetScalarFieldEnum = (typeof MeetScalarFieldEnum)[keyof typeof MeetScalarFieldEnum]
@@ -4606,6 +4707,7 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     userType?: EnumUserTypeFilter<"User"> | $Enums.UserType
     meets?: UserMeetListRelationFilter
+    createdMeets?: MeetListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -4615,6 +4717,7 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     userType?: SortOrder
     meets?: UserMeetOrderByRelationAggregateInput
+    createdMeets?: MeetOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4627,6 +4730,7 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     userType?: EnumUserTypeFilter<"User"> | $Enums.UserType
     meets?: UserMeetListRelationFilter
+    createdMeets?: MeetListRelationFilter
   }, "id" | "username">
 
   export type UserOrderByWithAggregationInput = {
@@ -4659,17 +4763,25 @@ export namespace Prisma {
     NOT?: MeetWhereInput | MeetWhereInput[]
     id?: IntFilter<"Meet"> | number
     name?: StringFilter<"Meet"> | string
-    date?: DateTimeFilter<"Meet"> | Date | string
+    location?: StringFilter<"Meet"> | string
+    date?: StringFilter<"Meet"> | string
     points?: IntFilter<"Meet"> | number
+    creatorId?: IntFilter<"Meet"> | number
+    createdAt?: DateTimeFilter<"Meet"> | Date | string
     attendees?: UserMeetListRelationFilter
+    creator?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type MeetOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    location?: SortOrder
     date?: SortOrder
     points?: SortOrder
+    creatorId?: SortOrder
+    createdAt?: SortOrder
     attendees?: UserMeetOrderByRelationAggregateInput
+    creator?: UserOrderByWithRelationInput
   }
 
   export type MeetWhereUniqueInput = Prisma.AtLeast<{
@@ -4678,16 +4790,23 @@ export namespace Prisma {
     OR?: MeetWhereInput[]
     NOT?: MeetWhereInput | MeetWhereInput[]
     name?: StringFilter<"Meet"> | string
-    date?: DateTimeFilter<"Meet"> | Date | string
+    location?: StringFilter<"Meet"> | string
+    date?: StringFilter<"Meet"> | string
     points?: IntFilter<"Meet"> | number
+    creatorId?: IntFilter<"Meet"> | number
+    createdAt?: DateTimeFilter<"Meet"> | Date | string
     attendees?: UserMeetListRelationFilter
+    creator?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type MeetOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    location?: SortOrder
     date?: SortOrder
     points?: SortOrder
+    creatorId?: SortOrder
+    createdAt?: SortOrder
     _count?: MeetCountOrderByAggregateInput
     _avg?: MeetAvgOrderByAggregateInput
     _max?: MeetMaxOrderByAggregateInput
@@ -4701,8 +4820,11 @@ export namespace Prisma {
     NOT?: MeetScalarWhereWithAggregatesInput | MeetScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Meet"> | number
     name?: StringWithAggregatesFilter<"Meet"> | string
-    date?: DateTimeWithAggregatesFilter<"Meet"> | Date | string
+    location?: StringWithAggregatesFilter<"Meet"> | string
+    date?: StringWithAggregatesFilter<"Meet"> | string
     points?: IntWithAggregatesFilter<"Meet"> | number
+    creatorId?: IntWithAggregatesFilter<"Meet"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"Meet"> | Date | string
   }
 
   export type UserMeetWhereInput = {
@@ -4762,6 +4884,7 @@ export namespace Prisma {
     password?: string | null
     userType?: $Enums.UserType
     meets?: UserMeetCreateNestedManyWithoutUserInput
+    createdMeets?: MeetCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -4771,6 +4894,7 @@ export namespace Prisma {
     password?: string | null
     userType?: $Enums.UserType
     meets?: UserMeetUncheckedCreateNestedManyWithoutUserInput
+    createdMeets?: MeetUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUpdateInput = {
@@ -4779,6 +4903,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     meets?: UserMeetUpdateManyWithoutUserNestedInput
+    createdMeets?: MeetUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -4788,6 +4913,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     meets?: UserMeetUncheckedUpdateManyWithoutUserNestedInput
+    createdMeets?: MeetUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -4815,52 +4941,72 @@ export namespace Prisma {
 
   export type MeetCreateInput = {
     name: string
-    date: Date | string
+    location: string
+    date: string
     points?: number
+    createdAt?: Date | string
     attendees?: UserMeetCreateNestedManyWithoutMeetInput
+    creator: UserCreateNestedOneWithoutCreatedMeetsInput
   }
 
   export type MeetUncheckedCreateInput = {
     id?: number
     name: string
-    date: Date | string
+    location: string
+    date: string
     points?: number
+    creatorId: number
+    createdAt?: Date | string
     attendees?: UserMeetUncheckedCreateNestedManyWithoutMeetInput
   }
 
   export type MeetUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
     points?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attendees?: UserMeetUpdateManyWithoutMeetNestedInput
+    creator?: UserUpdateOneRequiredWithoutCreatedMeetsNestedInput
   }
 
   export type MeetUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
     points?: IntFieldUpdateOperationsInput | number
+    creatorId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     attendees?: UserMeetUncheckedUpdateManyWithoutMeetNestedInput
   }
 
   export type MeetCreateManyInput = {
     id?: number
     name: string
-    date: Date | string
+    location: string
+    date: string
     points?: number
+    creatorId: number
+    createdAt?: Date | string
   }
 
   export type MeetUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
     points?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MeetUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
     points?: IntFieldUpdateOperationsInput | number
+    creatorId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserMeetCreateInput = {
@@ -4955,12 +5101,22 @@ export namespace Prisma {
     none?: UserMeetWhereInput
   }
 
+  export type MeetListRelationFilter = {
+    every?: MeetWhereInput
+    some?: MeetWhereInput
+    none?: MeetWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
   }
 
   export type UserMeetOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MeetOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -5069,35 +5225,51 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
   export type MeetCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    location?: SortOrder
     date?: SortOrder
     points?: SortOrder
+    creatorId?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type MeetAvgOrderByAggregateInput = {
     id?: SortOrder
     points?: SortOrder
+    creatorId?: SortOrder
   }
 
   export type MeetMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    location?: SortOrder
     date?: SortOrder
     points?: SortOrder
+    creatorId?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type MeetMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    location?: SortOrder
     date?: SortOrder
     points?: SortOrder
+    creatorId?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type MeetSumOrderByAggregateInput = {
     id?: SortOrder
     points?: SortOrder
+    creatorId?: SortOrder
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -5112,11 +5284,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
   }
 
   export type MeetScalarRelationFilter = {
@@ -5166,11 +5333,25 @@ export namespace Prisma {
     connect?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
   }
 
+  export type MeetCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<MeetCreateWithoutCreatorInput, MeetUncheckedCreateWithoutCreatorInput> | MeetCreateWithoutCreatorInput[] | MeetUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: MeetCreateOrConnectWithoutCreatorInput | MeetCreateOrConnectWithoutCreatorInput[]
+    createMany?: MeetCreateManyCreatorInputEnvelope
+    connect?: MeetWhereUniqueInput | MeetWhereUniqueInput[]
+  }
+
   export type UserMeetUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<UserMeetCreateWithoutUserInput, UserMeetUncheckedCreateWithoutUserInput> | UserMeetCreateWithoutUserInput[] | UserMeetUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserMeetCreateOrConnectWithoutUserInput | UserMeetCreateOrConnectWithoutUserInput[]
     createMany?: UserMeetCreateManyUserInputEnvelope
     connect?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+  }
+
+  export type MeetUncheckedCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<MeetCreateWithoutCreatorInput, MeetUncheckedCreateWithoutCreatorInput> | MeetCreateWithoutCreatorInput[] | MeetUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: MeetCreateOrConnectWithoutCreatorInput | MeetCreateOrConnectWithoutCreatorInput[]
+    createMany?: MeetCreateManyCreatorInputEnvelope
+    connect?: MeetWhereUniqueInput | MeetWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -5199,6 +5380,20 @@ export namespace Prisma {
     deleteMany?: UserMeetScalarWhereInput | UserMeetScalarWhereInput[]
   }
 
+  export type MeetUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<MeetCreateWithoutCreatorInput, MeetUncheckedCreateWithoutCreatorInput> | MeetCreateWithoutCreatorInput[] | MeetUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: MeetCreateOrConnectWithoutCreatorInput | MeetCreateOrConnectWithoutCreatorInput[]
+    upsert?: MeetUpsertWithWhereUniqueWithoutCreatorInput | MeetUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: MeetCreateManyCreatorInputEnvelope
+    set?: MeetWhereUniqueInput | MeetWhereUniqueInput[]
+    disconnect?: MeetWhereUniqueInput | MeetWhereUniqueInput[]
+    delete?: MeetWhereUniqueInput | MeetWhereUniqueInput[]
+    connect?: MeetWhereUniqueInput | MeetWhereUniqueInput[]
+    update?: MeetUpdateWithWhereUniqueWithoutCreatorInput | MeetUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: MeetUpdateManyWithWhereWithoutCreatorInput | MeetUpdateManyWithWhereWithoutCreatorInput[]
+    deleteMany?: MeetScalarWhereInput | MeetScalarWhereInput[]
+  }
+
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
@@ -5221,11 +5416,31 @@ export namespace Prisma {
     deleteMany?: UserMeetScalarWhereInput | UserMeetScalarWhereInput[]
   }
 
+  export type MeetUncheckedUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<MeetCreateWithoutCreatorInput, MeetUncheckedCreateWithoutCreatorInput> | MeetCreateWithoutCreatorInput[] | MeetUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: MeetCreateOrConnectWithoutCreatorInput | MeetCreateOrConnectWithoutCreatorInput[]
+    upsert?: MeetUpsertWithWhereUniqueWithoutCreatorInput | MeetUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: MeetCreateManyCreatorInputEnvelope
+    set?: MeetWhereUniqueInput | MeetWhereUniqueInput[]
+    disconnect?: MeetWhereUniqueInput | MeetWhereUniqueInput[]
+    delete?: MeetWhereUniqueInput | MeetWhereUniqueInput[]
+    connect?: MeetWhereUniqueInput | MeetWhereUniqueInput[]
+    update?: MeetUpdateWithWhereUniqueWithoutCreatorInput | MeetUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: MeetUpdateManyWithWhereWithoutCreatorInput | MeetUpdateManyWithWhereWithoutCreatorInput[]
+    deleteMany?: MeetScalarWhereInput | MeetScalarWhereInput[]
+  }
+
   export type UserMeetCreateNestedManyWithoutMeetInput = {
     create?: XOR<UserMeetCreateWithoutMeetInput, UserMeetUncheckedCreateWithoutMeetInput> | UserMeetCreateWithoutMeetInput[] | UserMeetUncheckedCreateWithoutMeetInput[]
     connectOrCreate?: UserMeetCreateOrConnectWithoutMeetInput | UserMeetCreateOrConnectWithoutMeetInput[]
     createMany?: UserMeetCreateManyMeetInputEnvelope
     connect?: UserMeetWhereUniqueInput | UserMeetWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedOneWithoutCreatedMeetsInput = {
+    create?: XOR<UserCreateWithoutCreatedMeetsInput, UserUncheckedCreateWithoutCreatedMeetsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCreatedMeetsInput
+    connect?: UserWhereUniqueInput
   }
 
   export type UserMeetUncheckedCreateNestedManyWithoutMeetInput = {
@@ -5251,6 +5466,14 @@ export namespace Prisma {
     update?: UserMeetUpdateWithWhereUniqueWithoutMeetInput | UserMeetUpdateWithWhereUniqueWithoutMeetInput[]
     updateMany?: UserMeetUpdateManyWithWhereWithoutMeetInput | UserMeetUpdateManyWithWhereWithoutMeetInput[]
     deleteMany?: UserMeetScalarWhereInput | UserMeetScalarWhereInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutCreatedMeetsNestedInput = {
+    create?: XOR<UserCreateWithoutCreatedMeetsInput, UserUncheckedCreateWithoutCreatedMeetsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCreatedMeetsInput
+    upsert?: UserUpsertWithoutCreatedMeetsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCreatedMeetsInput, UserUpdateWithoutCreatedMeetsInput>, UserUncheckedUpdateWithoutCreatedMeetsInput>
   }
 
   export type UserMeetUncheckedUpdateManyWithoutMeetNestedInput = {
@@ -5467,6 +5690,35 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type MeetCreateWithoutCreatorInput = {
+    name: string
+    location: string
+    date: string
+    points?: number
+    createdAt?: Date | string
+    attendees?: UserMeetCreateNestedManyWithoutMeetInput
+  }
+
+  export type MeetUncheckedCreateWithoutCreatorInput = {
+    id?: number
+    name: string
+    location: string
+    date: string
+    points?: number
+    createdAt?: Date | string
+    attendees?: UserMeetUncheckedCreateNestedManyWithoutMeetInput
+  }
+
+  export type MeetCreateOrConnectWithoutCreatorInput = {
+    where: MeetWhereUniqueInput
+    create: XOR<MeetCreateWithoutCreatorInput, MeetUncheckedCreateWithoutCreatorInput>
+  }
+
+  export type MeetCreateManyCreatorInputEnvelope = {
+    data: MeetCreateManyCreatorInput | MeetCreateManyCreatorInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserMeetUpsertWithWhereUniqueWithoutUserInput = {
     where: UserMeetWhereUniqueInput
     update: XOR<UserMeetUpdateWithoutUserInput, UserMeetUncheckedUpdateWithoutUserInput>
@@ -5492,6 +5744,35 @@ export namespace Prisma {
     meetId?: IntFilter<"UserMeet"> | number
   }
 
+  export type MeetUpsertWithWhereUniqueWithoutCreatorInput = {
+    where: MeetWhereUniqueInput
+    update: XOR<MeetUpdateWithoutCreatorInput, MeetUncheckedUpdateWithoutCreatorInput>
+    create: XOR<MeetCreateWithoutCreatorInput, MeetUncheckedCreateWithoutCreatorInput>
+  }
+
+  export type MeetUpdateWithWhereUniqueWithoutCreatorInput = {
+    where: MeetWhereUniqueInput
+    data: XOR<MeetUpdateWithoutCreatorInput, MeetUncheckedUpdateWithoutCreatorInput>
+  }
+
+  export type MeetUpdateManyWithWhereWithoutCreatorInput = {
+    where: MeetScalarWhereInput
+    data: XOR<MeetUpdateManyMutationInput, MeetUncheckedUpdateManyWithoutCreatorInput>
+  }
+
+  export type MeetScalarWhereInput = {
+    AND?: MeetScalarWhereInput | MeetScalarWhereInput[]
+    OR?: MeetScalarWhereInput[]
+    NOT?: MeetScalarWhereInput | MeetScalarWhereInput[]
+    id?: IntFilter<"Meet"> | number
+    name?: StringFilter<"Meet"> | string
+    location?: StringFilter<"Meet"> | string
+    date?: StringFilter<"Meet"> | string
+    points?: IntFilter<"Meet"> | number
+    creatorId?: IntFilter<"Meet"> | number
+    createdAt?: DateTimeFilter<"Meet"> | Date | string
+  }
+
   export type UserMeetCreateWithoutMeetInput = {
     user: UserCreateNestedOneWithoutMeetsInput
   }
@@ -5511,6 +5792,28 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type UserCreateWithoutCreatedMeetsInput = {
+    username: string
+    name?: string | null
+    password?: string | null
+    userType?: $Enums.UserType
+    meets?: UserMeetCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutCreatedMeetsInput = {
+    id?: number
+    username: string
+    name?: string | null
+    password?: string | null
+    userType?: $Enums.UserType
+    meets?: UserMeetUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutCreatedMeetsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCreatedMeetsInput, UserUncheckedCreateWithoutCreatedMeetsInput>
+  }
+
   export type UserMeetUpsertWithWhereUniqueWithoutMeetInput = {
     where: UserMeetWhereUniqueInput
     update: XOR<UserMeetUpdateWithoutMeetInput, UserMeetUncheckedUpdateWithoutMeetInput>
@@ -5527,11 +5830,40 @@ export namespace Prisma {
     data: XOR<UserMeetUpdateManyMutationInput, UserMeetUncheckedUpdateManyWithoutMeetInput>
   }
 
+  export type UserUpsertWithoutCreatedMeetsInput = {
+    update: XOR<UserUpdateWithoutCreatedMeetsInput, UserUncheckedUpdateWithoutCreatedMeetsInput>
+    create: XOR<UserCreateWithoutCreatedMeetsInput, UserUncheckedCreateWithoutCreatedMeetsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCreatedMeetsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCreatedMeetsInput, UserUncheckedUpdateWithoutCreatedMeetsInput>
+  }
+
+  export type UserUpdateWithoutCreatedMeetsInput = {
+    username?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    meets?: UserMeetUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCreatedMeetsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    username?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    password?: NullableStringFieldUpdateOperationsInput | string | null
+    userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    meets?: UserMeetUncheckedUpdateManyWithoutUserNestedInput
+  }
+
   export type UserCreateWithoutMeetsInput = {
     username: string
     name?: string | null
     password?: string | null
     userType?: $Enums.UserType
+    createdMeets?: MeetCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutMeetsInput = {
@@ -5540,6 +5872,7 @@ export namespace Prisma {
     name?: string | null
     password?: string | null
     userType?: $Enums.UserType
+    createdMeets?: MeetUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutMeetsInput = {
@@ -5549,15 +5882,21 @@ export namespace Prisma {
 
   export type MeetCreateWithoutAttendeesInput = {
     name: string
-    date: Date | string
+    location: string
+    date: string
     points?: number
+    createdAt?: Date | string
+    creator: UserCreateNestedOneWithoutCreatedMeetsInput
   }
 
   export type MeetUncheckedCreateWithoutAttendeesInput = {
     id?: number
     name: string
-    date: Date | string
+    location: string
+    date: string
     points?: number
+    creatorId: number
+    createdAt?: Date | string
   }
 
   export type MeetCreateOrConnectWithoutAttendeesInput = {
@@ -5581,6 +5920,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    createdMeets?: MeetUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMeetsInput = {
@@ -5589,6 +5929,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    createdMeets?: MeetUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type MeetUpsertWithoutAttendeesInput = {
@@ -5604,20 +5945,35 @@ export namespace Prisma {
 
   export type MeetUpdateWithoutAttendeesInput = {
     name?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
     points?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creator?: UserUpdateOneRequiredWithoutCreatedMeetsNestedInput
   }
 
   export type MeetUncheckedUpdateWithoutAttendeesInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    location?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
     points?: IntFieldUpdateOperationsInput | number
+    creatorId?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserMeetCreateManyUserInput = {
     id?: number
     meetId: number
+  }
+
+  export type MeetCreateManyCreatorInput = {
+    id?: number
+    name: string
+    location: string
+    date: string
+    points?: number
+    createdAt?: Date | string
   }
 
   export type UserMeetUpdateWithoutUserInput = {
@@ -5632,6 +5988,34 @@ export namespace Prisma {
   export type UserMeetUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     meetId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type MeetUpdateWithoutCreatorInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    points?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    attendees?: UserMeetUpdateManyWithoutMeetNestedInput
+  }
+
+  export type MeetUncheckedUpdateWithoutCreatorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    points?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    attendees?: UserMeetUncheckedUpdateManyWithoutMeetNestedInput
+  }
+
+  export type MeetUncheckedUpdateManyWithoutCreatorInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    date?: StringFieldUpdateOperationsInput | string
+    points?: IntFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserMeetCreateManyMeetInput = {
