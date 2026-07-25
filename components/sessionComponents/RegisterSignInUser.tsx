@@ -1,16 +1,47 @@
+"use client";
+
+import { useState } from "react";
 import { registerUser, loginUser } from "@/actions/auth";
+import { useRouter } from "next/navigation";
 
-type RegisterSigninUserProps = {
-  searchParams: Promise<{
-    mode?: string;
-  }>;
-};
-
-export const RegisterSigninUser = async ({
+export const RegisterSigninUser = ({
   searchParams,
-}: RegisterSigninUserProps) => {
-  const resolvedParams = await searchParams;
-  const isRegistering = resolvedParams.mode === "register";
+}: {
+  searchParams: { mode?: string } | Promise<{ mode?: string }>;
+}) => {
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  const isRegistering =
+    typeof window !== "undefined" &&
+    window.location.search.includes("mode=register");
+
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError(null);
+    setIsLoading(true);
+
+    const formData = new FormData(event.currentTarget);
+
+    try {
+      const res = isRegistering
+        ? await registerUser(formData)
+        : await loginUser(formData);
+
+      if (res?.error) {
+        setError(res.error);
+        setIsLoading(false);
+      } else {
+        router.push("/");
+        router.refresh();
+      }
+    } catch (err) {
+      setError("An unexpected error occurred. Please try again.");
+      setIsLoading(false);
+    }
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-background text-content">
       <div className="w-full max-w-md rounded-2xl bg-surface border border-surface-border p-8 shadow-xl">
@@ -25,10 +56,13 @@ export const RegisterSigninUser = async ({
           </p>
         </div>
 
-        <form
-          action={isRegistering ? registerUser : loginUser}
-          className="space-y-4"
-        >
+        {error && (
+          <div className="mb-4 p-3 bg-red-500/10 border border-red-500 text-red-500 text-sm rounded-xl text-center font-medium">
+            {error}
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
           {isRegistering && (
             <div>
               <label className="block text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
@@ -72,9 +106,14 @@ export const RegisterSigninUser = async ({
 
           <button
             type="submit"
-            className="w-full rounded-xl bg-accent hover:opacity-90 active:scale-[0.98] px-4 py-3 font-semibold text-white transition shadow-sm mt-2"
+            disabled={isLoading}
+            className="w-full rounded-xl bg-accent hover:opacity-90 active:scale-[0.98] px-4 py-3 font-semibold text-white transition shadow-sm mt-2 disabled:opacity-50"
           >
-            {isRegistering ? "Create Account" : "Sign In"}
+            {isLoading
+              ? "Processing..."
+              : isRegistering
+                ? "Create Account"
+                : "Sign In"}
           </button>
         </form>
 

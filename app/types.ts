@@ -1,3 +1,5 @@
+import { UserType } from "@/prisma/generated/client";
+
 export type CurrentUserProps = {
   id?: number;
   username: string;
@@ -9,11 +11,19 @@ export type CurrentUserProps = {
     meetId: number;
     meet: MeetProps;
   }[];
+  leaders?: {
+    id: number;
+    username: string;
+    name: string;
+    totalPoints: number;
+    place: number;
+  }[];
 };
 
 export type UserProps = {
   username: string;
   id: number;
+  name?: string | null;
 };
 
 export type MeetProps = {
@@ -31,4 +41,22 @@ export type CurrentUserWithoutMeetsProps = {
   username: string;
   name: string | null;
   userType: string;
+};
+
+export type LeaderboardProps = {
+  leaders?: {
+    id: number;
+    username: string;
+    name: string;
+    totalPoints: number;
+    place: number;
+  }[];
+};
+
+export type LeaderItemProps = {
+  id: number;
+  username: string;
+  name: string;
+  totalPoints: number;
+  place: number;
 };

@@ -2,7 +2,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { JoinMeet } from "./JoinMeet";
 import { AttendingMeet } from "./AttendingMeet";
-import { UserProps } from "@/app/types";
+
 type MeetPageProps = {
   params: Promise<{
     id: string;

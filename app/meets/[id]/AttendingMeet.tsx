@@ -2,19 +2,7 @@
 import { leaveMeet } from "@/actions/userMeets";
 import { CurrentUserProps, MeetProps, UserProps } from "@/app/types";
 import { ShowQRCode } from "@/components/qrCodes/ShowQRCode";
-import { MeetLocation } from "@/constants/meetingLocations";
-
-// Map the string values to their human-readable labels
-const locationLabels: Record<string, string> = {
-  [MeetLocation.ProspectMorning]: "Prospect Park Morning Loop",
-  [MeetLocation.ProspectEvening]: "Prospect Park Evening Loop",
-  [MeetLocation.Riverside]: "Riverside Evening Run",
-  [MeetLocation.Sunset]: "Sunset Park Lap",
-  [MeetLocation.CentralPark]: "Central Park Run",
-  [MeetLocation.Chinatown]: "Chinatown Office Loop",
-  [MeetLocation.Queens]: "Queens",
-  [MeetLocation.Custom]: "Custom",
-};
+import { locationLabels } from "@/constants/meetingLocations";
 
 type UserMeetProps = {
   meetDetails: MeetProps;
@@ -33,30 +21,34 @@ export const AttendingMeet = ({
     locationLabels[meetDetails.location] || meetDetails.location;
 
   return (
-    <div className="flex flex-col">
-      <div>
+    <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center">
         <h1>{meetDetails.name}</h1>
         <h1>{prettyLocation}</h1>
-        <p className="text-black">
-          <span className="text-accent">Attendees:</span>
-          {runners.map((r, idx) => {
-            let comma = ",";
-            if (idx + 1 == runners.length) {
-              comma = "";
-            }
-            return (
-              <span key={r.id || idx}>
-                {r.username}
-                {comma}{" "}
-              </span>
-            );
-          })}
-        </p>
         <ShowQRCode qrValue={qrLink} />
+        <div className="text-black m-4">
+          <h3 className="text-accent font-bold text-center">Attendees:</h3>
+          <div>
+            {runners.map((r, idx) => {
+              let comma = ",";
+              if (idx + 1 == runners.length) {
+                comma = "";
+              }
+              return (
+                <span className="" key={r.id || idx}>
+                  {r.name || r.username}
+                  {comma}{" "}
+                </span>
+              );
+            })}
+          </div>
+        </div>
         <button
           className="border-2 border-solid border-accent bg-accent p-2 text-white rounded-xl pointer-events-auto transition active:bg-white active:text-black active:scale-95"
           onClick={() => {
-            leaveMeet(currentUser.id, meetDetails.id);
+            if (currentUser.id !== undefined) {
+              leaveMeet(currentUser.id, meetDetails.id);
+            }
           }}
         >
           Can't Attend? Click Here!

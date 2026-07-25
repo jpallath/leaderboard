@@ -6,7 +6,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export const registerUser = async (formData: FormData) => {
-  const username = formData.get("username") as string;
+  const username = (formData.get("username") as string).toLowerCase();
   const name = formData.get("name") as string;
   const password = formData.get("password") as string;
 
@@ -39,7 +39,7 @@ export const registerUser = async (formData: FormData) => {
 };
 
 export const loginUser = async (formData: FormData) => {
-  const username = formData.get("username") as string;
+  const username = (formData.get("username") as string).toLowerCase();
   const password = formData.get("password") as string;
 
   const user = await prisma.user.findUnique({
@@ -47,12 +47,11 @@ export const loginUser = async (formData: FormData) => {
   });
 
   if (!user || !user.password) {
-    console.error("testing");
-    throw new Error("invalid username or password");
+    return { error: "Invalid username or password" };
   }
   const passwordValid = await bcrypt.compare(password, user.password);
   if (!passwordValid) {
-    throw new Error("invalid username or password");
+    return { error: "Invalid username or password" };
   }
   const cookieStore = await cookies();
   cookieStore.set("session_user_id", user.id.toString(), {
@@ -61,6 +60,7 @@ export const loginUser = async (formData: FormData) => {
     maxAge: 60 * 60 * 24 * 7,
     path: "/",
   });
+  return { success: true };
 };
 
 export const logoutUser = async () => {

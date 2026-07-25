@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { MeetProps } from "../types";
+import { locationLabels } from "@/constants/meetingLocations";
 const EventsPage = async () => {
   const allMeets = await prisma.meet.findMany({
     orderBy: { createdAt: "desc" },
@@ -41,7 +42,7 @@ const MeetLink = (meet: MeetProps) => {
       <div>{readAbleDate}</div>
       <div className="flex flex-col items-center ">
         <div className="font-bold">{meet.name}</div>
-        <div>{meet.location}</div>
+        <div>{locationLabels[meet.location]}</div>
       </div>
       <div>{meet.points}</div>
     </Link>

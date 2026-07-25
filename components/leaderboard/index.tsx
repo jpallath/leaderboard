@@ -1,18 +1,26 @@
-import { Meet } from "@/app/types";
-import { leaders } from "./leaders";
-const Leaderboard = () => {
-  const Leaders = leaders.map((l, idx) => {
+import { LeaderboardProps, LeaderItemProps, MeetProps } from "@/app/types";
+
+const Leaderboard = ({ leaders }: LeaderboardProps) => {
+  if (leaders && leaders.length > 0) {
+    const Leaders = leaders.map((l, idx) => {
+      return (
+        <LeaderItem
+          name={l.name}
+          totalPoints={l.totalPoints}
+          username={l.username}
+          place={l.place}
+          key={idx}
+          id={l.id}
+        />
+      );
+    });
     return (
-      <LeaderItem
-        name={l.name}
-        username={l.username}
-        meets={l.meets}
-        place={idx}
-        key={idx}
-      />
+      <div>
+        <h1 className="text-2xl text-center font-bold">Current Standings</h1>
+        {Leaders}
+      </div>
     );
-  });
-  return <div>{Leaders}</div>;
+  }
 };
 
 export default Leaderboard;
@@ -20,23 +28,26 @@ export default Leaderboard;
 type LeaderProps = {
   name: string | null;
   username: string;
-  meets: Meet[];
+  meets: MeetProps[];
   place: number;
 };
-const LeaderItem = ({ name, username, meets, place }: LeaderProps) => {
-  const points = meets.reduce((total, meet) => total + meet.points, 0);
+const LeaderItem = ({
+  name,
+  username,
+  totalPoints,
+  place,
+}: LeaderItemProps) => {
   return (
     <div
       className={`${place % 2 == 0 ? "bg-background" : "bg-surface"} flex justify-between items-center p-3 border-b border-surface-border`}
     >
       <div className="flex items-center">
-        {/* Fixed width and right alignment forces the periods to line up */}
         <div className="w-8 text-right font-bold mr-3 text-content-muted">
-          {place + 1}.
+          {place}.
         </div>
         <div className="font-medium">{name || username}</div>
       </div>
-      <div className="font-semibold text-accent">{points} pts</div>
+      <div className="font-semibold text-accent">{totalPoints} pts</div>
     </div>
   );
 };

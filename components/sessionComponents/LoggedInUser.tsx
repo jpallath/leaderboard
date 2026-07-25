@@ -4,20 +4,25 @@ import Leaderboard from "../leaderboard";
 import { CurrentUserProps } from "@/app/types";
 import Link from "next/link";
 
-
 export const LoggedInUser = ({
   username,
   name,
+  id,
   userType,
+  leaders,
 }: CurrentUserProps) => {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-background text-content gap-4">
       <div className="w-full max-w-md rounded-2xl bg-surface border border-surface-border p-8">
-        <Leaderboard />
+        <Leaderboard leaders={leaders} />
       </div>
       <div className="w-full p-2 mb-6 flex flex-col bg-surface border-solid border-surface-border border-2 rounded-2xl">
-        <h1 className="text-lg font-black">
-          Welcome back, <span className="text-accent">{name || username}</span>!
+        <h1 className="text-lg font-black text-center">
+          Welcome back,{" "}
+          <Link href={`/comrades/${id}`} className="text-accent">
+            {name || username}
+          </Link>
+          !
         </h1>
         <div className="flex items-center gap-2 justify-center">
           <Link
