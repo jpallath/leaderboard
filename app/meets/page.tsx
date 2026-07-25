@@ -32,8 +32,6 @@ const MeetLink = (meet: MeetProps) => {
     timeZone: "UTC",
   });
 
-  console.log(meet.ind);
-
   return (
     <Link
       href={`${rootURL}/meets/${meet.id}`}

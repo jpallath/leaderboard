@@ -17,5 +17,5 @@ export const locationLabels: Record<string, string> = {
   [MeetLocation.CentralPark]: "Central Park Run",
   [MeetLocation.Chinatown]: "Chinatown Office Loop",
   [MeetLocation.Queens]: "Queens",
-  [MeetLocation.Custom]: "Custom",
+  [MeetLocation.Custom]: MeetLocation.Custom,
 };
