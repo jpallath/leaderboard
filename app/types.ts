@@ -1,7 +1,19 @@
 export type CurrentUserProps = {
+  id: number;
   username: string;
   name: string | null;
-  meets: MeetProps[];
+  userType: string;
+  meets: {
+    id: number;
+    userId: number;
+    meetId: number;
+    meet: MeetProps;
+  }[];
+};
+
+export type UserProps = {
+  username: string;
+  id: string;
 };
 
 export type MeetProps = {

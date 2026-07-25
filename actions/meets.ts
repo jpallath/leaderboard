@@ -1,31 +1,34 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
-export const newMeet = async (
+export async function newMeet(
   creatorId: number,
   prevState: any,
   formData: FormData,
-) => {
-  console.log("SERVER ACTION HIT! CreatorID:", creatorId);
+) {
   const meetName = formData.get("meetName") as string;
   const selectedLocation = formData.get("location") as string;
   const customLocation = formData.get("customLocation") as string;
   const dateString = formData.get("date") as string;
   const finalLocation =
     selectedLocation === "custom" ? customLocation : selectedLocation;
+  let createdMeet;
   try {
-    const newMeet = await prisma.meet.create({
+    createdMeet = await prisma.meet.create({
       data: {
         name: meetName,
-        creatorId,
+        creatorId: Number(creatorId),
         date: dateString,
         location: finalLocation,
       },
     });
-    return newMeet;
   } catch (err) {
-    console.error("error when creating a new meet ", err);
-    return { success: false, error: "failed to create meet" };
+    console.error("CRITICAL DB ERROR IN newMeet:", err);
+    return { success: false, meet: null, error: "failed to create meet" };
   }
-};
+  revalidatePath("/meets");
+  redirect(`/meets/${createdMeet.id}`);
+}

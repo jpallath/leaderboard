@@ -22,7 +22,7 @@ export default async function Home({
       <LoggedInUser
         username={currentUser.username}
         name={currentUser.name}
-        meets={formattedMeets}
+        userType={currentUser.userType}
       />
     );
   }

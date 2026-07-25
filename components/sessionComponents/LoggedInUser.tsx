@@ -4,7 +4,12 @@ import Leaderboard from "../leaderboard";
 import { CurrentUserProps } from "@/app/types";
 import Link from "next/link";
 
-export const LoggedInUser = ({ username, name, meets }: CurrentUserProps) => {
+export const LoggedInUser = ({
+  username,
+  name,
+  userType,
+}: CurrentUserProps) => {
+  console.log(userType);
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-background text-content gap-4">
       <div className="w-full max-w-md rounded-2xl bg-surface border border-surface-border p-8">
@@ -21,12 +26,14 @@ export const LoggedInUser = ({ username, name, meets }: CurrentUserProps) => {
           >
             All Meets
           </Link>
-          <Link
-            href={"/meets/new"}
-            className="text-xs text-accent hover:text-accent font-medium transition p-2"
-          >
-            New Meet
-          </Link>
+          {userType === "core" && (
+            <Link
+              href={"/meets/new"}
+              className="text-xs text-accent hover:text-accent font-medium transition p-2"
+            >
+              New Meet
+            </Link>
+          )}
           <form action={logoutUser}>
             <button className="text-xs text-content-muted hover:text-accent font-medium transition p-2">
               Sign Out

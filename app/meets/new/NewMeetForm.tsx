@@ -15,16 +15,13 @@ export const NewMeetForm = ({
   const [locationValue, setLocationValue] = useState("prospect-morning");
   const newMeetWithId = newMeet.bind(null, currentUser.id);
   const [state, formAction, isPending] = useActionState(newMeetWithId, null);
-  const createdMeet = state && "id" in state ? state : null;
+  const createdMeet = state?.success && state?.meet ? state.meet : null;
   const safeRootURL = rootURL || "";
-  const qrValue = createdMeet?.id
-    ? `${safeRootURL}/meets/${createdMeet.id}`
-    : null;
+
   const today = new Date().toISOString().split("T")[0];
   const defaultMeetName = `${today} Run`;
   return (
     <main className="flex flex-col justify-between mt-2">
-      <QRCodeInForm qrValue={qrValue} />
       <form
         action={formAction}
         className="flex flex-col gap-4 p-4 border-solid border-2 border-surface-border mt-2 rounded-xl"
@@ -101,7 +98,6 @@ export const NewMeetForm = ({
         <button className="bg-accent border-accent rounded-xl text-white p-4">
           Set Meet
         </button>
-        {/* TO DO: THIS IS UGLY */}
       </form>
     </main>
   );
