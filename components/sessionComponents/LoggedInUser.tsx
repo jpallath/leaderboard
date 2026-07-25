@@ -4,12 +4,12 @@ import Leaderboard from "../leaderboard";
 import { CurrentUserProps } from "@/app/types";
 import Link from "next/link";
 
+
 export const LoggedInUser = ({
   username,
   name,
   userType,
 }: CurrentUserProps) => {
-  console.log(userType);
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-background text-content gap-4">
       <div className="w-full max-w-md rounded-2xl bg-surface border border-surface-border p-8">

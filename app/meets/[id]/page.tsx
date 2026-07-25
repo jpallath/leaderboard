@@ -15,7 +15,6 @@ const MeetPage = async ({ params }: MeetPageProps) => {
     meetDetails = await prisma.meet.findUnique({
       where: { id: Number(id) },
     });
-    console.log("FETCHED MEET:", meetDetails); // <--- Add this
   } catch (err) {
     console.error("there was an error at the meet details page, ", err);
   }

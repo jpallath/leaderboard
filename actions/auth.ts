@@ -64,7 +64,6 @@ export const loginUser = async (formData: FormData) => {
 };
 
 export const logoutUser = async () => {
-  console.log("testijasdkf");
   const cookieStore = await cookies();
   cookieStore.delete("session_user_id");
   redirect("/");

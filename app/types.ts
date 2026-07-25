@@ -1,9 +1,9 @@
 export type CurrentUserProps = {
-  id: number;
+  id?: number;
   username: string;
   name: string | null;
   userType: string;
-  meets: {
+  meets?: {
     id: number;
     userId: number;
     meetId: number;
@@ -13,7 +13,7 @@ export type CurrentUserProps = {
 
 export type UserProps = {
   username: string;
-  id: string;
+  id: number;
 };
 
 export type MeetProps = {
