@@ -3489,18 +3489,21 @@ export namespace Prisma {
     id: number | null
     userId: number | null
     meetId: number | null
+    verified: boolean | null
   }
 
   export type UserMeetMaxAggregateOutputType = {
     id: number | null
     userId: number | null
     meetId: number | null
+    verified: boolean | null
   }
 
   export type UserMeetCountAggregateOutputType = {
     id: number
     userId: number
     meetId: number
+    verified: number
     _all: number
   }
 
@@ -3521,18 +3524,21 @@ export namespace Prisma {
     id?: true
     userId?: true
     meetId?: true
+    verified?: true
   }
 
   export type UserMeetMaxAggregateInputType = {
     id?: true
     userId?: true
     meetId?: true
+    verified?: true
   }
 
   export type UserMeetCountAggregateInputType = {
     id?: true
     userId?: true
     meetId?: true
+    verified?: true
     _all?: true
   }
 
@@ -3626,6 +3632,7 @@ export namespace Prisma {
     id: number
     userId: number
     meetId: number
+    verified: boolean
     _count: UserMeetCountAggregateOutputType | null
     _avg: UserMeetAvgAggregateOutputType | null
     _sum: UserMeetSumAggregateOutputType | null
@@ -3651,6 +3658,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     meetId?: boolean
+    verified?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     meet?: boolean | MeetDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userMeet"]>
@@ -3659,6 +3667,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     meetId?: boolean
+    verified?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     meet?: boolean | MeetDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userMeet"]>
@@ -3667,6 +3676,7 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     meetId?: boolean
+    verified?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     meet?: boolean | MeetDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userMeet"]>
@@ -3675,9 +3685,10 @@ export namespace Prisma {
     id?: boolean
     userId?: boolean
     meetId?: boolean
+    verified?: boolean
   }
 
-  export type UserMeetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "meetId", ExtArgs["result"]["userMeet"]>
+  export type UserMeetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "meetId" | "verified", ExtArgs["result"]["userMeet"]>
   export type UserMeetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     meet?: boolean | MeetDefaultArgs<ExtArgs>
@@ -3701,6 +3712,7 @@ export namespace Prisma {
       id: number
       userId: number
       meetId: number
+      verified: boolean
     }, ExtArgs["result"]["userMeet"]>
     composites: {}
   }
@@ -4129,6 +4141,7 @@ export namespace Prisma {
     readonly id: FieldRef<"UserMeet", 'Int'>
     readonly userId: FieldRef<"UserMeet", 'Int'>
     readonly meetId: FieldRef<"UserMeet", 'Int'>
+    readonly verified: FieldRef<"UserMeet", 'Boolean'>
   }
     
 
@@ -4589,7 +4602,8 @@ export namespace Prisma {
   export const UserMeetScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
-    meetId: 'meetId'
+    meetId: 'meetId',
+    verified: 'verified'
   };
 
   export type UserMeetScalarFieldEnum = (typeof UserMeetScalarFieldEnum)[keyof typeof UserMeetScalarFieldEnum]
@@ -4677,6 +4691,13 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -4834,6 +4855,7 @@ export namespace Prisma {
     id?: IntFilter<"UserMeet"> | number
     userId?: IntFilter<"UserMeet"> | number
     meetId?: IntFilter<"UserMeet"> | number
+    verified?: BoolFilter<"UserMeet"> | boolean
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     meet?: XOR<MeetScalarRelationFilter, MeetWhereInput>
   }
@@ -4842,6 +4864,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     meetId?: SortOrder
+    verified?: SortOrder
     user?: UserOrderByWithRelationInput
     meet?: MeetOrderByWithRelationInput
   }
@@ -4854,6 +4877,7 @@ export namespace Prisma {
     NOT?: UserMeetWhereInput | UserMeetWhereInput[]
     userId?: IntFilter<"UserMeet"> | number
     meetId?: IntFilter<"UserMeet"> | number
+    verified?: BoolFilter<"UserMeet"> | boolean
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     meet?: XOR<MeetScalarRelationFilter, MeetWhereInput>
   }, "id" | "userId_meetId">
@@ -4862,6 +4886,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     meetId?: SortOrder
+    verified?: SortOrder
     _count?: UserMeetCountOrderByAggregateInput
     _avg?: UserMeetAvgOrderByAggregateInput
     _max?: UserMeetMaxOrderByAggregateInput
@@ -4876,6 +4901,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"UserMeet"> | number
     userId?: IntWithAggregatesFilter<"UserMeet"> | number
     meetId?: IntWithAggregatesFilter<"UserMeet"> | number
+    verified?: BoolWithAggregatesFilter<"UserMeet"> | boolean
   }
 
   export type UserCreateInput = {
@@ -5010,6 +5036,7 @@ export namespace Prisma {
   }
 
   export type UserMeetCreateInput = {
+    verified?: boolean
     user: UserCreateNestedOneWithoutMeetsInput
     meet: MeetCreateNestedOneWithoutAttendeesInput
   }
@@ -5018,9 +5045,11 @@ export namespace Prisma {
     id?: number
     userId: number
     meetId: number
+    verified?: boolean
   }
 
   export type UserMeetUpdateInput = {
+    verified?: BoolFieldUpdateOperationsInput | boolean
     user?: UserUpdateOneRequiredWithoutMeetsNestedInput
     meet?: MeetUpdateOneRequiredWithoutAttendeesNestedInput
   }
@@ -5029,22 +5058,25 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     meetId?: IntFieldUpdateOperationsInput | number
+    verified?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserMeetCreateManyInput = {
     id?: number
     userId: number
     meetId: number
+    verified?: boolean
   }
 
   export type UserMeetUpdateManyMutationInput = {
-
+    verified?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserMeetUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     meetId?: IntFieldUpdateOperationsInput | number
+    verified?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -5286,6 +5318,11 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type MeetScalarRelationFilter = {
     is?: MeetWhereInput
     isNot?: MeetWhereInput
@@ -5300,6 +5337,7 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     meetId?: SortOrder
+    verified?: SortOrder
   }
 
   export type UserMeetAvgOrderByAggregateInput = {
@@ -5312,18 +5350,28 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     meetId?: SortOrder
+    verified?: SortOrder
   }
 
   export type UserMeetMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     meetId?: SortOrder
+    verified?: SortOrder
   }
 
   export type UserMeetSumOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
     meetId?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type UserMeetCreateNestedManyWithoutUserInput = {
@@ -5502,6 +5550,10 @@ export namespace Prisma {
     connect?: MeetWhereUniqueInput
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type UserUpdateOneRequiredWithoutMeetsNestedInput = {
     create?: XOR<UserCreateWithoutMeetsInput, UserUncheckedCreateWithoutMeetsInput>
     connectOrCreate?: UserCreateOrConnectWithoutMeetsInput
@@ -5671,13 +5723,28 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type UserMeetCreateWithoutUserInput = {
+    verified?: boolean
     meet: MeetCreateNestedOneWithoutAttendeesInput
   }
 
   export type UserMeetUncheckedCreateWithoutUserInput = {
     id?: number
     meetId: number
+    verified?: boolean
   }
 
   export type UserMeetCreateOrConnectWithoutUserInput = {
@@ -5742,6 +5809,7 @@ export namespace Prisma {
     id?: IntFilter<"UserMeet"> | number
     userId?: IntFilter<"UserMeet"> | number
     meetId?: IntFilter<"UserMeet"> | number
+    verified?: BoolFilter<"UserMeet"> | boolean
   }
 
   export type MeetUpsertWithWhereUniqueWithoutCreatorInput = {
@@ -5774,12 +5842,14 @@ export namespace Prisma {
   }
 
   export type UserMeetCreateWithoutMeetInput = {
+    verified?: boolean
     user: UserCreateNestedOneWithoutMeetsInput
   }
 
   export type UserMeetUncheckedCreateWithoutMeetInput = {
     id?: number
     userId: number
+    verified?: boolean
   }
 
   export type UserMeetCreateOrConnectWithoutMeetInput = {
@@ -5965,6 +6035,7 @@ export namespace Prisma {
   export type UserMeetCreateManyUserInput = {
     id?: number
     meetId: number
+    verified?: boolean
   }
 
   export type MeetCreateManyCreatorInput = {
@@ -5977,17 +6048,20 @@ export namespace Prisma {
   }
 
   export type UserMeetUpdateWithoutUserInput = {
+    verified?: BoolFieldUpdateOperationsInput | boolean
     meet?: MeetUpdateOneRequiredWithoutAttendeesNestedInput
   }
 
   export type UserMeetUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     meetId?: IntFieldUpdateOperationsInput | number
+    verified?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserMeetUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
     meetId?: IntFieldUpdateOperationsInput | number
+    verified?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type MeetUpdateWithoutCreatorInput = {
@@ -6021,20 +6095,24 @@ export namespace Prisma {
   export type UserMeetCreateManyMeetInput = {
     id?: number
     userId: number
+    verified?: boolean
   }
 
   export type UserMeetUpdateWithoutMeetInput = {
+    verified?: BoolFieldUpdateOperationsInput | boolean
     user?: UserUpdateOneRequiredWithoutMeetsNestedInput
   }
 
   export type UserMeetUncheckedUpdateWithoutMeetInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
+    verified?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserMeetUncheckedUpdateManyWithoutMeetInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
+    verified?: BoolFieldUpdateOperationsInput | boolean
   }
 
 

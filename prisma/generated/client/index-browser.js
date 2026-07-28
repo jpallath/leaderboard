@@ -141,7 +141,8 @@ exports.Prisma.MeetScalarFieldEnum = {
 exports.Prisma.UserMeetScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  meetId: 'meetId'
+  meetId: 'meetId',
+  verified: 'verified'
 };
 
 exports.Prisma.SortOrder = {

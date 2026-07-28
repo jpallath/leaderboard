@@ -21,3 +21,29 @@ export const leaveMeet = async (userId: number, meetId: number) => {
   }
   revalidatePath(`/meets/${meetId}`);
 };
+
+export const verifyRunnerAtMeet = async (userId: number, meetId: number) => {
+  let userMeet;
+  try {
+    userMeet = await prisma.userMeet.updateMany({
+      where: { userId, meetId },
+      data: { verified: true },
+    });
+  } catch (err) {
+    console.error("error in verifying runner! ", err);
+  }
+  revalidatePath(`/meets/${meetId}`);
+};
+
+export const unverifyRunnerAtMeet = async (userId: number, meetId: number) => {
+  let userMeet;
+  try {
+    userMeet = await prisma.userMeet.updateMany({
+      where: { userId, meetId },
+      data: { verified: false },
+    });
+  } catch (err) {
+    console.error("error in verifying runner! ", err);
+  }
+  revalidatePath(`/meets/${meetId}`);
+};

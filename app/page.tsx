@@ -11,15 +11,6 @@ export default async function Home({
   const currentUser = await getCurrentUser();
 
   if (currentUser) {
-    const formattedMeets = currentUser.meets.map((ue) => ({
-      id: ue.meet.id,
-      name: ue.meet.name,
-      date: ue.meet.date,
-      points: ue.meet.points,
-      location: ue.meet.location,
-      attendees: [],
-    }));
-
     const users = await prisma.user.findMany({
       include: {
         meets: {
@@ -27,6 +18,7 @@ export default async function Home({
             meet: {
               select: {
                 points: true,
+                date: true,
               },
             },
           },
@@ -34,10 +26,20 @@ export default async function Home({
       },
     });
 
+    const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
+
     const leaders = users.map((user) => {
       const totalPoints = user.meets.reduce((sum, userMeet) => {
-        return sum + (userMeet.meet.points || 0);
+        const meetDate = new Date(userMeet.meet.date);
+
+        // Must be verified AND happened at least 24 hours ago
+        if (userMeet.verified && meetDate <= oneDayAgo) {
+          return sum + (userMeet.meet.points || 0);
+        } else {
+          return sum;
+        }
       }, 0);
+
       return {
         id: user.id,
         username: user.username,

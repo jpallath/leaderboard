@@ -1,7 +1,10 @@
-import { getCurrentUser } from "@/lib/auth";
+import { getCurrentCore, getCurrentUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { JoinMeet } from "./JoinMeet";
 import { AttendingMeet } from "./AttendingMeet";
+import { unverifyRunnerAtMeet, verifyRunnerAtMeet } from "@/actions/userMeets";
+import { MeetProps } from "@/app/types";
+import { VerifyRunners } from "./VerifyRunners";
 
 type MeetPageProps = {
   params: Promise<{
@@ -64,11 +67,31 @@ const MeetPage = async ({ params }: MeetPageProps) => {
     },
   });
 
-  // 2. Map the results cleanly to your runners list
   const runners = meetWithAttendees?.attendees.map((um) => um.user) || [];
+  const userMeets = runners.map(async (runner) => {
+    const userMeet = await prisma.userMeet.findFirst({
+      where: { userId: runner.id, meetId: Number(id) },
+    });
+    return { userId: runner.id, userMeet };
+  });
+  const runnersWithUserMeet =
+    meetWithAttendees?.attendees.map((um) => ({
+      user: um.user,
+      userMeet: {
+        id: um.id,
+        verified: um.verified,
+      },
+    })) || [];
+
+  const sortedRunners = runnersWithUserMeet.sort((a, b) => {
+    const aVerified = a.userMeet?.verified ? 1 : 0;
+    const bVerified = b.userMeet?.verified ? 1 : 0;
+
+    return aVerified - bVerified; // 0 (false) comes before 1 (true)
+  });
 
   return (
-    <main className="p-4">
+    <main className="p-4 flex flex-col gap-8">
       {hasHappened ? (
         <div className="text-red-500">
           <h1>This meet has passed.</h1>
@@ -87,6 +110,9 @@ const MeetPage = async ({ params }: MeetPageProps) => {
             <JoinMeet currentUser={currentUser} meetDetails={meetDetails} />
           )}
         </div>
+      )}
+      {currentUser.userType === "core" && (
+        <VerifyRunners runners={sortedRunners} meet={meetDetails} />
       )}
     </main>
   );
