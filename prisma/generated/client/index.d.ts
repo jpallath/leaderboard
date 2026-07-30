@@ -1189,6 +1189,7 @@ export namespace Prisma {
     name: string | null
     password: string | null
     userType: $Enums.UserType | null
+    venmoUrl: string | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1197,6 +1198,7 @@ export namespace Prisma {
     name: string | null
     password: string | null
     userType: $Enums.UserType | null
+    venmoUrl: string | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1205,6 +1207,7 @@ export namespace Prisma {
     name: number
     password: number
     userType: number
+    venmoUrl: number
     _all: number
   }
 
@@ -1223,6 +1226,7 @@ export namespace Prisma {
     name?: true
     password?: true
     userType?: true
+    venmoUrl?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1231,6 +1235,7 @@ export namespace Prisma {
     name?: true
     password?: true
     userType?: true
+    venmoUrl?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1239,6 +1244,7 @@ export namespace Prisma {
     name?: true
     password?: true
     userType?: true
+    venmoUrl?: true
     _all?: true
   }
 
@@ -1334,6 +1340,7 @@ export namespace Prisma {
     name: string | null
     password: string | null
     userType: $Enums.UserType
+    venmoUrl: string | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1361,6 +1368,7 @@ export namespace Prisma {
     name?: boolean
     password?: boolean
     userType?: boolean
+    venmoUrl?: boolean
     meets?: boolean | User$meetsArgs<ExtArgs>
     createdMeets?: boolean | User$createdMeetsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1372,6 +1380,7 @@ export namespace Prisma {
     name?: boolean
     password?: boolean
     userType?: boolean
+    venmoUrl?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1380,6 +1389,7 @@ export namespace Prisma {
     name?: boolean
     password?: boolean
     userType?: boolean
+    venmoUrl?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1388,9 +1398,10 @@ export namespace Prisma {
     name?: boolean
     password?: boolean
     userType?: boolean
+    venmoUrl?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "password" | "userType", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "password" | "userType" | "venmoUrl", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meets?: boolean | User$meetsArgs<ExtArgs>
     createdMeets?: boolean | User$createdMeetsArgs<ExtArgs>
@@ -1411,6 +1422,7 @@ export namespace Prisma {
       name: string | null
       password: string | null
       userType: $Enums.UserType
+      venmoUrl: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1841,6 +1853,7 @@ export namespace Prisma {
     readonly name: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly userType: FieldRef<"User", 'UserType'>
+    readonly venmoUrl: FieldRef<"User", 'String'>
   }
     
 
@@ -2332,6 +2345,8 @@ export namespace Prisma {
     points: number | null
     creatorId: number | null
     createdAt: Date | null
+    venmoUrl: string | null
+    venmoUser: string | null
   }
 
   export type MeetMaxAggregateOutputType = {
@@ -2342,6 +2357,8 @@ export namespace Prisma {
     points: number | null
     creatorId: number | null
     createdAt: Date | null
+    venmoUrl: string | null
+    venmoUser: string | null
   }
 
   export type MeetCountAggregateOutputType = {
@@ -2352,6 +2369,8 @@ export namespace Prisma {
     points: number
     creatorId: number
     createdAt: number
+    venmoUrl: number
+    venmoUser: number
     _all: number
   }
 
@@ -2376,6 +2395,8 @@ export namespace Prisma {
     points?: true
     creatorId?: true
     createdAt?: true
+    venmoUrl?: true
+    venmoUser?: true
   }
 
   export type MeetMaxAggregateInputType = {
@@ -2386,6 +2407,8 @@ export namespace Prisma {
     points?: true
     creatorId?: true
     createdAt?: true
+    venmoUrl?: true
+    venmoUser?: true
   }
 
   export type MeetCountAggregateInputType = {
@@ -2396,6 +2419,8 @@ export namespace Prisma {
     points?: true
     creatorId?: true
     createdAt?: true
+    venmoUrl?: true
+    venmoUser?: true
     _all?: true
   }
 
@@ -2493,6 +2518,8 @@ export namespace Prisma {
     points: number
     creatorId: number
     createdAt: Date
+    venmoUrl: string | null
+    venmoUser: string | null
     _count: MeetCountAggregateOutputType | null
     _avg: MeetAvgAggregateOutputType | null
     _sum: MeetSumAggregateOutputType | null
@@ -2522,6 +2549,8 @@ export namespace Prisma {
     points?: boolean
     creatorId?: boolean
     createdAt?: boolean
+    venmoUrl?: boolean
+    venmoUser?: boolean
     attendees?: boolean | Meet$attendeesArgs<ExtArgs>
     creator?: boolean | UserDefaultArgs<ExtArgs>
     _count?: boolean | MeetCountOutputTypeDefaultArgs<ExtArgs>
@@ -2535,6 +2564,8 @@ export namespace Prisma {
     points?: boolean
     creatorId?: boolean
     createdAt?: boolean
+    venmoUrl?: boolean
+    venmoUser?: boolean
     creator?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["meet"]>
 
@@ -2546,6 +2577,8 @@ export namespace Prisma {
     points?: boolean
     creatorId?: boolean
     createdAt?: boolean
+    venmoUrl?: boolean
+    venmoUser?: boolean
     creator?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["meet"]>
 
@@ -2557,9 +2590,11 @@ export namespace Prisma {
     points?: boolean
     creatorId?: boolean
     createdAt?: boolean
+    venmoUrl?: boolean
+    venmoUser?: boolean
   }
 
-  export type MeetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "location" | "date" | "points" | "creatorId" | "createdAt", ExtArgs["result"]["meet"]>
+  export type MeetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "location" | "date" | "points" | "creatorId" | "createdAt" | "venmoUrl" | "venmoUser", ExtArgs["result"]["meet"]>
   export type MeetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     attendees?: boolean | Meet$attendeesArgs<ExtArgs>
     creator?: boolean | UserDefaultArgs<ExtArgs>
@@ -2586,6 +2621,8 @@ export namespace Prisma {
       points: number
       creatorId: number
       createdAt: Date
+      venmoUrl: string | null
+      venmoUser: string | null
     }, ExtArgs["result"]["meet"]>
     composites: {}
   }
@@ -3018,6 +3055,8 @@ export namespace Prisma {
     readonly points: FieldRef<"Meet", 'Int'>
     readonly creatorId: FieldRef<"Meet", 'Int'>
     readonly createdAt: FieldRef<"Meet", 'DateTime'>
+    readonly venmoUrl: FieldRef<"Meet", 'String'>
+    readonly venmoUser: FieldRef<"Meet", 'String'>
   }
     
 
@@ -4580,7 +4619,8 @@ export namespace Prisma {
     username: 'username',
     name: 'name',
     password: 'password',
-    userType: 'userType'
+    userType: 'userType',
+    venmoUrl: 'venmoUrl'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -4593,7 +4633,9 @@ export namespace Prisma {
     date: 'date',
     points: 'points',
     creatorId: 'creatorId',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    venmoUrl: 'venmoUrl',
+    venmoUser: 'venmoUser'
   };
 
   export type MeetScalarFieldEnum = (typeof MeetScalarFieldEnum)[keyof typeof MeetScalarFieldEnum]
@@ -4727,6 +4769,7 @@ export namespace Prisma {
     name?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
     userType?: EnumUserTypeFilter<"User"> | $Enums.UserType
+    venmoUrl?: StringNullableFilter<"User"> | string | null
     meets?: UserMeetListRelationFilter
     createdMeets?: MeetListRelationFilter
   }
@@ -4737,6 +4780,7 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
     userType?: SortOrder
+    venmoUrl?: SortOrderInput | SortOrder
     meets?: UserMeetOrderByRelationAggregateInput
     createdMeets?: MeetOrderByRelationAggregateInput
   }
@@ -4750,6 +4794,7 @@ export namespace Prisma {
     name?: StringNullableFilter<"User"> | string | null
     password?: StringNullableFilter<"User"> | string | null
     userType?: EnumUserTypeFilter<"User"> | $Enums.UserType
+    venmoUrl?: StringNullableFilter<"User"> | string | null
     meets?: UserMeetListRelationFilter
     createdMeets?: MeetListRelationFilter
   }, "id" | "username">
@@ -4760,6 +4805,7 @@ export namespace Prisma {
     name?: SortOrderInput | SortOrder
     password?: SortOrderInput | SortOrder
     userType?: SortOrder
+    venmoUrl?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -4776,6 +4822,7 @@ export namespace Prisma {
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
     userType?: EnumUserTypeWithAggregatesFilter<"User"> | $Enums.UserType
+    venmoUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type MeetWhereInput = {
@@ -4789,6 +4836,8 @@ export namespace Prisma {
     points?: IntFilter<"Meet"> | number
     creatorId?: IntFilter<"Meet"> | number
     createdAt?: DateTimeFilter<"Meet"> | Date | string
+    venmoUrl?: StringNullableFilter<"Meet"> | string | null
+    venmoUser?: StringNullableFilter<"Meet"> | string | null
     attendees?: UserMeetListRelationFilter
     creator?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -4801,6 +4850,8 @@ export namespace Prisma {
     points?: SortOrder
     creatorId?: SortOrder
     createdAt?: SortOrder
+    venmoUrl?: SortOrderInput | SortOrder
+    venmoUser?: SortOrderInput | SortOrder
     attendees?: UserMeetOrderByRelationAggregateInput
     creator?: UserOrderByWithRelationInput
   }
@@ -4816,6 +4867,8 @@ export namespace Prisma {
     points?: IntFilter<"Meet"> | number
     creatorId?: IntFilter<"Meet"> | number
     createdAt?: DateTimeFilter<"Meet"> | Date | string
+    venmoUrl?: StringNullableFilter<"Meet"> | string | null
+    venmoUser?: StringNullableFilter<"Meet"> | string | null
     attendees?: UserMeetListRelationFilter
     creator?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
@@ -4828,6 +4881,8 @@ export namespace Prisma {
     points?: SortOrder
     creatorId?: SortOrder
     createdAt?: SortOrder
+    venmoUrl?: SortOrderInput | SortOrder
+    venmoUser?: SortOrderInput | SortOrder
     _count?: MeetCountOrderByAggregateInput
     _avg?: MeetAvgOrderByAggregateInput
     _max?: MeetMaxOrderByAggregateInput
@@ -4846,6 +4901,8 @@ export namespace Prisma {
     points?: IntWithAggregatesFilter<"Meet"> | number
     creatorId?: IntWithAggregatesFilter<"Meet"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Meet"> | Date | string
+    venmoUrl?: StringNullableWithAggregatesFilter<"Meet"> | string | null
+    venmoUser?: StringNullableWithAggregatesFilter<"Meet"> | string | null
   }
 
   export type UserMeetWhereInput = {
@@ -4909,6 +4966,7 @@ export namespace Prisma {
     name?: string | null
     password?: string | null
     userType?: $Enums.UserType
+    venmoUrl?: string | null
     meets?: UserMeetCreateNestedManyWithoutUserInput
     createdMeets?: MeetCreateNestedManyWithoutCreatorInput
   }
@@ -4919,6 +4977,7 @@ export namespace Prisma {
     name?: string | null
     password?: string | null
     userType?: $Enums.UserType
+    venmoUrl?: string | null
     meets?: UserMeetUncheckedCreateNestedManyWithoutUserInput
     createdMeets?: MeetUncheckedCreateNestedManyWithoutCreatorInput
   }
@@ -4928,6 +4987,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     meets?: UserMeetUpdateManyWithoutUserNestedInput
     createdMeets?: MeetUpdateManyWithoutCreatorNestedInput
   }
@@ -4938,6 +4998,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     meets?: UserMeetUncheckedUpdateManyWithoutUserNestedInput
     createdMeets?: MeetUncheckedUpdateManyWithoutCreatorNestedInput
   }
@@ -4948,6 +5009,7 @@ export namespace Prisma {
     name?: string | null
     password?: string | null
     userType?: $Enums.UserType
+    venmoUrl?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -4955,6 +5017,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -4963,6 +5026,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type MeetCreateInput = {
@@ -4971,6 +5035,8 @@ export namespace Prisma {
     date: string
     points?: number
     createdAt?: Date | string
+    venmoUrl?: string | null
+    venmoUser?: string | null
     attendees?: UserMeetCreateNestedManyWithoutMeetInput
     creator: UserCreateNestedOneWithoutCreatedMeetsInput
   }
@@ -4983,6 +5049,8 @@ export namespace Prisma {
     points?: number
     creatorId: number
     createdAt?: Date | string
+    venmoUrl?: string | null
+    venmoUser?: string | null
     attendees?: UserMeetUncheckedCreateNestedManyWithoutMeetInput
   }
 
@@ -4992,6 +5060,8 @@ export namespace Prisma {
     date?: StringFieldUpdateOperationsInput | string
     points?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    venmoUser?: NullableStringFieldUpdateOperationsInput | string | null
     attendees?: UserMeetUpdateManyWithoutMeetNestedInput
     creator?: UserUpdateOneRequiredWithoutCreatedMeetsNestedInput
   }
@@ -5004,6 +5074,8 @@ export namespace Prisma {
     points?: IntFieldUpdateOperationsInput | number
     creatorId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    venmoUser?: NullableStringFieldUpdateOperationsInput | string | null
     attendees?: UserMeetUncheckedUpdateManyWithoutMeetNestedInput
   }
 
@@ -5015,6 +5087,8 @@ export namespace Prisma {
     points?: number
     creatorId: number
     createdAt?: Date | string
+    venmoUrl?: string | null
+    venmoUser?: string | null
   }
 
   export type MeetUpdateManyMutationInput = {
@@ -5023,6 +5097,8 @@ export namespace Prisma {
     date?: StringFieldUpdateOperationsInput | string
     points?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    venmoUser?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type MeetUncheckedUpdateManyInput = {
@@ -5033,6 +5109,8 @@ export namespace Prisma {
     points?: IntFieldUpdateOperationsInput | number
     creatorId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    venmoUser?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserMeetCreateInput = {
@@ -5158,6 +5236,7 @@ export namespace Prisma {
     name?: SortOrder
     password?: SortOrder
     userType?: SortOrder
+    venmoUrl?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -5170,6 +5249,7 @@ export namespace Prisma {
     name?: SortOrder
     password?: SortOrder
     userType?: SortOrder
+    venmoUrl?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -5178,6 +5258,7 @@ export namespace Prisma {
     name?: SortOrder
     password?: SortOrder
     userType?: SortOrder
+    venmoUrl?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -5270,6 +5351,8 @@ export namespace Prisma {
     points?: SortOrder
     creatorId?: SortOrder
     createdAt?: SortOrder
+    venmoUrl?: SortOrder
+    venmoUser?: SortOrder
   }
 
   export type MeetAvgOrderByAggregateInput = {
@@ -5286,6 +5369,8 @@ export namespace Prisma {
     points?: SortOrder
     creatorId?: SortOrder
     createdAt?: SortOrder
+    venmoUrl?: SortOrder
+    venmoUser?: SortOrder
   }
 
   export type MeetMinOrderByAggregateInput = {
@@ -5296,6 +5381,8 @@ export namespace Prisma {
     points?: SortOrder
     creatorId?: SortOrder
     createdAt?: SortOrder
+    venmoUrl?: SortOrder
+    venmoUser?: SortOrder
   }
 
   export type MeetSumOrderByAggregateInput = {
@@ -5763,6 +5850,8 @@ export namespace Prisma {
     date: string
     points?: number
     createdAt?: Date | string
+    venmoUrl?: string | null
+    venmoUser?: string | null
     attendees?: UserMeetCreateNestedManyWithoutMeetInput
   }
 
@@ -5773,6 +5862,8 @@ export namespace Prisma {
     date: string
     points?: number
     createdAt?: Date | string
+    venmoUrl?: string | null
+    venmoUser?: string | null
     attendees?: UserMeetUncheckedCreateNestedManyWithoutMeetInput
   }
 
@@ -5839,6 +5930,8 @@ export namespace Prisma {
     points?: IntFilter<"Meet"> | number
     creatorId?: IntFilter<"Meet"> | number
     createdAt?: DateTimeFilter<"Meet"> | Date | string
+    venmoUrl?: StringNullableFilter<"Meet"> | string | null
+    venmoUser?: StringNullableFilter<"Meet"> | string | null
   }
 
   export type UserMeetCreateWithoutMeetInput = {
@@ -5867,6 +5960,7 @@ export namespace Prisma {
     name?: string | null
     password?: string | null
     userType?: $Enums.UserType
+    venmoUrl?: string | null
     meets?: UserMeetCreateNestedManyWithoutUserInput
   }
 
@@ -5876,6 +5970,7 @@ export namespace Prisma {
     name?: string | null
     password?: string | null
     userType?: $Enums.UserType
+    venmoUrl?: string | null
     meets?: UserMeetUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -5916,6 +6011,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     meets?: UserMeetUpdateManyWithoutUserNestedInput
   }
 
@@ -5925,6 +6021,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     meets?: UserMeetUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -5933,6 +6030,7 @@ export namespace Prisma {
     name?: string | null
     password?: string | null
     userType?: $Enums.UserType
+    venmoUrl?: string | null
     createdMeets?: MeetCreateNestedManyWithoutCreatorInput
   }
 
@@ -5942,6 +6040,7 @@ export namespace Prisma {
     name?: string | null
     password?: string | null
     userType?: $Enums.UserType
+    venmoUrl?: string | null
     createdMeets?: MeetUncheckedCreateNestedManyWithoutCreatorInput
   }
 
@@ -5956,6 +6055,8 @@ export namespace Prisma {
     date: string
     points?: number
     createdAt?: Date | string
+    venmoUrl?: string | null
+    venmoUser?: string | null
     creator: UserCreateNestedOneWithoutCreatedMeetsInput
   }
 
@@ -5967,6 +6068,8 @@ export namespace Prisma {
     points?: number
     creatorId: number
     createdAt?: Date | string
+    venmoUrl?: string | null
+    venmoUser?: string | null
   }
 
   export type MeetCreateOrConnectWithoutAttendeesInput = {
@@ -5990,6 +6093,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdMeets?: MeetUpdateManyWithoutCreatorNestedInput
   }
 
@@ -5999,6 +6103,7 @@ export namespace Prisma {
     name?: NullableStringFieldUpdateOperationsInput | string | null
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdMeets?: MeetUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
@@ -6019,6 +6124,8 @@ export namespace Prisma {
     date?: StringFieldUpdateOperationsInput | string
     points?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    venmoUser?: NullableStringFieldUpdateOperationsInput | string | null
     creator?: UserUpdateOneRequiredWithoutCreatedMeetsNestedInput
   }
 
@@ -6030,6 +6137,8 @@ export namespace Prisma {
     points?: IntFieldUpdateOperationsInput | number
     creatorId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    venmoUser?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserMeetCreateManyUserInput = {
@@ -6045,6 +6154,8 @@ export namespace Prisma {
     date: string
     points?: number
     createdAt?: Date | string
+    venmoUrl?: string | null
+    venmoUser?: string | null
   }
 
   export type UserMeetUpdateWithoutUserInput = {
@@ -6070,6 +6181,8 @@ export namespace Prisma {
     date?: StringFieldUpdateOperationsInput | string
     points?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    venmoUser?: NullableStringFieldUpdateOperationsInput | string | null
     attendees?: UserMeetUpdateManyWithoutMeetNestedInput
   }
 
@@ -6080,6 +6193,8 @@ export namespace Prisma {
     date?: StringFieldUpdateOperationsInput | string
     points?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    venmoUser?: NullableStringFieldUpdateOperationsInput | string | null
     attendees?: UserMeetUncheckedUpdateManyWithoutMeetNestedInput
   }
 
@@ -6090,6 +6205,8 @@ export namespace Prisma {
     date?: StringFieldUpdateOperationsInput | string
     points?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    venmoUser?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserMeetCreateManyMeetInput = {

@@ -51,3 +51,19 @@ export const changePassword = async (formData: FormData) => {
 
   return { success: "Password updated successfully!" };
 };
+
+export const updateUserWithVenmoUrl = async (
+  venmoUrl: string,
+  userId: number,
+) => {
+  try {
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: { venmoUrl },
+    });
+    return updatedUser;
+  } catch (err) {
+    console.error("error at updateUserWithVenmoUrl, ", err);
+    throw err;
+  }
+};

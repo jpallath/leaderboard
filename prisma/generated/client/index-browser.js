@@ -125,7 +125,8 @@ exports.Prisma.UserScalarFieldEnum = {
   username: 'username',
   name: 'name',
   password: 'password',
-  userType: 'userType'
+  userType: 'userType',
+  venmoUrl: 'venmoUrl'
 };
 
 exports.Prisma.MeetScalarFieldEnum = {
@@ -135,7 +136,9 @@ exports.Prisma.MeetScalarFieldEnum = {
   date: 'date',
   points: 'points',
   creatorId: 'creatorId',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  venmoUrl: 'venmoUrl',
+  venmoUser: 'venmoUser'
 };
 
 exports.Prisma.UserMeetScalarFieldEnum = {

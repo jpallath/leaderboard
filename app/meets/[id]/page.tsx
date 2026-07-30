@@ -1,10 +1,9 @@
-import { getCurrentCore, getCurrentUser } from "@/lib/auth";
+import { getCurrentUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { JoinMeet } from "./JoinMeet";
 import { AttendingMeet } from "./AttendingMeet";
-import { unverifyRunnerAtMeet, verifyRunnerAtMeet } from "@/actions/userMeets";
-import { MeetProps } from "@/app/types";
 import { VerifyRunners } from "./VerifyRunners";
+import VenmoComponent from "./VenmoComponent";
 
 type MeetPageProps = {
   params: Promise<{
@@ -59,7 +58,7 @@ const MeetPage = async ({ params }: MeetPageProps) => {
               id: true,
               username: true,
               name: true,
-              userType: true, // Automatically excludes password!
+              userType: true,
             },
           },
         },
@@ -100,12 +99,20 @@ const MeetPage = async ({ params }: MeetPageProps) => {
         <div className="text-black">
           {isUserInMeet ? (
             // show the qr code to share with friends to attend
-            <AttendingMeet
-              currentUser={currentUser}
-              meetDetails={meetDetails}
-              qrLink={qrLink}
-              runners={runners}
-            />
+            <>
+              <AttendingMeet
+                currentUser={currentUser}
+                meetDetails={meetDetails}
+                qrLink={qrLink}
+                runners={runners}
+              />
+              <VenmoComponent
+                currentUser={currentUser}
+                venmoUrl={meetDetails.venmoUrl}
+                venmoUser={meetDetails.venmoUser}
+                meetId={meetDetails.id}
+              />
+            </>
           ) : (
             <JoinMeet currentUser={currentUser} meetDetails={meetDetails} />
           )}

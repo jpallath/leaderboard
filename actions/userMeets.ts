@@ -1,6 +1,8 @@
 "use server";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
+import { updateUserWithVenmoUrl } from "./users";
+import { updateMeetWithVenmoDetails } from "./meets";
 
 export const joinMeet = async (userId: number, meetId: number) => {
   let userMeet;
@@ -44,6 +46,21 @@ export const unverifyRunnerAtMeet = async (userId: number, meetId: number) => {
     });
   } catch (err) {
     console.error("error in verifying runner! ", err);
+  }
+  revalidatePath(`/meets/${meetId}`);
+};
+
+export const updateUserAndMeetWithVenmoDetails = async (
+  venmoUrl: string,
+  userId: number,
+  meetId: number,
+) => {
+  try {
+    const user = await updateUserWithVenmoUrl(venmoUrl, userId);
+    await updateMeetWithVenmoDetails(venmoUrl, user.username, meetId);
+  } catch (err) {
+    console.error("error at updateMeetWithVenmoDetails, ", err);
+    throw err;
   }
   revalidatePath(`/meets/${meetId}`);
 };

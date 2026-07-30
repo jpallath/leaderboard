@@ -20,6 +20,7 @@ model User {
   userType     UserType   @default(user)
   meets        UserMeet[]
   createdMeets Meet[]     @relation("MeetCreator")
+  venmoUrl     String?
 }
 
 model Meet {
@@ -32,6 +33,8 @@ model Meet {
   creatorId Int
   creator   User       @relation("MeetCreator", fields: [creatorId], references: [id], onDelete: Cascade)
   createdAt DateTime   @default(now())
+  venmoUrl  String?
+  venmoUser String?
 }
 
 model UserMeet {

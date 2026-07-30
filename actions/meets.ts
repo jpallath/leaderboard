@@ -32,3 +32,20 @@ export async function newMeet(
   revalidatePath("/meets");
   redirect(`/meets/${createdMeet.id}`);
 }
+
+export const updateMeetWithVenmoDetails = async (
+  venmoUrl: string,
+  username: string,
+  meetId: number,
+) => {
+  try {
+    const updatedMeet = await prisma.meet.update({
+      where: { id: meetId },
+      data: { venmoUrl, venmoUser: username },
+    });
+  } catch (err) {
+    console.error("Error at updateMeetWithVenmoDetails");
+    throw err;
+  }
+  revalidatePath(`meets/${meetId}`);
+};
