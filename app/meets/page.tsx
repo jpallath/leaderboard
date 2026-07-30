@@ -23,7 +23,7 @@ const EventsPage = async () => {
 
 export default EventsPage;
 
-const MeetLink = (meet: MeetProps) => {
+export const MeetLink = (meet: MeetProps) => {
   const rootURL = process.env.ROOT_URL;
   const readAbleDate = new Date(meet.date).toLocaleDateString("en-US", {
     month: "long",
