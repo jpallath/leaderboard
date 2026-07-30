@@ -18,16 +18,15 @@ export default function VenmoComponent({
   meetId,
 }: VenmoComponentProps) {
   const [updateVenmoUrl, setUpdateVenmoUrl] = useState<boolean>(false);
-  // i want this component to let a user plug in their venmo details, if the venmo details exist they can just press "show"
-  // i also want it to be possible for them to delete their venmo details on the page
-  // if venmo details does exist then we will just show that value for the user
-  if (updateVenmoUrl || !venmoUrl) {
+
+  // If there is no meet venmo yet, OR the user clicked to edit/change it:
+  if (!venmoUrl || updateVenmoUrl) {
     return (
       <>
         <AddVenmoDetails
           userVenmoUrl={currentUser.venmoUrl}
-          username={currentUser.username}
-          venmoUser={venmoUser}
+          username={currentUser.username} // <-- Added this
+          venmoUser={null} // <-- Added this (or pass your prop if available)
           userId={currentUser.id}
           meetId={meetId}
           updateVenmoUrl={updateVenmoUrl}
@@ -36,6 +35,8 @@ export default function VenmoComponent({
       </>
     );
   }
+
+  // Otherwise, show the meet's Venmo QR code to EVERYONE viewing the page
   return (
     <div className="flex flex-col items-center mt-5">
       <QRCode
@@ -49,16 +50,17 @@ export default function VenmoComponent({
         fgColor="#008CFF"
         viewBox={`0 0 200 200`}
       />
-      <a href={venmoUrl}>venmo for {currentUser.username}</a>
-      {venmoUser === currentUser.username && (
-        <p onClick={() => setUpdateVenmoUrl(true)}>Wrong venmo? Click here</p>
-      )}
+      <a href={venmoUrl} className="text-sm underline mt-2">
+        Venmo for {venmoUser || "Meet Organizer"}
+      </a>
+
+      {/* Option to update it if needed */}
+      <p
+        className="cursor-pointer text-xs text-blue-500 mt-2"
+        onClick={() => setUpdateVenmoUrl(true)}
+      >
+        Wrong venmo? Click here!
+      </p>
     </div>
   );
 }
-
-const ShowVenmoDetails = () => {
-  return <></>;
-  // if wrong details we need to trigger addvenmodetails
-  // this should simply be the QR code that opens venmo and the url underneath it.
-};

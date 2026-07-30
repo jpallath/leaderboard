@@ -47,5 +47,5 @@ export const updateMeetWithVenmoDetails = async (
     console.error("Error at updateMeetWithVenmoDetails");
     throw err;
   }
-  revalidatePath(`meets/${meetId}`);
+  revalidatePath(`/meets/${meetId}`);
 };
