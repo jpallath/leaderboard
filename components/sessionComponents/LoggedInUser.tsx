@@ -26,7 +26,7 @@ export const LoggedInUser = ({
         </h1>
         <div className="flex items-center gap-2 justify-center">
           <Link
-            href={`/meets/user/${id}`}
+            href={`/meets?showComradeMeets=true`}
             className="text-xs text-accent hover:text-accent font-medium transition p-2"
           >
             My Meets

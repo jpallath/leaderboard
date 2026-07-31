@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { getCurrentUser } from "@/lib/auth";
-import { MeetLink } from "../../page";
+import { MeetLink } from "../../MeetsListComponent";
 MeetLink;
 
 export default async function MeetsUserPage() {
@@ -13,6 +13,7 @@ export default async function MeetsUserPage() {
         },
       },
     },
+    orderBy: { createdAt: "desc" },
   });
   return (
     <main className="flex flex-col gap-4 p-4">
