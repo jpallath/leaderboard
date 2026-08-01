@@ -1,25 +1,21 @@
 "use client";
-import { useState, useActionState } from "react";
-import { newMeet } from "@/actions/meets";
-
 import { CurrentUserWithoutMeetsProps } from "@/app/types";
-import { QRCodeInForm } from "@/components/qrCodes/QRCodeInForm";
+import { useNewMeet } from "@/hooks/useNewMeet";
 
 export const NewMeetForm = ({
   currentUser,
-  rootURL,
 }: {
   currentUser: CurrentUserWithoutMeetsProps;
-  rootURL: string;
 }) => {
-  const [locationValue, setLocationValue] = useState("prospect-morning");
-  const newMeetWithId = newMeet.bind(null, currentUser.id);
-  const [state, formAction, isPending] = useActionState(newMeetWithId, null);
-  const createdMeet = state?.success && state?.meet ? state.meet : null;
-  const safeRootURL = rootURL || "";
+  const {
+    locationValue,
+    setLocationValue,
+  
+    formAction,
+    today,
+    defaultMeetName,
+  } = useNewMeet(currentUser);
 
-  const today = new Date().toISOString().split("T")[0];
-  const defaultMeetName = `${today} Run`;
   return (
     <main className="flex flex-col justify-between mt-2">
       <form

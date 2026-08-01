@@ -1,5 +1,5 @@
 "use client";
-import { useSubmit } from "@/hooks/useSubmit";
+import { useRegisterSubmit } from "@/hooks/useRegisterSubmit";
 
 export const RegisterSigninUser = ({
   searchParams,
@@ -13,7 +13,7 @@ export const RegisterSigninUser = ({
     setIsLoading,
     handleSubmit,
     isRegistering,
-  } = useSubmit();
+  } = useRegisterSubmit();
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-background text-content">

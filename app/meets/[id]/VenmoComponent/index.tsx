@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+
+import { useUpdateVenmo } from "@/hooks/useUpdateVenmo";
 import { AddVenmoDetails } from "./AddVenmoDetails";
 import { User } from "@/prisma/generated/client";
 import QRCode from "react-qr-code";
@@ -17,16 +18,15 @@ export default function VenmoComponent({
   venmoUser,
   meetId,
 }: VenmoComponentProps) {
-  const [updateVenmoUrl, setUpdateVenmoUrl] = useState<boolean>(false);
+  const { updateVenmoUrl, setUpdateVenmoUrl } = useUpdateVenmo();
 
-  // If there is no meet venmo yet, OR the user clicked to edit/change it:
   if (!venmoUrl || updateVenmoUrl) {
     return (
       <>
         <AddVenmoDetails
           userVenmoUrl={currentUser.venmoUrl}
-          username={currentUser.username} // <-- Added this
-          venmoUser={null} // <-- Added this (or pass your prop if available)
+          username={currentUser.username}
+          venmoUser={null}
           userId={currentUser.id}
           meetId={meetId}
           updateVenmoUrl={updateVenmoUrl}
@@ -36,7 +36,6 @@ export default function VenmoComponent({
     );
   }
 
-  // Otherwise, show the meet's Venmo QR code to EVERYONE viewing the page
   return (
     <div className="flex flex-col items-center mt-5">
       <QRCode
@@ -54,7 +53,6 @@ export default function VenmoComponent({
         Venmo for {venmoUser || "Meet Organizer"}
       </a>
 
-      {/* Option to update it if needed */}
       <p
         className="cursor-pointer text-xs text-blue-500 mt-2"
         onClick={() => setUpdateVenmoUrl(true)}

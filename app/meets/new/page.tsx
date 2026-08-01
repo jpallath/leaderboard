@@ -8,11 +8,9 @@ export default async function page() {
     redirect("/");
   }
 
-  const rootURL = process.env.ROOT_URL || "http://localhost:3000";
-
   return (
     <>
-      <NewMeetForm currentUser={currentUser} rootURL={rootURL} />
+      <NewMeetForm currentUser={currentUser} />
     </>
   );
 }

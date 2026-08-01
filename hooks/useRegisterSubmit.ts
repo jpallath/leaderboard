@@ -2,7 +2,7 @@ import { useState } from "react";
 import { registerUser, loginUser } from "@/actions/auth";
 import { useRouter } from "next/navigation";
 
-export const useSubmit = () => {
+export const useRegisterSubmit = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
