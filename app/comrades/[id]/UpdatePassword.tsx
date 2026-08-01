@@ -1,32 +1,14 @@
 "use client";
 import { changePassword } from "@/actions/users";
-import { useState } from "react";
+import { useFormState } from "@/hooks/useFormState";
 
 export const UpdatePassword = () => {
-  const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
-  const [visible, setVisible] = useState(false);
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formElement = e.currentTarget;
-    setError(null);
-    setSuccess(null);
-    const formData = new FormData(formElement);
-    const res = await changePassword(formData);
-    if (res?.error) {
-      setError(res.error);
-    } else if (res?.success) {
-      setSuccess(res.success);
-      formElement.reset();
-    }
-  };
-  const updatePasswordForm = () => {
-    setVisible(!visible);
-  };
+  const { error, success, visible, toggleForm, handleSubmit } =
+    useFormState(changePassword);
   return (
     <main className="flex flex-col items-center m-2">
       <button
-        onClick={updatePasswordForm}
+        onClick={toggleForm}
         className="p-4 text-white bg-accent rounded-xl"
       >
         Update Password?

@@ -1,7 +1,6 @@
 "use client";
 import { updateMeetWithVenmoDetails } from "@/actions/meets";
-import { updateUserAndMeetWithVenmoDetails } from "@/actions/userMeets";
-import { useState } from "react";
+import { useVenmoState } from "@/hooks/useVenmoState";
 
 export type VenmoDetailsComponentProps = {
   userVenmoUrl: string | null;
@@ -20,19 +19,12 @@ export const AddVenmoDetails = ({
   meetId,
   updateVenmoUrl,
   setUpdateVenmoUrl,
-  venmoUser,
 }: VenmoDetailsComponentProps) => {
-  const [venmoUrl, setVenmoUrl] = useState<string>("");
-
-  const updateVenmo = async () => {
-    await updateUserAndMeetWithVenmoDetails(venmoUrl, userId, meetId);
-    setUpdateVenmoUrl(false);
-  };
-
-  // if there are no venmoDetails attached i want to show the "addVenmoDetails button"
-  // if the venmoURL exists on the user, then just press the submit buttom
-  // if the venmUrl doesnt exist on the user then they should have an input
-  // if theres an issue and they want to update it they should press the edit button and submit
+  const { venmoUrl, setVenmoUrl, updateVenmo, isLoading } = useVenmoState(
+    userId,
+    meetId,
+    () => setUpdateVenmoUrl(false),
+  );
 
   const showInputComponent = !userVenmoUrl || updateVenmoUrl ? true : false;
 
@@ -57,9 +49,10 @@ export const AddVenmoDetails = ({
           />
           <button
             onClick={() => updateVenmo()}
+            disabled={isLoading}
             className="p-2 bg-[#008CFF] text-white rounded-xl font-medium transition active:scale-95"
           >
-            Add Venmo
+            {isLoading ? "Saving..." : "Add Venmo"}
           </button>
         </div>
       </div>
@@ -68,7 +61,7 @@ export const AddVenmoDetails = ({
     if (userVenmoUrl) {
       return (
         <div className="m-2 flex flex-col items-center">
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center justify-center flex-col gap-2">
             <h1 className="text-lg font-black text-center">{userVenmoUrl}</h1>
             <button
               onClick={() =>
