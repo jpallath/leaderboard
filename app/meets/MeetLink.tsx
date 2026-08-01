@@ -1,11 +1,11 @@
 import { MeetProps } from "../types";
 import Link from "next/link";
 import { locationLabels } from "@/constants/meetingLocations";
-import { useMounted } from "@/hooks/useMounted";
+import { useStaggeredAnimation } from "@/hooks/useStaggeredAnimation";
 export const MeetLink = (
   meet: MeetProps & { ind?: number; isExiting?: boolean },
 ) => {
-  const { animationClasses, transitionDelay } = useMounted(
+  const { animationClasses, transitionDelay } = useStaggeredAnimation(
     meet.ind,
     meet.isExiting,
   );

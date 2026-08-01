@@ -1,46 +1,19 @@
 "use client";
-
-import { useState } from "react";
-import { registerUser, loginUser } from "@/actions/auth";
-import { useRouter } from "next/navigation";
+import { useSubmit } from "@/hooks/useSubmit";
 
 export const RegisterSigninUser = ({
   searchParams,
 }: {
   searchParams: { mode?: string } | Promise<{ mode?: string }>;
 }) => {
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
-
-  const isRegistering =
-    typeof window !== "undefined" &&
-    window.location.search.includes("mode=register");
-
-  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setError(null);
-    setIsLoading(true);
-
-    const formData = new FormData(event.currentTarget);
-
-    try {
-      const res = isRegistering
-        ? await registerUser(formData)
-        : await loginUser(formData);
-
-      if (res?.error) {
-        setError(res.error);
-        setIsLoading(false);
-      } else {
-        router.push("/");
-        router.refresh();
-      }
-    } catch (err) {
-      setError("An unexpected error occurred. Please try again.");
-      setIsLoading(false);
-    }
-  }
+  const {
+    error,
+    setError,
+    isLoading,
+    setIsLoading,
+    handleSubmit,
+    isRegistering,
+  } = useSubmit();
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-background text-content">
