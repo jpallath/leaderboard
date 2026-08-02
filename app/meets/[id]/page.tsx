@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { JoinMeet } from "./JoinMeet";
 import { AttendingMeet } from "./AttendingMeet";
 import { VerifyRunners } from "./VerifyRunners";
-import VenmoComponent from "./VenmoComponent";
+import { VenmoComponentContainer } from "./VenmoComponent";
 
 type MeetPageProps = {
   params: Promise<{
@@ -90,7 +90,7 @@ const MeetPage = async ({ params }: MeetPageProps) => {
   });
 
   return (
-    <main className="p-4 flex flex-col gap-8">
+    <main className="p-4 flex flex-col ">
       {hasHappened ? (
         <div className="text-red-500">
           <h1>This meet has passed.</h1>
@@ -106,7 +106,8 @@ const MeetPage = async ({ params }: MeetPageProps) => {
                 qrLink={qrLink}
                 runners={runners}
               />
-              <VenmoComponent
+
+              <VenmoComponentContainer
                 currentUser={currentUser}
                 venmoUrl={meetDetails.venmoUrl}
                 venmoUser={meetDetails.venmoUser}

@@ -4,6 +4,7 @@ import { useUpdateVenmo } from "@/hooks/useUpdateVenmo";
 import { AddVenmoDetails } from "./AddVenmoDetails";
 import { User } from "@/prisma/generated/client";
 import QRCode from "react-qr-code";
+import { useAnimation } from "@/hooks/useAnimation";
 
 export type VenmoComponentProps = {
   currentUser: User;
@@ -62,3 +63,44 @@ export default function VenmoComponent({
     </div>
   );
 }
+
+export const VenmoComponentContainer = ({
+  currentUser,
+  venmoUrl,
+  venmoUser,
+  meetId,
+}: VenmoComponentProps) => {
+  const { animation, setAnimation } = useAnimation();
+  return (
+    <div className="w-full my-2 overflow-hidden rounded-xl bg-background">
+      <div
+        className="w-full bg-[#008CFF] text-white p-3 font-medium cursor-pointer flex justify-between items-center transition select-none"
+        onClick={() => setAnimation(!animation)}
+      >
+        <span>Venmo Details</span>
+        <span
+          className={`transform transition-transform duration-300 ${animation ? "rotate-180" : ""}`}
+        >
+          ▼
+        </span>
+      </div>
+
+      <div
+        className={`grid transition-all duration-300 ease-out overflow-hidden ${
+          animation
+            ? "grid-rows-[1fr] opacity-100"
+            : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden p-3 bg-surface">
+          <VenmoComponent
+            currentUser={currentUser}
+            venmoUrl={venmoUrl}
+            venmoUser={venmoUser}
+            meetId={meetId}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
