@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { JoinMeet } from "./JoinMeet";
 import { AttendingMeet } from "./AttendingMeet";
 import { VerifyRunners } from "./VerifyRunners";
-import { VenmoComponentContainer } from "./VenmoComponent";
+import { VenmoComponentContainer } from "../../../components/VenmoComponent";
 import { CoreWork } from "@/components/coreWork";
 
 type MeetPageProps = {
