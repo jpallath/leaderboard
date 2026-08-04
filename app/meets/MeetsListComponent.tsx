@@ -26,7 +26,7 @@ export const MeetsListComponent = ({
         isComradeView={isComradeView}
         setIsComradeView={handleToggle}
       />
-      <div className="mt-10 w-full flex justify-between items-center border-b-gray-500 border-b-2 border-b-solid">
+      <div className="w-full flex justify-between items-center border-b-gray-500 border-b-2 border-b-solid">
         <div>Date</div>
         <div>Event</div>
         <div>Points</div>

@@ -4,6 +4,7 @@ import { JoinMeet } from "./JoinMeet";
 import { AttendingMeet } from "./AttendingMeet";
 import { VerifyRunners } from "./VerifyRunners";
 import { VenmoComponentContainer } from "./VenmoComponent";
+import { CoreWork } from "@/components/coreWork";
 
 type MeetPageProps = {
   params: Promise<{
@@ -67,12 +68,7 @@ const MeetPage = async ({ params }: MeetPageProps) => {
   });
 
   const runners = meetWithAttendees?.attendees.map((um) => um.user) || [];
-  const userMeets = runners.map(async (runner) => {
-    const userMeet = await prisma.userMeet.findFirst({
-      where: { userId: runner.id, meetId: Number(id) },
-    });
-    return { userId: runner.id, userMeet };
-  });
+
   const runnersWithUserMeet =
     meetWithAttendees?.attendees.map((um) => ({
       user: um.user,
@@ -88,6 +84,13 @@ const MeetPage = async ({ params }: MeetPageProps) => {
 
     return aVerified - bVerified; // 0 (false) comes before 1 (true)
   });
+
+  const verifiedRunners = sortedRunners.filter(
+    (runner) => runner.userMeet.verified,
+  );
+  const unverifiedRunners = sortedRunners.filter(
+    (runner) => !runner.userMeet.verified,
+  );
 
   return (
     <main className="p-4 flex flex-col ">
@@ -120,7 +123,12 @@ const MeetPage = async ({ params }: MeetPageProps) => {
         </div>
       )}
       {currentUser.userType === "core" && (
-        <VerifyRunners runners={sortedRunners} meet={meetDetails} />
+        <CoreWork
+          verifiedRunners={verifiedRunners}
+          unverifiedRunners={unverifiedRunners}
+          meet={meetDetails}
+        />
+        // <VerifyRunners runners={sortedRunners} meet={meetDetails} />
       )}
     </main>
   );

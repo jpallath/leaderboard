@@ -1,29 +1,8 @@
 "use client";
-import { MeetProps } from "@/app/types";
+import { VerifyRunnerItemProp, VerifyRunnersProps } from "@/app/types";
 import { unverifyRunnerAtMeet, verifyRunnerAtMeet } from "@/actions/userMeets";
 import { useAnimation } from "@/hooks/useAnimation";
 
-export type RunnerWithMeet = {
-  user: {
-    id: number;
-    name: string | null;
-    username: string;
-  };
-  userMeet: {
-    id: number;
-    verified: boolean;
-  };
-};
-
-export type VerifyRunnersProps = {
-  runners: RunnerWithMeet[];
-  meet: MeetProps;
-};
-export type VerifyRunnerItemProp = {
-  runner: RunnerWithMeet;
-  meet: MeetProps;
-  animation?: boolean;
-};
 export const VerifyRunners = ({ runners, meet }: VerifyRunnersProps) => {
   const { animation, setAnimation } = useAnimation();
   if (runners.length > 0) {

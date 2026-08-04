@@ -60,3 +60,26 @@ export type LeaderItemProps = {
   totalPoints: number;
   place: number;
 };
+
+export type RunnerWithMeet = {
+  user: {
+    id: number;
+    name: string | null;
+    username: string;
+  };
+  userMeet: {
+    id: number;
+    verified: boolean;
+  };
+};
+
+export type VerifyRunnersProps = {
+  verifiedRunners: RunnerWithMeet[];
+  unverifiedRunners: RunnerWithMeet[];
+  meet: MeetProps;
+};
+export type VerifyRunnerItemProp = {
+  runner: RunnerWithMeet;
+  meet: MeetProps;
+  animation?: boolean;
+};

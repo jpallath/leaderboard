@@ -29,7 +29,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         {" "}
-        <Link href="/" className="mb-16">
+        <Link href="/" className="z-50">
           <header className="w-full p-4 border-b-solid border-b-2 bg-surface border-surface-border shadow-2xl fixed">
             <h1 className="text-center text-2xl font-bold">
               <span className="text-accent">DSA</span> Running Club

@@ -10,7 +10,7 @@ export default function MeetToggle({
   setIsComradeView,
 }: MeetToggleProps) {
   return (
-    <div className="absolute left-1/2 -translate-x-1/2 flex items-center bg-gray-100 p-1 rounded-full z-10 w-48 shadow-sm">
+    <div className="fixed top-18 left-1/2 -translate-x-1/2 flex items-center bg-gray-100 p-1 rounded-full z-10 w-48 shadow-sm">
       {/* 
         Sliding Red Pill Background:
         - Uses translate-x to slide smoothly back and forth.
