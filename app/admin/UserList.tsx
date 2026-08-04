@@ -1,24 +1,27 @@
 "use client";
+import { useState } from "react";
 import { UserProps } from "../types";
+import { UserListItem } from "./UserListItem";
+import { useUserFunctions } from "@/hooks/useUserFunctions";
 
 type UserListProps = {
   users: UserProps[];
 };
 
-type UserListItemProps = {
-  user: UserProps;
-};
-
 export const UserList = ({ users }: UserListProps) => {
+  const { activeId, userFunction } = useUserFunctions();
   return (
-    <div>
+    <ul>
       {users.map((user) => (
-        <UserListItem key={user.id} user={user} />
+        <UserListItem
+          key={user.id}
+          user={user}
+          active={activeId === user.id}
+          userFunction={userFunction}
+        />
       ))}
-    </div>
+    </ul>
   );
 };
 
-export const UserListItem = ({ user }: UserListItemProps) => {
-  return <div>{user.name ? user.name : user.username}</div>;
-};
+// i want to add a reset process here so that i can make passwords easier. thats it for now

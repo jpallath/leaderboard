@@ -126,7 +126,8 @@ exports.Prisma.UserScalarFieldEnum = {
   name: 'name',
   password: 'password',
   userType: 'userType',
-  venmoUrl: 'venmoUrl'
+  venmoUrl: 'venmoUrl',
+  resetPassword: 'resetPassword'
 };
 
 exports.Prisma.MeetScalarFieldEnum = {

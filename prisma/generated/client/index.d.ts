@@ -1191,6 +1191,7 @@ export namespace Prisma {
     password: string | null
     userType: $Enums.UserType | null
     venmoUrl: string | null
+    resetPassword: boolean | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -1200,6 +1201,7 @@ export namespace Prisma {
     password: string | null
     userType: $Enums.UserType | null
     venmoUrl: string | null
+    resetPassword: boolean | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -1209,6 +1211,7 @@ export namespace Prisma {
     password: number
     userType: number
     venmoUrl: number
+    resetPassword: number
     _all: number
   }
 
@@ -1228,6 +1231,7 @@ export namespace Prisma {
     password?: true
     userType?: true
     venmoUrl?: true
+    resetPassword?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -1237,6 +1241,7 @@ export namespace Prisma {
     password?: true
     userType?: true
     venmoUrl?: true
+    resetPassword?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -1246,6 +1251,7 @@ export namespace Prisma {
     password?: true
     userType?: true
     venmoUrl?: true
+    resetPassword?: true
     _all?: true
   }
 
@@ -1342,6 +1348,7 @@ export namespace Prisma {
     password: string | null
     userType: $Enums.UserType
     venmoUrl: string | null
+    resetPassword: boolean
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1370,6 +1377,7 @@ export namespace Prisma {
     password?: boolean
     userType?: boolean
     venmoUrl?: boolean
+    resetPassword?: boolean
     meets?: boolean | User$meetsArgs<ExtArgs>
     createdMeets?: boolean | User$createdMeetsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1382,6 +1390,7 @@ export namespace Prisma {
     password?: boolean
     userType?: boolean
     venmoUrl?: boolean
+    resetPassword?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1391,6 +1400,7 @@ export namespace Prisma {
     password?: boolean
     userType?: boolean
     venmoUrl?: boolean
+    resetPassword?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -1400,9 +1410,10 @@ export namespace Prisma {
     password?: boolean
     userType?: boolean
     venmoUrl?: boolean
+    resetPassword?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "password" | "userType" | "venmoUrl", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "password" | "userType" | "venmoUrl" | "resetPassword", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meets?: boolean | User$meetsArgs<ExtArgs>
     createdMeets?: boolean | User$createdMeetsArgs<ExtArgs>
@@ -1424,6 +1435,7 @@ export namespace Prisma {
       password: string | null
       userType: $Enums.UserType
       venmoUrl: string | null
+      resetPassword: boolean
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1855,6 +1867,7 @@ export namespace Prisma {
     readonly password: FieldRef<"User", 'String'>
     readonly userType: FieldRef<"User", 'UserType'>
     readonly venmoUrl: FieldRef<"User", 'String'>
+    readonly resetPassword: FieldRef<"User", 'Boolean'>
   }
     
 
@@ -4621,7 +4634,8 @@ export namespace Prisma {
     name: 'name',
     password: 'password',
     userType: 'userType',
-    venmoUrl: 'venmoUrl'
+    venmoUrl: 'venmoUrl',
+    resetPassword: 'resetPassword'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -4724,6 +4738,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -4734,13 +4755,6 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -4771,6 +4785,7 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     userType?: EnumUserTypeFilter<"User"> | $Enums.UserType
     venmoUrl?: StringNullableFilter<"User"> | string | null
+    resetPassword?: BoolFilter<"User"> | boolean
     meets?: UserMeetListRelationFilter
     createdMeets?: MeetListRelationFilter
   }
@@ -4782,6 +4797,7 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     userType?: SortOrder
     venmoUrl?: SortOrderInput | SortOrder
+    resetPassword?: SortOrder
     meets?: UserMeetOrderByRelationAggregateInput
     createdMeets?: MeetOrderByRelationAggregateInput
   }
@@ -4796,6 +4812,7 @@ export namespace Prisma {
     password?: StringNullableFilter<"User"> | string | null
     userType?: EnumUserTypeFilter<"User"> | $Enums.UserType
     venmoUrl?: StringNullableFilter<"User"> | string | null
+    resetPassword?: BoolFilter<"User"> | boolean
     meets?: UserMeetListRelationFilter
     createdMeets?: MeetListRelationFilter
   }, "id" | "username">
@@ -4807,6 +4824,7 @@ export namespace Prisma {
     password?: SortOrderInput | SortOrder
     userType?: SortOrder
     venmoUrl?: SortOrderInput | SortOrder
+    resetPassword?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -4824,6 +4842,7 @@ export namespace Prisma {
     password?: StringNullableWithAggregatesFilter<"User"> | string | null
     userType?: EnumUserTypeWithAggregatesFilter<"User"> | $Enums.UserType
     venmoUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
+    resetPassword?: BoolWithAggregatesFilter<"User"> | boolean
   }
 
   export type MeetWhereInput = {
@@ -4968,6 +4987,7 @@ export namespace Prisma {
     password?: string | null
     userType?: $Enums.UserType
     venmoUrl?: string | null
+    resetPassword?: boolean
     meets?: UserMeetCreateNestedManyWithoutUserInput
     createdMeets?: MeetCreateNestedManyWithoutCreatorInput
   }
@@ -4979,6 +4999,7 @@ export namespace Prisma {
     password?: string | null
     userType?: $Enums.UserType
     venmoUrl?: string | null
+    resetPassword?: boolean
     meets?: UserMeetUncheckedCreateNestedManyWithoutUserInput
     createdMeets?: MeetUncheckedCreateNestedManyWithoutCreatorInput
   }
@@ -4989,6 +5010,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPassword?: BoolFieldUpdateOperationsInput | boolean
     meets?: UserMeetUpdateManyWithoutUserNestedInput
     createdMeets?: MeetUpdateManyWithoutCreatorNestedInput
   }
@@ -5000,6 +5022,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPassword?: BoolFieldUpdateOperationsInput | boolean
     meets?: UserMeetUncheckedUpdateManyWithoutUserNestedInput
     createdMeets?: MeetUncheckedUpdateManyWithoutCreatorNestedInput
   }
@@ -5011,6 +5034,7 @@ export namespace Prisma {
     password?: string | null
     userType?: $Enums.UserType
     venmoUrl?: string | null
+    resetPassword?: boolean
   }
 
   export type UserUpdateManyMutationInput = {
@@ -5019,6 +5043,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPassword?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -5028,6 +5053,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPassword?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type MeetCreateInput = {
@@ -5206,6 +5232,11 @@ export namespace Prisma {
     not?: NestedEnumUserTypeFilter<$PrismaModel> | $Enums.UserType
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type UserMeetListRelationFilter = {
     every?: UserMeetWhereInput
     some?: UserMeetWhereInput
@@ -5238,6 +5269,7 @@ export namespace Prisma {
     password?: SortOrder
     userType?: SortOrder
     venmoUrl?: SortOrder
+    resetPassword?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -5251,6 +5283,7 @@ export namespace Prisma {
     password?: SortOrder
     userType?: SortOrder
     venmoUrl?: SortOrder
+    resetPassword?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -5260,6 +5293,7 @@ export namespace Prisma {
     password?: SortOrder
     userType?: SortOrder
     venmoUrl?: SortOrder
+    resetPassword?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -5326,6 +5360,14 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumUserTypeFilter<$PrismaModel>
     _max?: NestedEnumUserTypeFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type DateTimeFilter<$PrismaModel = never> = {
@@ -5406,11 +5448,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type MeetScalarRelationFilter = {
     is?: MeetWhereInput
     isNot?: MeetWhereInput
@@ -5454,14 +5491,6 @@ export namespace Prisma {
     meetId?: SortOrder
   }
 
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
   export type UserMeetCreateNestedManyWithoutUserInput = {
     create?: XOR<UserMeetCreateWithoutUserInput, UserMeetUncheckedCreateWithoutUserInput> | UserMeetCreateWithoutUserInput[] | UserMeetUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserMeetCreateOrConnectWithoutUserInput | UserMeetCreateOrConnectWithoutUserInput[]
@@ -5500,6 +5529,10 @@ export namespace Prisma {
 
   export type EnumUserTypeFieldUpdateOperationsInput = {
     set?: $Enums.UserType
+  }
+
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
   }
 
   export type UserMeetUpdateManyWithoutUserNestedInput = {
@@ -5638,10 +5671,6 @@ export namespace Prisma {
     connect?: MeetWhereUniqueInput
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
-  }
-
   export type UserUpdateOneRequiredWithoutMeetsNestedInput = {
     create?: XOR<UserCreateWithoutMeetsInput, UserUncheckedCreateWithoutMeetsInput>
     connectOrCreate?: UserCreateOrConnectWithoutMeetsInput
@@ -5702,6 +5731,11 @@ export namespace Prisma {
     in?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
     notIn?: $Enums.UserType[] | ListEnumUserTypeFieldRefInput<$PrismaModel>
     not?: NestedEnumUserTypeFilter<$PrismaModel> | $Enums.UserType
+  }
+
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -5786,6 +5820,14 @@ export namespace Prisma {
     _max?: NestedEnumUserTypeFilter<$PrismaModel>
   }
 
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -5809,19 +5851,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type UserMeetCreateWithoutUserInput = {
@@ -5962,6 +5991,7 @@ export namespace Prisma {
     password?: string | null
     userType?: $Enums.UserType
     venmoUrl?: string | null
+    resetPassword?: boolean
     meets?: UserMeetCreateNestedManyWithoutUserInput
   }
 
@@ -5972,6 +6002,7 @@ export namespace Prisma {
     password?: string | null
     userType?: $Enums.UserType
     venmoUrl?: string | null
+    resetPassword?: boolean
     meets?: UserMeetUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -6013,6 +6044,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPassword?: BoolFieldUpdateOperationsInput | boolean
     meets?: UserMeetUpdateManyWithoutUserNestedInput
   }
 
@@ -6023,6 +6055,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPassword?: BoolFieldUpdateOperationsInput | boolean
     meets?: UserMeetUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -6032,6 +6065,7 @@ export namespace Prisma {
     password?: string | null
     userType?: $Enums.UserType
     venmoUrl?: string | null
+    resetPassword?: boolean
     createdMeets?: MeetCreateNestedManyWithoutCreatorInput
   }
 
@@ -6042,6 +6076,7 @@ export namespace Prisma {
     password?: string | null
     userType?: $Enums.UserType
     venmoUrl?: string | null
+    resetPassword?: boolean
     createdMeets?: MeetUncheckedCreateNestedManyWithoutCreatorInput
   }
 
@@ -6095,6 +6130,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPassword?: BoolFieldUpdateOperationsInput | boolean
     createdMeets?: MeetUpdateManyWithoutCreatorNestedInput
   }
 
@@ -6105,6 +6141,7 @@ export namespace Prisma {
     password?: NullableStringFieldUpdateOperationsInput | string | null
     userType?: EnumUserTypeFieldUpdateOperationsInput | $Enums.UserType
     venmoUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    resetPassword?: BoolFieldUpdateOperationsInput | boolean
     createdMeets?: MeetUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
