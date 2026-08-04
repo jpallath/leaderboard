@@ -35,7 +35,8 @@ export type UserMeet = $Result.DefaultSelection<Prisma.$UserMeetPayload>
 export namespace $Enums {
   export const UserType: {
   user: 'user',
-  core: 'core'
+  core: 'core',
+  admin: 'admin'
 };
 
 export type UserType = (typeof UserType)[keyof typeof UserType]

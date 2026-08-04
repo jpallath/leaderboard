@@ -1,4 +1,4 @@
-import { UserType } from "@/prisma/generated/client";
+import { UserType, User } from "@/prisma/generated/client";
 
 export type CurrentUserProps = {
   id?: number;
@@ -20,11 +20,7 @@ export type CurrentUserProps = {
   }[];
 };
 
-export type UserProps = {
-  username: string;
-  id: number;
-  name?: string | null;
-};
+export type UserProps = Omit<User, "password" | "userType" | "venmoUrl">;
 
 export type MeetProps = {
   id: number;

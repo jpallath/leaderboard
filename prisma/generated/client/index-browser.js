@@ -164,7 +164,8 @@ exports.Prisma.NullsOrder = {
 };
 exports.UserType = exports.$Enums.UserType = {
   user: 'user',
-  core: 'core'
+  core: 'core',
+  admin: 'admin'
 };
 
 exports.Prisma.ModelName = {

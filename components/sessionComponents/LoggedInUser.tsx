@@ -11,6 +11,12 @@ export const LoggedInUser = ({
   userType,
   leaders,
 }: CurrentUserProps) => {
+  const compareUsertypes = (userType: string, requiredTypes: string[]) => {
+    if (requiredTypes.some((ty) => ty == userType)) {
+      return true;
+    }
+    return false;
+  };
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-background text-content gap-4">
       <div className="w-full max-w-md rounded-2xl bg-surface border border-surface-border p-8">
@@ -31,12 +37,20 @@ export const LoggedInUser = ({
           >
             All Meets
           </Link>
-          {userType === "core" && (
+          {compareUsertypes(userType, ["core", "admin"]) && (
             <Link
               href={"/meets/new"}
               className="text-xs text-accent hover:text-accent font-medium transition p-2"
             >
               New Meet
+            </Link>
+          )}
+          {compareUsertypes(userType, ["admin"]) && (
+            <Link
+              href={"/admin"}
+              className="text-xs text-accent hover:text-accent font-medium transition p-2"
+            >
+              Admin Ops
             </Link>
           )}
           <form action={logoutUser}>
