@@ -11,7 +11,7 @@ type UserListProps = {
 export const UserList = ({ users }: UserListProps) => {
   const { activeId, userFunction } = useUserFunctions();
   return (
-    <ul>
+    <ul className="flex flex-col">
       {users.map((user) => (
         <UserListItem
           key={user.id}

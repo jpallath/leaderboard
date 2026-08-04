@@ -19,19 +19,25 @@ export const UserListItem = ({
         userFunction(user.id);
       }}
     >
-      <div>
-        <h2 className="text-lg">{user.name ? user.name : user.username}</h2>
+      <div
+        className={`p-2 m-auto w-11/12 transition-all duration-300 ease-out ${active ? "border-t border-solid border-accent bg-accent text-white" : "border border-solid border-accent bg-surface text-black"}  rounded-xl flex flex-col`}
+      >
+        <h2 className="text-lg font-bold">
+          {user.name ? user.name : user.username}
+        </h2>
       </div>
       <div
-        className={`p-2 flex justify-center items-center ${active ? "opacity-100 w-full h-10 border-solid border border-surface-border" : "opacity-0 w-0 h-0 "}`}
+        className={`p-2 m-1 flex justify-center items-center transition-all duration-300 ease-out ${active ? "opacity-100 w-full h-10" : "opacity-0 w-0 h-0 "}`}
       >
         <button
+          className={`bg-accent text-white rounded-xl p-2 m-2`}
           onClick={(e) => {
             e.stopPropagation();
             resetPassword(user.id);
           }}
+          disabled={isPending}
         >
-          Reset Password
+          {isPending ? "..." : "Reset Password"}
         </button>
       </div>
     </li>
