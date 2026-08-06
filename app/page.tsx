@@ -2,6 +2,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { LoggedInUser } from "../components/sessionComponents/LoggedInUser";
 import { RegisterSigninUser } from "../components/sessionComponents/RegisterSignInUser";
 import { prisma } from "@/lib/prisma";
+import { Suspense } from "react";
 
 export default async function Home({
   searchParams,
@@ -67,5 +68,9 @@ export default async function Home({
     );
   }
 
-  return <RegisterSigninUser searchParams={searchParams} />;
+  return (
+    <Suspense fallback={<div>Loading....</div>}>
+      <RegisterSigninUser />
+    </Suspense>
+  );
 }

@@ -20,7 +20,7 @@ export const UserListItem = ({
       }}
     >
       <div
-        className={`p-2 m-auto w-11/12 transition-all duration-300 ease-out ${active ? "border-t border-solid border-accent bg-accent text-white" : "border border-solid border-accent bg-surface text-black"}  rounded-xl flex flex-col`}
+        className={`p-2 m-auto w-11/12 transition-all duration-300 ease-out ${active ? "border-t border-solid bg-accent text-white" : "border border-solid border-surface bg-surface text-black"}  rounded-xl flex flex-col`}
       >
         <h2 className="text-lg font-bold">
           {user.name ? user.name : user.username}

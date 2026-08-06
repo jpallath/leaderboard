@@ -68,3 +68,39 @@ export const logoutUser = async () => {
   cookieStore.delete("session_user_id");
   redirect("/");
 };
+
+export const updateResetPassword = async (formData: FormData) => {
+  const username = (formData.get("username") as string)?.toLowerCase();
+  const password = formData.get("password") as string;
+
+  if (!username || !password) {
+    return { error: "Username and password are required" };
+  }
+
+  try {
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const user = await prisma.user.update({
+      where: {
+        username,
+        resetPassword: true,
+      },
+      data: {
+        password: hashedPassword,
+        resetPassword: false, // assuming you want to clear the flag after reset!
+      },
+    });
+
+    const cookieStore = await cookies();
+    cookieStore.set("session_user_id", user.id.toString(), {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: 60 * 60 * 24 * 7,
+      path: "/",
+    });
+  } catch (err) {
+    console.error(err);
+    return { error: "Invalid username or user not flagged for password reset" };
+  }
+  redirect("/");
+};

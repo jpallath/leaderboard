@@ -1,115 +1,115 @@
 "use client";
-import { useRegisterSubmit } from "@/hooks/useRegisterSubmit";
 
-export const RegisterSigninUser = ({
-  searchParams,
-}: {
-  searchParams: { mode?: string } | Promise<{ mode?: string }>;
-}) => {
-  const {
-    error,
-    setError,
-    isLoading,
-    setIsLoading,
-    handleSubmit,
-    isRegistering,
-  } = useRegisterSubmit();
+import { useRegisterSubmit } from "@/hooks/useRegisterSubmit";
+import { InputField } from "./InputField";
+import { PasswordResetUser } from "./PasswordResetUser";
+
+export const RegisterSigninUser = () => {
+  const { error, isLoading, handleSubmit, isRegistering, isPasswordReset } =
+    useRegisterSubmit();
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-background text-content">
       <div className="w-full max-w-md rounded-2xl bg-surface border border-surface-border p-8 shadow-xl">
+        {/* Header */}
         <div className="mb-6 text-center">
           <h1 className="text-3xl font-black tracking-tight">
             DSA Running Club <span className="text-accent">Leaderboard</span>
           </h1>
           <p className="text-sm text-content-muted mt-2">
-            {isRegistering
-              ? "Create an account to join comrades"
-              : "Sign in to track your run stats"}
+            {isPasswordReset
+              ? "Reset your account password"
+              : isRegistering
+                ? "Create an account to join comrades"
+                : "Sign in to track your run stats"}
           </p>
         </div>
 
+        {/* Error Banner */}
         {error && (
           <div className="mb-4 p-3 bg-red-500/10 border border-red-500 text-red-500 text-sm rounded-xl text-center font-medium">
             {error}
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {isRegistering && (
-            <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
-                Name / Alias
-              </label>
-              <input
+        {/* Form / Content View */}
+        {isPasswordReset ? (
+          <PasswordResetUser />
+        ) : (
+          <>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {isRegistering && (
+                <InputField
+                  label="Name / Alias"
+                  type="text"
+                  name="name"
+                  placeholder="Comrade Runner"
+                />
+              )}
+
+              <InputField
+                label="Username"
                 type="text"
-                name="name"
-                placeholder="Comrade Runner"
-                required
-                className="w-full rounded-xl bg-background border border-surface-border px-4 py-3 text-content text-sm focus:outline-none focus:border-accent transition"
+                name="username"
+                placeholder="runner123"
               />
-            </div>
-          )}
 
-          <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
-              Username
-            </label>
-            <input
-              type="text"
-              name="username"
-              placeholder="runner123"
-              required
-              className="w-full rounded-xl bg-background border border-surface-border px-4 py-3 text-content text-sm focus:outline-none focus:border-accent transition"
-            />
-          </div>
+              <InputField
+                label="Password"
+                type="password"
+                name="password"
+                placeholder="••••••••"
+              />
 
-          <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-content-muted mb-1">
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              placeholder="••••••••"
-              required
-              className="w-full rounded-xl bg-background border border-surface-border px-4 py-3 text-content text-sm focus:outline-none focus:border-accent transition"
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full rounded-xl bg-accent hover:opacity-90 active:scale-[0.98] px-4 py-3 font-semibold text-white transition shadow-sm mt-2 disabled:opacity-50"
-          >
-            {isLoading
-              ? "Processing..."
-              : isRegistering
-                ? "Create Account"
-                : "Sign In"}
-          </button>
-        </form>
-
-        <div className="mt-6 text-center text-sm">
-          {isRegistering ? (
-            <p className="text-content-muted">
-              Already have an account?{" "}
-              <a href="/" className="text-accent font-semibold hover:underline">
-                Sign In
-              </a>
-            </p>
-          ) : (
-            <p className="text-content-muted">
-              Don&apos;t have an account?{" "}
-              <a
-                href="/?mode=register"
-                className="text-accent font-semibold hover:underline"
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full rounded-xl bg-accent hover:opacity-90 active:scale-[0.98] px-4 py-3 font-semibold text-white transition shadow-sm mt-2 disabled:opacity-50"
               >
-                Register
-              </a>
-            </p>
-          )}
-        </div>
+                {isLoading
+                  ? "Processing..."
+                  : isRegistering
+                    ? "Create Account"
+                    : "Sign In"}
+              </button>
+
+              <p className="text-center text-sm pt-2">
+                Did the admin reset your password?{" "}
+                <a
+                  href="/?mode=passwordReset"
+                  className="text-accent font-semibold hover:underline"
+                >
+                  Click here
+                </a>
+              </p>
+            </form>
+
+            {/* Toggle Footer */}
+            <div className="mt-6 text-center text-sm">
+              {isRegistering ? (
+                <p className="text-content-muted">
+                  Already have an account?{" "}
+                  <a
+                    href="/"
+                    className="text-accent font-semibold hover:underline"
+                  >
+                    Sign In
+                  </a>
+                </p>
+              ) : (
+                <p className="text-content-muted">
+                  Don&apos;t have an account?{" "}
+                  <a
+                    href="/?mode=register"
+                    className="text-accent font-semibold hover:underline"
+                  >
+                    Register
+                  </a>
+                </p>
+              )}
+            </div>
+          </>
+        )}
       </div>
     </main>
   );

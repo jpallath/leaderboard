@@ -72,7 +72,7 @@ export const resetUserPassword = async (userId: number) => {
   try {
     return await prisma.user.update({
       where: { id: userId },
-      data: { resetPassword: true },
+      data: { resetPassword: true, password: null },
     });
   } catch (err) {
     console.error("error at reset password, ", err);

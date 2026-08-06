@@ -1,15 +1,18 @@
 import { useState } from "react";
 import { registerUser, loginUser } from "@/actions/auth";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export const useRegisterSubmit = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
-  const isRegistering =
-    typeof window !== "undefined" &&
-    window.location.search.includes("mode=register");
+  // Directly read search params reactively on the client
+  const searchParams = useSearchParams();
+  const mode = searchParams.get("mode");
+
+  const isPasswordReset = mode === "passwordReset";
+  const isRegistering = mode === "register";
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -43,5 +46,6 @@ export const useRegisterSubmit = () => {
     setIsLoading,
     handleSubmit,
     isRegistering,
+    isPasswordReset,
   };
 };
