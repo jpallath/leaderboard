@@ -1,7 +1,5 @@
 import { prisma } from "@/lib/prisma";
-
 import { MeetProps } from "../types";
-
 import { getCurrentUser } from "@/lib/auth";
 import { MeetsListComponent } from "./MeetsListComponent";
 const EventsPage = async ({

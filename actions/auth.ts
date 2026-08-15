@@ -87,7 +87,7 @@ export const updateResetPassword = async (formData: FormData) => {
       },
       data: {
         password: hashedPassword,
-        resetPassword: false, // assuming you want to clear the flag after reset!
+        resetPassword: false,
       },
     });
 

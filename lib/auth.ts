@@ -23,7 +23,7 @@ export async function getCurrentCore() {
   const currentUser = await prisma.user.findUnique({
     where: { id: parseInt(userIdCookie.value) },
   });
-  if (currentUser?.userType === "core") {
+  if (currentUser?.userType === "core" || currentUser?.userType === "admin") {
     return currentUser;
   } else {
     return null;
